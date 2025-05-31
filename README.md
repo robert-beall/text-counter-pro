@@ -1,2 +1,2 @@
-# templ8
-A lightweight application for generating various kinds of templates based on user parameters.
+# WordWise
+A lightweight application for displaying basic statistics about pasted text.
