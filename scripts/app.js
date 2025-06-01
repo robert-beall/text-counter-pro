@@ -97,8 +97,13 @@ class App {
   handleInput(event) {
     try {
       const text = event.target.value;
+
+      /* Cheap calculations */
       this.calculateCharCount(text);
       this.calculateCharCountNoSpaces(text);
+      
+      /* Debounce heavier operations */
+      this.debouncedAnalysis(text);
     } catch (e) {
       console.error("Error handling input:", e);
     }
