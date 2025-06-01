@@ -21,7 +21,7 @@ class App {
             const element = document.getElementById(id);
 
             if (element) {
-                this.elements[element] = document.getElementById(element)
+                this.elements[id] = element;
             } else {
                 this.missingElements.push(id);
             }
@@ -48,9 +48,12 @@ class App {
         }
 
         console.log('App initialized successfully');
-        /**
-         * Additional application logic. 
-         */
+
+        const textInput = this.getElement('text-input');
+        if (textInput) {
+            textInput.addEventListener('input', this.handleInput);
+        }
+        
         return true;
     }
 
@@ -76,7 +79,18 @@ class App {
 
         console.warn(`Element with id="${id} not found in DOM`);
         return null;
-    } 
+    }
+
+    /**
+     * Event handler used to call all analysis logic on
+     * user input.
+     * 
+     * @param event to handle
+     */
+    handleInput(event) {
+        const text = event.target.value;
+        // STUB
+    }
 }
 
 (() => {
