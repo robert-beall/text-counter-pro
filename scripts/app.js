@@ -101,7 +101,7 @@ class App {
       /* Cheap calculations */
       this.calculateCharCount(text);
       this.calculateCharCountNoSpaces(text);
-      
+
       /* Debounce heavier operations */
       this.debouncedAnalysis(text);
     } catch (e) {
@@ -111,8 +111,8 @@ class App {
 
   /**
    * Debounce function for better performance.
-   * 
-   * @param {*} func to debounce 
+   *
+   * @param {*} func to debounce
    * @param {*} timeout before func is called
    * @returns debounced version of passed function for given timeout.
    */
@@ -127,16 +127,20 @@ class App {
   }
 
   /**
-   * Calculates the number of words in the passed text and 
-   * displays the value in the 'word-count' element. 
-   * 
+   * Calculates the number of words in the passed text and
+   * displays the value in the 'word-count' element.
+   *
    * @param {*} text input by user
    */
   calculateWordCount(text) {
-    const wordCount = this.getElement('word-count');
+    const wordCount = this.getElement("word-count");
 
     if (wordCount) {
-        wordCount.textContent = text.trim().split(/\s+/g).filter(w => w.length > 0).length.toLocaleString();
+      wordCount.textContent = text
+        .trim()
+        .split(/\s+/g)
+        .filter((w) => w.length > 0)
+        .length.toLocaleString();
     }
   }
 
@@ -151,6 +155,74 @@ class App {
 
     if (charCount) {
       charCount.textContent = text.length.toLocaleString();
+    }
+  }
+
+  /**
+   * Calculates the number of sentences in the passed text, excluding
+   * most common abbreviations from consideration, displaying the value
+   * in the 'sentence-count' element. 
+   * 
+   * @param {*} text input by user 
+   */
+  calculateSentenceCount(text) {
+    const sentenceCount = this.getElement("sentence-count");
+
+    if (sentenceCount) {
+      // Common abbreviations that shouldn't end sentences
+      const abbreviations = new Set([
+        "mr",
+        "mrs",
+        "ms",
+        "dr",
+        "prof",
+        "sr",
+        "jr",
+        "vs",
+        "etc",
+        "inc",
+        "ltd",
+        "corp",
+        "co",
+        "st",
+        "ave",
+        "blvd",
+        "rd",
+        "apt",
+        "no",
+        "vol",
+        "pp",
+        "ch",
+        "sec",
+        "fig",
+        "ref",
+        "i.e",
+        "e.g",
+        "cf",
+        "al",
+        "approx",
+      ]);
+      
+      let sentences = text.trim().split(/[.!?]/g).filter(s => s.length > 0);
+
+      const validSentences = [];
+
+      for (let i = 0; i < sentences.length; i++) {
+        const sentence = sentences[i];
+
+        const words = sentence.split(/\s+/);
+        const lastWord = words[words.length - 1]?.toLowerCase();
+
+        if (abbreviations.has(lastWord) && i < sentences.length - 1) {
+            sentences[i + 1] = sentence + '. ' + sentences[i + 1];
+
+            continue; 
+        }
+
+        validSentences.push(sentence);
+      }
+
+      sentenceCount.textContent = validSentences.length.toLocaleString();
     }
   }
 
@@ -173,11 +245,12 @@ class App {
 
   /**
    * Debounced function for running more expensive operations while preserving user
-   * performance. 
+   * performance.
    */
   debouncedAnalysis = this.debounce((text) => {
     this.calculateWordCount(text);
-  }, 150)
+    this.calculateSentenceCount(text);
+  }, 200);
 }
 
 (() => {
