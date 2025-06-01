@@ -127,10 +127,24 @@ class App {
   }
 
   /**
+   * Calculates the number of words in the passed text and 
+   * displays the value in the 'word-count' element. 
+   * 
+   * @param {*} text input by user
+   */
+  calculateWordCount(text) {
+    const wordCount = this.getElement('word-count');
+
+    if (wordCount) {
+        wordCount.textContent = text.trim().split(/\s+/g).filter(w => w.length > 0).length.toLocaleString();
+    }
+  }
+
+  /**
    * Calculates the number of characters in the passed text and
    * displays the value in the 'char-count' element.
    *
-   * @param {*} text
+   * @param {*} text input by user
    */
   calculateCharCount(text) {
     const charCount = this.getElement("char-count");
@@ -144,7 +158,7 @@ class App {
    * Calculates the number of non-whitespace characters in the passed text and
    * displays the value in the 'char-no-space-count' element.
    *
-   * @param {*} text
+   * @param {*} text input by user
    */
   calculateCharCountNoSpaces(text) {
     const charNoSpaceCount = this.getElement("char-no-space-count");
@@ -157,14 +171,12 @@ class App {
     }
   }
 
-  /* More expensive calculations. */
-
   /**
    * Debounced function for running more expensive operations while preserving user
    * performance. 
    */
   debouncedAnalysis = this.debounce((text) => {
-    // STUB
+    this.calculateWordCount(text);
   }, 150)
 }
 
