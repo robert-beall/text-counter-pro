@@ -151,6 +151,16 @@ class App {
         .length.toLocaleString();
     }
   }
+
+  /* More expensive calculations. */
+
+  /**
+   * Debounced function for running more expensive operations while preserving user
+   * performance. 
+   */
+  debouncedAnalysis = this.debounce((text) => {
+    // STUB
+  }, 150)
 }
 
 (() => {
