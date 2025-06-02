@@ -101,6 +101,7 @@ class App {
       /* Cheap calculations */
       this.calculateCharCount(text);
       this.calculateCharCountNoSpaces(text);
+      this.calculateReadingTime(text);
 
       /* Debounce heavier operations */
       this.debouncedAnalysis(text);
@@ -161,9 +162,9 @@ class App {
   /**
    * Calculates the number of sentences in the passed text, excluding
    * most common abbreviations from consideration, displaying the value
-   * in the 'sentence-count' element. 
-   * 
-   * @param {*} text input by user 
+   * in the 'sentence-count' element.
+   *
+   * @param {*} text input by user
    */
   calculateSentenceCount(text) {
     const sentenceCount = this.getElement("sentence-count");
@@ -202,8 +203,11 @@ class App {
         "al",
         "approx",
       ]);
-      
-      let sentences = text.trim().split(/[.!?]/g).filter(s => s.length > 0);
+
+      let sentences = text
+        .trim()
+        .split(/[.!?]/g)
+        .filter((s) => s.length > 0);
 
       const validSentences = [];
 
@@ -214,15 +218,65 @@ class App {
         const lastWord = words[words.length - 1]?.toLowerCase();
 
         if (abbreviations.has(lastWord) && i < sentences.length - 1) {
-            sentences[i + 1] = sentence + '. ' + sentences[i + 1];
+          sentences[i + 1] = sentence + ". " + sentences[i + 1];
 
-            continue; 
+          continue;
         }
 
         validSentences.push(sentence);
       }
 
       sentenceCount.textContent = validSentences.length.toLocaleString();
+    }
+  }
+
+  /**
+   * Calculates the number of paragraphs in the passed text and displays
+   * it in the 'paragraph-count' element.
+   *
+   * @param {*} text input by user
+   */
+  calculateParagraphCount(text) {
+    const paragraphCount = this.getElement("paragraph-count");
+
+    if (paragraphCount) {
+      paragraphCount.textContent = text
+        .split(/\n\s*\n/)
+        .filter((p) => p.trim())
+        .length.toLocaleString();
+    }
+  }
+
+  /**
+   * Calculates the estimated reading time for the passed text and displays
+   * it in the 'reading-time' element. 
+   * 
+   * @param {*} text input by user
+   * @param {*} wordsPerMinute optional parameter for more personalized calculation
+   */
+  calculateReadingTime(text, wordsPerMinute = 200) {
+    const readingTime = this.getElement("reading-time");
+
+    if (readingTime) {
+      const wordCount = text.trim().split(/\s+/).length;
+      const totalMinutes = wordCount / wordsPerMinute;
+
+      const minutes = Math.floor(totalMinutes);
+      const seconds = Math.round((totalMinutes - minutes) * 60);
+
+      // Format display text
+      let displayText;
+      if (minutes === 0) {
+        displayText = seconds <= 30 ? "< 1 min read" : "1 min read";
+      } else if (minutes === 1 && seconds === 0) {
+        displayText = "1 min read";
+      } else if (seconds === 0) {
+        displayText = `${minutes} min read`;
+      } else {
+        displayText = `${minutes + 1} min read`; // Round up for user experience
+      }
+
+      readingTime.textContent = displayText;
     }
   }
 
@@ -250,6 +304,7 @@ class App {
   debouncedAnalysis = this.debounce((text) => {
     this.calculateWordCount(text);
     this.calculateSentenceCount(text);
+    this.calculateParagraphCount(text);
   }, 200);
 }
 
