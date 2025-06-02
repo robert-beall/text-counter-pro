@@ -241,7 +241,7 @@ class App {
 
     if (paragraphCount) {
       paragraphCount.textContent = text
-        .split(/\n\s*\n/)
+        .split(/\n\s*/)
         .filter((p) => p.trim())
         .length.toLocaleString();
     }
