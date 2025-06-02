@@ -254,7 +254,7 @@ class App {
    * @param {*} text input by user
    * @param {*} wordsPerMinute optional parameter for more personalized calculation
    */
-  calculateReadingTime(text, wordsPerMinute = 200) {
+  calculateReadingTime(text, wordsPerMinute = 250) {
     const readingTime = this.getElement("reading-time");
 
     if (readingTime) {
@@ -276,7 +276,7 @@ class App {
         displayText = `${minutes + 1} min read`; // Round up for user experience
       }
 
-      readingTime.textContent = displayText;
+      readingTime.textContent = `${minutes}m ${seconds}s`;
     }
   }
 
