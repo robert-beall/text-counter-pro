@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Primary Meta Tags -->
     <title>About Text Counter Pro - Free Word Counter & Text Analysis Tool</title>
     <meta name="title" content="About Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="description" content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators. Fast, accurate, and privacy-focused.">
-    <meta name="keywords" content="about text counter pro, word counter tool, text analysis, writing tools, free word count, character counter">
+    <meta name="description"
+        content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators. Fast, accurate, and privacy-focused.">
+    <meta name="keywords"
+        content="about text counter pro, word counter tool, text analysis, writing tools, free word count, character counter">
     <meta name="author" content="Text Counter Pro">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yoursite.github.io/about.html">
     <meta property="og:title" content="About Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta property="og:description" content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators.">
+    <meta property="og:description"
+        content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators.">
     <meta property="og:image" content="https://yoursite.github.io/og-image.jpg">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://yoursite.github.io/about.html">
     <meta name="twitter:title" content="About Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="twitter:description" content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators.">
-    
+    <meta name="twitter:description"
+        content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators.">
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="canonical" href="https://yoursite.github.io/about.html">
-    
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
-    
+    <link rel="stylesheet" href="styles/globals.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/footer.css">
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -49,83 +59,185 @@
         }
     }
     </script>
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/footer.js" defer></script>
 </head>
+
 <body>
     <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
-    
+
+    <!-- Updated Header Section with Proper Logo Integration -->
     <header role="banner">
         <nav role="navigation" aria-label="Main navigation">
-            <a href="index.html" aria-label="Text Counter Pro home page">Text Counter Pro</a>
-            <ul role="list">
+            <!-- Logo and Branding -->
+            <a href="index.html" class="logo-container" aria-label="Text Counter Pro - Home">
+                <div class="logo-icon">
+                    <!-- Use the circular blue logo version -->
+                    <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager" width="48"
+                        height="48">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Text Counter</span>
+                    <span class="logo-subtitle">Pro</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about_page.html" aria-current="page">About</a></li>
-                <li><a href="privacy_page.html">Privacy</a></li>
                 <li><a href="contact_page.html">Contact</a></li>
+                <li><a href="privacy_page.html">Privacy</a></li>
             </ul>
+
+            <!-- Optional: Header Actions -->
+            <div class="header-actions" style="display: none;">
+                <button class="header-btn secondary">
+                    <span>📊</span>
+                    <span>Export</span>
+                </button>
+                <button class="header-btn">
+                    <span>⚡</span>
+                    <span>Analyze</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
         </nav>
     </header>
-    
+
     <main id="main" role="main">
         <article>
             <header>
                 <h1>About Text Counter Pro</h1>
                 <p>A free, fast, and accurate word counter for writers and content creators</p>
             </header>
-            
+
             <section aria-labelledby="what-is-text-counter-pro">
                 <h2 id="what-is-text-counter-pro">What is Text Counter Pro?</h2>
-                <p>Text Counter Pro is a free online word counter and text analysis tool designed for writers, students, content creators, and professionals. Get instant word counts, character counts, and text statistics as you type or paste your content.</p>
-                
-                <p>All text analysis happens locally in your browser, ensuring your content remains private and secure while delivering fast, real-time results.</p>
+                <p>Text Counter Pro is a free online word counter and text analysis tool designed for writers, students,
+                    content creators, and professionals. Get instant word counts, character counts, and text statistics
+                    as you type or paste your content.</p>
+
+                <p>All text analysis happens locally in your browser, ensuring your content remains private and secure
+                    while delivering fast, real-time results.</p>
             </section>
-            
+
             <section aria-labelledby="features">
                 <h2 id="features">Key Features</h2>
                 <ul>
                     <li><strong>Real-time Counting:</strong> Instant word and character counts as you type</li>
                     <li><strong>Reading Time:</strong> Estimates how long your text takes to read</li>
-                    <li><strong>Text Statistics:</strong> Sentence count, paragraph count, and average words per sentence</li>
-                    <li><strong>Privacy-First:</strong> All analysis happens in your browser - your text never leaves your device</li>
+                    <li><strong>Text Statistics:</strong> Sentence count, paragraph count, and average words per
+                        sentence</li>
+                    <li><strong>Privacy-First:</strong> All analysis happens in your browser - your text never leaves
+                        your device</li>
                     <li><strong>Mobile Friendly:</strong> Works on all devices and screen sizes</li>
                     <li><strong>Completely Free:</strong> No registration required, no limits, no hidden costs</li>
                 </ul>
             </section>
-            
+
             <section aria-labelledby="who-uses">
                 <h2 id="who-uses">Perfect For</h2>
                 <p><strong>Students:</strong> Check essay lengths and meet assignment word count requirements.</p>
-                <p><strong>Content Creators:</strong> Optimize blog posts and social media content for platform requirements.</p>
+                <p><strong>Content Creators:</strong> Optimize blog posts and social media content for platform
+                    requirements.</p>
                 <p><strong>Writers:</strong> Track progress and meet client specifications for articles and copy.</p>
                 <p><strong>Professionals:</strong> Craft concise emails and documents that meet length guidelines.</p>
             </section>
-            
+
             <section aria-labelledby="why-choose">
                 <h2 id="why-choose">Why Choose Text Counter Pro?</h2>
-                <p>Text Counter Pro provides accurate text analysis with advanced algorithms that handle contractions, hyphenated words, numbers, and special characters. Your privacy is protected since all processing happens locally in your browser, and you can start using it immediately without any registration.</p>
+                <p>Text Counter Pro provides accurate text analysis with advanced algorithms that handle contractions,
+                    hyphenated words, numbers, and special characters. Your privacy is protected since all processing
+                    happens locally in your browser, and you can start using it immediately without any registration.
+                </p>
             </section>
-            
+
             <section aria-labelledby="get-started">
                 <h2 id="get-started">Get Started</h2>
-                <p><a href="/">Try Text Counter Pro now</a> and experience accurate, instant text analysis. Have feedback or questions? <a href="/contact.html">Contact us</a> - we'd love to hear from you.</p>
+                <p><a href="/">Try Text Counter Pro now</a> and experience accurate, instant text analysis. Have
+                    feedback or questions? <a href="/contact.html">Contact us</a> - we'd love to hear from you.</p>
             </section>
         </article>
     </main>
-    
+
     <aside role="complementary" aria-label="Advertisement">
         <div aria-label="Sponsored content">
             <!-- Ad placement for content marketing tools -->
         </div>
     </aside>
-    
+
+    <!-- Enhanced Footer Section -->
     <footer role="contentinfo">
-        <nav role="navigation" aria-label="Footer navigation">
-            <ul role="list">
-                <li><a href="index.html">Word Counter</a></li>
-                <li><a href="about_page.html" aria-current="page">About</a></li>
-                <li><a href="privacy_page.html">Privacy Policy</a></li>
-                <li><a href="contact_page.html">Contact</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2025 Text Counter Pro. All rights reserved.</p>
+        <div class="footer-content">
+            <!-- Main Footer Grid -->
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo" aria-label="Text Counter Pro - Home">
+                        <div class="footer-logo-icon">
+                            <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
+                                width="40" height="40">
+                        </div>
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-title">Text Counter</span>
+                            <span class="footer-logo-subtitle">Pro</span>
+                        </div>
+                    </a>
+                    <p class="footer-description">
+                        Free text analysis tool for writers, students, and content creators.
+                    </p>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about_page.html">About</a></li>
+                        <li><a href="contact_page.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy_page.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Text Counter Pro. All rights reserved.</p>
+                <nav aria-label="Footer legal navigation">
+                    <ul>
+                        <li><a href="privacy_page.html">Privacy</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" aria-label="Back to top">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
     </footer>
+
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
 </body>
+
 </html>
