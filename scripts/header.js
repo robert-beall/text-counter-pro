@@ -58,53 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Text analysis functionality (if you want to add this)
-    const textInput = document.getElementById('text-input');
-    const wordCount = document.getElementById('word-count');
-    const charCount = document.getElementById('char-count');
-    const charNoSpaceCount = document.getElementById('char-no-space-count');
-    const sentenceCount = document.getElementById('sentence-count');
-    const paragraphCount = document.getElementById('paragraph-count');
-    const readingTime = document.getElementById('reading-time');
-    
-    // Text analysis function
-    function analyzeText() {
-        const text = textInput.value;
-        
-        // Word count
-        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-        
-        // Character counts
-        const chars = text.length;
-        const charsNoSpace = text.replace(/\s/g, '').length;
-        
-        // Sentence count (basic - counts periods, exclamation marks, question marks)
-        const sentences = text.trim() === '' ? 0 : text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-        
-        // Paragraph count
-        const paragraphs = text.trim() === '' ? 0 : text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
-        
-        // Reading time (average 200 words per minute)
-        const minutes = Math.floor(words / 200);
-        const seconds = Math.ceil((words % 200) / (200 / 60));
-        const readingTimeText = minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
-        
-        // Update display
-        if (wordCount) wordCount.textContent = words.toLocaleString();
-        if (charCount) charCount.textContent = chars.toLocaleString();
-        if (charNoSpaceCount) charNoSpaceCount.textContent = charsNoSpace.toLocaleString();
-        if (sentenceCount) sentenceCount.textContent = sentences.toLocaleString();
-        if (paragraphCount) paragraphCount.textContent = paragraphs.toLocaleString();
-        if (readingTime) readingTime.textContent = readingTimeText;
-    }
-    
-    // Add event listener for text input
-    if (textInput) {
-        textInput.addEventListener('input', analyzeText);
-        // Initial analysis
-        analyzeText();
-    }
+
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

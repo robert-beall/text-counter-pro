@@ -12,6 +12,8 @@ class App {
       "sentence-count",
       "paragraph-count",
       "reading-time",
+      "paste-btn",
+      "clear-btn",
     ];
 
     this.elements = {};
@@ -50,8 +52,20 @@ class App {
     console.log("App initialized successfully");
 
     const textInput = this.getElement("text-input");
+    const pasteBtn = this.getElement("paste-btn");
+    const clearBtn = this.getElement("clear-btn");
+
     if (textInput) {
+      textInput.value = "";
       textInput.addEventListener("input", this.handleInput.bind(this));
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", this.handleClear.bind(this));
+    }
+
+    if (pasteBtn) {
+      pasteBtn.addEventListener("click", this.handlePaste.bind(this));
     }
 
     return true;
@@ -97,6 +111,15 @@ class App {
   handleInput(event) {
     try {
       const text = event.target.value;
+      const clearBtn = this.getElement('clear-btn');
+
+      if (clearBtn) {
+        if (text) {
+          clearBtn.removeAttribute('disabled');
+        } else {
+          clearBtn.setAttribute('disabled', true);
+        }
+      }
 
       /* Cheap calculations */
       this.calculateCharCount(text);
@@ -107,6 +130,68 @@ class App {
       this.debouncedAnalysis(text);
     } catch (e) {
       console.error("Error handling input:", e);
+    }
+  }
+
+  handleClear() {
+    const clearBtn = this.getElement('clear-btn');
+    const textInput = this.getElement('text-input');
+
+    if (textInput) {
+      textInput.value = '';
+    }
+
+    if (clearBtn) {
+      clearBtn.setAttribute('disabled', true);
+    }
+
+    this.resetStatistics();
+  }
+
+  async handlePaste() {
+    const pasteBtn = this.getElement("paste-btn");
+    const textInput = this.getElement("text-input");
+
+    if (pasteBtn && textInput) {
+      try {
+        const text = await navigator.clipboard.readText();
+        textInput.value += text;
+      } catch (e) {
+        console.error("Cannot paste user content:", e);
+      }
+    }
+  }
+
+  resetStatistics() {
+    const charCount = this.getElement('char-count');
+    const charNoSpaceCount = this.getElement('char-no-space-count');
+    const wordCount = this.getElement('word-count');
+    const sentenceCount = this.getElement('sentence-count');
+    const paragraphCount = this.getElement('paragraph-count');
+    const readingTime = this.getElement('reading-time');
+  
+    if (charCount) {
+      charCount.textContent = '0';
+    }
+
+    if (charNoSpaceCount) {
+      charNoSpaceCount.textContent = '0';
+    }
+
+    if (wordCount) {
+      wordCount.textContent = '0';
+    }
+
+    if (sentenceCount) {
+      sentenceCount.textContent = '0';
+    }
+
+    if (paragraphCount) {
+      paragraphCount.textContent = '0';
+    }
+
+    if (readingTime) {
+      readingTime.textContent = '0s';
     }
   }
 
@@ -305,7 +390,7 @@ class App {
     this.calculateWordCount(text);
     this.calculateSentenceCount(text);
     this.calculateParagraphCount(text);
-  }, 200);
+  }, 100);
 }
 
 (() => {

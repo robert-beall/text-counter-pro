@@ -59,53 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Text analysis functionality (if you want to add this)
-    const textInput = document.getElementById('text-input');
-    const wordCount = document.getElementById('word-count');
-    const charCount = document.getElementById('char-count');
-    const charNoSpaceCount = document.getElementById('char-no-space-count');
-    const sentenceCount = document.getElementById('sentence-count');
-    const paragraphCount = document.getElementById('paragraph-count');
-    const readingTime = document.getElementById('reading-time');
-    
-    // Text analysis function
-    function analyzeText() {
-        const text = textInput.value;
-        
-        // Word count
-        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-        
-        // Character counts
-        const chars = text.length;
-        const charsNoSpace = text.replace(/\s/g, '').length;
-        
-        // Sentence count (basic - counts periods, exclamation marks, question marks)
-        const sentences = text.trim() === '' ? 0 : text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-        
-        // Paragraph count
-        const paragraphs = text.trim() === '' ? 0 : text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
-        
-        // Reading time (average 200 words per minute)
-        const minutes = Math.floor(words / 200);
-        const seconds = Math.ceil((words % 200) / (200 / 60));
-        const readingTimeText = minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
-        
-        // Update display
-        if (wordCount) wordCount.textContent = words.toLocaleString();
-        if (charCount) charCount.textContent = chars.toLocaleString();
-        if (charNoSpaceCount) charNoSpaceCount.textContent = charsNoSpace.toLocaleString();
-        if (sentenceCount) sentenceCount.textContent = sentences.toLocaleString();
-        if (paragraphCount) paragraphCount.textContent = paragraphs.toLocaleString();
-        if (readingTime) readingTime.textContent = readingTimeText;
-    }
-    
-    // Add event listener for text input
-    if (textInput) {
-        textInput.addEventListener('input', analyzeText);
-        // Initial analysis
-        analyzeText();
-    }
-    
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -145,53 +98,4 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', toggleBackToTop);
         backToTopButton.addEventListener('click', scrollToTop);
     }
-    
-    // Optional: Newsletter form handling
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('.newsletter-input').value;
-            
-            if (email) {
-                // Add your newsletter signup logic here
-                console.log('Newsletter signup:', email);
-                
-                // Show success message (customize as needed)
-                const button = this.querySelector('.newsletter-button');
-                const originalText = button.textContent;
-                button.textContent = 'Subscribed!';
-                button.style.background = '#10b981';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '';
-                    this.reset();
-                }, 2000);
-            }
-        });
-    }
 });
-
-// Hamburger animation styles (add to your CSS if not already included)
-const hamburgerStyles = `
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-}
-`;
-
-// Inject styles if they don't exist
-if (!document.querySelector('#hamburger-animation-styles')) {
-    const styleSheet = document.createElement('style');
-    styleSheet.id = 'hamburger-animation-styles';
-    styleSheet.textContent = hamburgerStyles;
-    document.head.appendChild(styleSheet);
-}
