@@ -1,0 +1,261 @@
+/* ==============================================
+   TEXT AREA COMPONENT
+   ============================================== */
+
+/* Text input section container */
+section[aria-labelledby="text-input-heading"] {
+    max-width: var(--container-md);
+    margin: 0 auto var(--space-12);
+    padding: var(--space-6);
+  }
+  
+  /* Text input heading */
+  #text-input-heading {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-6);
+    text-align: center;
+    letter-spacing: -0.025em;
+  }
+  
+  /* Text input wrapper */
+  div[role="application"] {
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: var(--space-6);
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.1),
+      0 1px 2px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  div[role="application"]:focus-within {
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 3px rgba(59, 130, 246, 0.1); /* Primary color with opacity */
+    border-color: var(--color-primary);
+  }
+  
+  /* Text input label */
+  label[for="text-input"] {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+  
+  /* The main textarea */
+  #text-input {
+    width: 100%;
+    min-height: 200px;
+    padding: var(--space-4);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    resize: vertical;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  #text-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  #text-input::placeholder {
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+  
+  /* Help text below textarea */
+  #text-input-help {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-3);
+    text-align: center;
+  }
+  
+  /* ==============================================
+     CARD COMPONENTS SYSTEM
+     ============================================== */
+  
+  /* Statistics section container */
+  section[aria-labelledby="statistics-heading"] {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+  
+  /* Statistics heading */
+  #statistics-heading {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: var(--space-8);
+    letter-spacing: -0.025em;
+  }
+  
+  /* Cards grid system */
+  div[role="region"][aria-live="polite"] {
+    display: grid;
+    gap: var(--space-6);
+    
+    /* Mobile-first: 1 column */
+    grid-template-columns: 1fr;
+  }
+  
+  /* Tablet: 2 columns */
+  @media (min-width: 769px) {
+    div[role="region"][aria-live="polite"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Desktop: 3 columns */
+  @media (min-width: 1024px) {
+    div[role="region"][aria-live="polite"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Large desktop: Up to 4 columns if content allows */
+  @media (min-width: 1280px) {
+    div[role="region"][aria-live="polite"] {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+  }
+  
+  /* ==============================================
+     INDIVIDUAL CARD STYLING
+     ============================================== */
+  
+  /* Base card component */
+  .card, 
+  div[role="region"][aria-live="polite"] > * {
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.1),
+      0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Card hover effect for interactivity */
+  .card:hover, 
+  div[role="region"][aria-live="polite"] > *:hover {
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+  
+  /* Statistics definition list styling */
+  dl {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-3) var(--space-4);
+    align-items: center;
+  }
+  
+  /* Statistic labels */
+  dt {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.025em;
+  }
+  
+  /* Statistic values */
+  dd {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: right;
+    margin: 0;
+    min-width: 60px;
+  }
+  
+  /* Special styling for reading time */
+  #reading-time {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+  }
+  
+  /* ==============================================
+     MOBILE OPTIMIZATIONS
+     ============================================== */
+  
+  /* Enhanced mobile experience */
+  @media (max-width: 768px) {
+    /* Larger text input on mobile */
+    #text-input {
+      min-height: 150px;
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Larger touch targets for cards */
+    .card, 
+    div[role="region"][aria-live="polite"] > * {
+      padding: var(--space-5);
+      min-height: 120px;
+    }
+    
+    /* Better spacing for mobile */
+    section[aria-labelledby="text-input-heading"] {
+      padding: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+    
+    section[aria-labelledby="statistics-heading"] {
+      padding: 0 var(--space-4);
+    }
+    
+    /* Larger statistics on mobile */
+    dd {
+      font-size: var(--text-xl);
+    }
+    
+    dt {
+      font-size: var(--text-base);
+    }
+  }
+  
+  /* ==============================================
+     ACCESSIBILITY ENHANCEMENTS
+     ============================================== */
+  
+  /* Focus indicators for keyboard navigation */
+  .card:focus,
+  div[role="region"][aria-live="polite"] > *:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  /* Reduced motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .card, 
+    div[role="region"][aria-live="polite"] > * {
+      border: 2px solid var(--color-text-primary);
+    }
+  }

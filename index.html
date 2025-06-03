@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Primary Meta Tags -->
     <title>Text Counter Pro - Free Word Counter & Text Analysis Tool</title>
     <meta name="title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="description" content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics. Perfect for writers, students, and content creators.">
-    <meta name="keywords" content="word counter, character counter, text analysis, word count tool, reading time calculator, text statistics, writing tool">
+    <meta name="description"
+        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics. Perfect for writers, students, and content creators.">
+    <meta name="keywords"
+        content="word counter, character counter, text analysis, word count tool, reading time calculator, text statistics, writing tool">
     <meta name="author" content="Text Counter Pro">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yoursite.github.io/">
     <meta property="og:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta property="og:description" content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
+    <meta property="og:description"
+        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
     <meta property="og:image" content="https://yoursite.github.io/og-image.jpg">
     <meta property="og:site_name" content="Text Counter Pro">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://yoursite.github.io/">
     <meta name="twitter:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="twitter:description" content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
+    <meta name="twitter:description"
+        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
     <meta name="twitter:image" content="https://yoursite.github.io/twitter-image.jpg">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -61,98 +66,185 @@
         ]
     }
     </script>
-    
+
     <!-- Performance & Security -->
     <meta name="referrer" content="origin-when-cross-origin">
     <meta name="theme-color" content="#3b82f6">
-    
+
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/globals.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/footer.css">
 
     <!-- Scripts -->
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/footer.js" defer></script>
     <script src="scripts/app.js" defer></script>
 </head>
+
 <body>
+    <!-- Updated Header Section with Proper Logo Integration -->
     <header role="banner">
         <nav role="navigation" aria-label="Main navigation">
+            <!-- Logo and Branding -->
+            <a href="/" class="logo-container" aria-label="Text Counter Pro - Home">
+                <div class="logo-icon">
+                    <!-- Use the circular blue logo version -->
+                    <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager" width="48"
+                        height="48">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Text Counter</span>
+                    <span class="logo-subtitle">Pro</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
             <ul>
-                <li><a href="" aria-current="page">Home</a></li>
-                <li><a href="about_page.html">About</a></li>
-                <li><a href="contact_page.html">Contact</a></li>
-                <li><a href="privacy_page.html">Privacy</a></li>
+                <li><a href="/" aria-current="page">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
             </ul>
+
+            <!-- Optional: Header Actions -->
+            <div class="header-actions" style="display: none;">
+                <button class="header-btn secondary">
+                    <span>📊</span>
+                    <span>Export</span>
+                </button>
+                <button class="header-btn">
+                    <span>⚡</span>
+                    <span>Analyze</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
         </nav>
     </header>
-    
+
     <main role="main">
         <section aria-labelledby="hero-heading">
             <h1 id="hero-heading">STUB</h1>
         </section>
-        
+
         <section aria-labelledby="text-input-heading">
             <h2 id="text-input-heading">STUB</h2>
             <div role="application" aria-label="Text analysis tool">
                 <label for="text-input">STUB</label>
-                <textarea 
-                    id="text-input" 
-                    name="text-input"
-                    aria-describedby="text-input-help"
-                    placeholder="STUB"
-                    spellcheck="false"
-                    autocorrect="off"
-                    autocapitalize="off">
+                <textarea id="text-input" name="text-input" aria-describedby="text-input-help" placeholder="STUB"
+                    spellcheck="false" autocorrect="off" autocapitalize="off">
                 </textarea>
                 <div id="text-input-help">STUB</div>
             </div>
         </section>
-        
+
         <section aria-labelledby="statistics-heading">
             <h2 id="statistics-heading">STUB</h2>
             <div role="region" aria-live="polite" aria-label="Text statistics">
                 <dl>
                     <dt>Words:</dt>
                     <dd id="word-count" aria-label="Word count">0</dd>
-                    
+
                     <dt>Characters:</dt>
                     <dd id="char-count" aria-label="Character count">0</dd>
-                    
+
                     <dt>Characters (no spaces):</dt>
                     <dd id="char-no-space-count" aria-label="Character count without spaces">0</dd>
-                    
+
                     <dt>Sentences:</dt>
                     <dd id="sentence-count" aria-label="Sentence count">0</dd>
-                    
+
                     <dt>Paragraphs:</dt>
                     <dd id="paragraph-count" aria-label="Paragraph count">0</dd>
-                    
+
                     <dt>Reading Time:</dt>
                     <dd id="reading-time" aria-label="Estimated reading time">0m 0s</dd>
                 </dl>
             </div>
         </section>
     </main>
-    
+
     <aside role="complementary" aria-label="Advertisement">
         <!-- Ad spaces -->
         <div aria-label="Sponsored content">STUB</div>
     </aside>
-    
+
+    <!-- Enhanced Footer Section -->
     <footer role="contentinfo">
-        <nav role="navigation" aria-label="Footer navigation">
-            <ul>
-                <li><a href="" aria-current="page">Home</a></li>
-                <li><a href="/about_page.html">About</a></li>
-                <li><a href="/contact_page.html">Contact</a></li>
-                <li><a href="/privacy_page.html">Privacy Policy</a></li>
-            </ul>
-        </nav>
+        <div class="footer-content">
+            <!-- Main Footer Grid -->
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo" aria-label="Text Counter Pro - Home">
+                        <div class="footer-logo-icon">
+                            <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy" width="40" height="40">
+                        </div>
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-title">Text Counter</span>
+                            <span class="footer-logo-subtitle">Pro</span>
+                        </div>
+                    </a>
+                    <p class="footer-description">
+                        Free text analysis tool for writers, students, and content creators.
+                    </p>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Text Counter Pro. All rights reserved.</p>
+                <nav aria-label="Footer legal navigation">
+                    <ul>
+                        <li><a href="privacy.html">Privacy</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" aria-label="Back to top">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
     </footer>
-    
+
     <!-- Skip to main content link for accessibility -->
     <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
 </body>
+
 </html>
