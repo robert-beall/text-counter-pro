@@ -96,6 +96,10 @@ nav[role="navigation"] {
   font-weight: 500;
 }
 
+.logo-subtitle-mobile {
+  display: none; 
+}
+
 /* ==============================================
    RESPONSIVE LOGO ADJUSTMENTS
    ============================================== */
@@ -135,6 +139,10 @@ nav[role="navigation"] {
   @media (max-width: 480px) {
     .logo-subtitle {
       display: none;
+    }
+
+    .logo-subtitle-mobile {
+      display: block;
     }
   }
 }
