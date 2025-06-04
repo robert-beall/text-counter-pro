@@ -14,6 +14,9 @@ class App {
       "reading-time",
       "paste-btn",
       "clear-btn",
+      "word-frequency-chart",
+      "frequency-toggle",
+      "unique-word-count",
     ];
 
     this.elements = {};
@@ -111,13 +114,13 @@ class App {
   handleInput(event) {
     try {
       const text = event.target.value;
-      const clearBtn = this.getElement('clear-btn');
+      const clearBtn = this.getElement("clear-btn");
 
       if (clearBtn) {
         if (text) {
-          clearBtn.removeAttribute('disabled');
+          clearBtn.removeAttribute("disabled");
         } else {
-          clearBtn.setAttribute('disabled', true);
+          clearBtn.setAttribute("disabled", true);
         }
       }
 
@@ -134,18 +137,19 @@ class App {
   }
 
   handleClear() {
-    const clearBtn = this.getElement('clear-btn');
-    const textInput = this.getElement('text-input');
+    const clearBtn = this.getElement("clear-btn");
+    const textInput = this.getElement("text-input");
 
     if (textInput) {
-      textInput.value = '';
+      textInput.value = "";
     }
 
     if (clearBtn) {
-      clearBtn.setAttribute('disabled', true);
+      clearBtn.setAttribute("disabled", true);
     }
 
     this.resetStatistics();
+    this.clearWordFrequencyChart();
   }
 
   async handlePaste() {
@@ -163,35 +167,35 @@ class App {
   }
 
   resetStatistics() {
-    const charCount = this.getElement('char-count');
-    const charNoSpaceCount = this.getElement('char-no-space-count');
-    const wordCount = this.getElement('word-count');
-    const sentenceCount = this.getElement('sentence-count');
-    const paragraphCount = this.getElement('paragraph-count');
-    const readingTime = this.getElement('reading-time');
-  
+    const charCount = this.getElement("char-count");
+    const charNoSpaceCount = this.getElement("char-no-space-count");
+    const wordCount = this.getElement("word-count");
+    const sentenceCount = this.getElement("sentence-count");
+    const paragraphCount = this.getElement("paragraph-count");
+    const readingTime = this.getElement("reading-time");
+
     if (charCount) {
-      charCount.textContent = '0';
+      charCount.textContent = "0";
     }
 
     if (charNoSpaceCount) {
-      charNoSpaceCount.textContent = '0';
+      charNoSpaceCount.textContent = "0";
     }
 
     if (wordCount) {
-      wordCount.textContent = '0';
+      wordCount.textContent = "0";
     }
 
     if (sentenceCount) {
-      sentenceCount.textContent = '0';
+      sentenceCount.textContent = "0";
     }
 
     if (paragraphCount) {
-      paragraphCount.textContent = '0';
+      paragraphCount.textContent = "0";
     }
 
     if (readingTime) {
-      readingTime.textContent = '0s';
+      readingTime.textContent = "0s";
     }
   }
 
@@ -334,8 +338,8 @@ class App {
 
   /**
    * Calculates the estimated reading time for the passed text and displays
-   * it in the 'reading-time' element. 
-   * 
+   * it in the 'reading-time' element.
+   *
    * @param {*} text input by user
    * @param {*} wordsPerMinute optional parameter for more personalized calculation
    */
@@ -365,6 +369,131 @@ class App {
     }
   }
 
+  calculateWordFrequency(text) {
+    const wordFrequencies = {};
+
+    const words = text.toLowerCase().match(/\b\w+(?:'\w+)?\b/g);
+
+    if (!words || words.length === 0) {
+      // Clear the chart if no words
+      this.clearWordFrequencyChart();
+      return;
+    }
+
+    words.forEach((w) => {
+      if (w in wordFrequencies) {
+        wordFrequencies[w] += 1;
+      } else {
+        wordFrequencies[w] = 1;
+      }
+    });
+
+    const orderedList = Object.keys(wordFrequencies);
+
+    const sortedEntries = Object.entries(wordFrequencies).sort(
+      (a, b) => b[1] - a[1]
+    );
+
+    /** Add new logic here. */
+
+    // Update unique word count
+    const uniqueWordCountElement = this.getElement("unique-word-count");
+    uniqueWordCountElement.textContent = orderedList.length;
+
+    // Get chart container and toggle button
+    const chartContainer = this.getElement("word-frequency-chart");
+    const toggleButton = this.getElement("frequency-toggle");
+
+    // Clear existing chart content
+    chartContainer.innerHTML = "";
+
+    // Create bars container
+    const barsContainer = document.createElement("div");
+    barsContainer.className = "frequency-bars collapsed";
+    barsContainer.id = "frequency-bars";
+
+    // Find the maximum frequency for scaling bars
+    const maxFrequency = sortedEntries.length > 0 ? sortedEntries[0][1] : 1;
+
+    // Create frequency bars for each word
+    sortedEntries.forEach(([word, count], index) => {
+      const barItem = document.createElement("div");
+      barItem.className = "frequency-bar-item";
+
+      // Calculate bar width as percentage of max frequency
+      const barWidth = (count / maxFrequency) * 100;
+
+      barItem.innerHTML = `
+            <div class="frequency-word">${word}</div>
+            <div class="frequency-bar-container">
+                <div class="frequency-bar" style="width: ${barWidth}%">
+                    <span class="frequency-count">${count}</span>
+                </div>
+            </div>
+        `;
+
+      barsContainer.appendChild(barItem);
+    });
+
+    chartContainer.appendChild(barsContainer);
+
+    // Show/hide toggle button based on number of words
+    if (sortedEntries.length > 8) {
+      toggleButton.style.display = "flex";
+
+      // Set up toggle functionality
+      toggleButton.onclick = () => {
+        const isExpanded = barsContainer.classList.contains("expanded");
+
+        if (isExpanded) {
+          barsContainer.classList.remove("expanded");
+          barsContainer.classList.add("collapsed");
+          toggleButton.classList.remove("expanded");
+          toggleButton.querySelector(".toggle-text").textContent = "Show All";
+          toggleButton.setAttribute("aria-label", "Show all words");
+        } else {
+          barsContainer.classList.remove("collapsed");
+          barsContainer.classList.add("expanded");
+          toggleButton.classList.add("expanded");
+          toggleButton.querySelector(".toggle-text").textContent = "Show";
+          toggleButton.setAttribute("aria-label", "Show fewer words");
+        }
+      };
+    } else {
+      toggleButton.style.display = "none";
+      barsContainer.classList.add("expanded"); // Show all bars if 8 or fewer
+    }
+  }
+
+  // Helper method to clear the word frequency chart
+  clearWordFrequencyChart() {
+    const chartContainer = this.getElement("word-frequency-chart");
+    const toggleButton = this.getElement("frequency-toggle");
+    const uniqueWordCountElement = this.getElement("unique-word-count");
+
+    // Reset unique word count
+    uniqueWordCountElement.textContent = "0";
+
+    // Hide toggle button
+    toggleButton.style.display = "none";
+
+    // Show placeholder
+    chartContainer.innerHTML = `
+        <div class="chart-placeholder">
+            <div class="placeholder-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                    <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                    <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M8 14l2-2 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <p>Enter text above to see word frequency analysis</p>
+        </div>
+    `;
+  }
+
   /**
    * Calculates the number of non-whitespace characters in the passed text and
    * displays the value in the 'char-no-space-count' element.
@@ -390,7 +519,8 @@ class App {
     this.calculateWordCount(text);
     this.calculateSentenceCount(text);
     this.calculateParagraphCount(text);
-  }, 100);
+    this.calculateWordFrequency(text);
+  }, 250);
 }
 
 (() => {

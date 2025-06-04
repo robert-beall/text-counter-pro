@@ -62,7 +62,8 @@
             "Reading time calculation",
             "Text statistics",
             "Sentence analysis",
-            "Paragraph counting"
+            "Paragraph counting",
+            "Word frequency analysis"
         ]
     }
     </script>
@@ -82,6 +83,7 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/chart.css">
 
     <!-- Scripts -->
     <script src="scripts/header.js" defer></script>
@@ -229,6 +231,40 @@
                 <div class="detailed-stat-card">
                     <h3>Average Characters per Word</h3>
                     <div class="stat-display" id="avg-chars-word" aria-label="Average characters per word">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Word Frequency Chart Section -->
+        <section aria-labelledby="word-frequency-heading" class="word-frequency-section">
+            <h2 id="word-frequency-heading">Most Frequent Words</h2>
+            <div class="word-frequency-card">
+                <div class="word-frequency-header">
+                    <div class="frequency-stats">
+                        <span class="frequency-label">Unique Words</span>
+                        <span class="frequency-value" id="unique-word-count" aria-label="Number of unique words">0</span>
+                    </div>
+                    <button type="button" class="frequency-toggle" id="frequency-toggle" aria-label="Show all words" style="display: none;">
+                        <span class="toggle-text">Show All</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="word-frequency-chart" id="word-frequency-chart" role="img" aria-label="Word frequency bar chart">
+                    <div class="chart-placeholder">
+                        <div class="placeholder-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                                <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                                <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 14l2-2 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p>Enter text above to see word frequency analysis</p>
+                    </div>
                 </div>
             </div>
         </section>
