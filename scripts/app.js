@@ -130,7 +130,7 @@ class App {
       this.calculateReadingTime(text);
 
       /* Debounce heavier operations */
-      this.debouncedAnalysis(text);
+      this.mediumLoadAnalysis(text);
     } catch (e) {
       console.error("Error handling input:", e);
     }
@@ -512,15 +512,22 @@ class App {
   }
 
   /**
-   * Debounced function for running more expensive operations while preserving user
+   * Debounced function for running slightly resource-intensive operations while preserving user
    * performance.
    */
-  debouncedAnalysis = this.debounce((text) => {
+  mediumLoadAnalysis = this.debounce((text) => {
     this.calculateWordCount(text);
     this.calculateSentenceCount(text);
     this.calculateParagraphCount(text);
+  }, 100);
+
+  /**
+   * Debounced function for running heavier resource-intensive operations while preserving user
+   * performance.
+   */
+  heavyLoadAnalysis = this.debounce((text) => {
     this.calculateWordFrequency(text);
-  }, 250);
+  }, 300);
 }
 
 (() => {
