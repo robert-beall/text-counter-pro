@@ -21,10 +21,7 @@ export const getCharCountNoSpaces = (text) => text.replace(/\s/g, "").length;
  * @returns string[]
  */
 export const getWords = (text) => {
-  return text
-    .trim()
-    .split(/\s+/g)
-    .filter((w) => w.length > 0);
+  return text.match(/(?:\b|\\.)\w[\w.'-]*(?=\b|\\.|$)/gi) || [];
 };
 
 /**
@@ -278,7 +275,7 @@ export const calculateWordFrequency = (text) => {
     return [];
   }
 
-  const words = text.toLowerCase().match(/\b\w+(?:'\w+)?\b/g);
+  const words = getWords(text.toLowerCase());
   if (!words || words.length === 0) {
     return [];
   }
@@ -291,6 +288,24 @@ export const calculateWordFrequency = (text) => {
 
   return Array.from(wordFrequencies.entries()).sort((a, b) => b[1] - a[1]);
 };
+
+/**
+ * Calculate the average number of characters per word in the passed
+ * text string. 
+ * 
+ * @param {*} text - string 
+ * @returns number (float)
+ */
+export const getAverageWordsPerSentence = (text) => getWordCount(text) / getSentenceCount(text);
+
+/**
+ * Calculate the average number of characters per word in the passed
+ * text string. 
+ * 
+ * @param {*} text - string 
+ * @returns number (float)
+ */
+export const getAverageCharsPerWord = (text) => getCharCountNoSpaces(text) / getWordCount(text);
 
 /**
  * Helper function to determine if we should end a sentence.

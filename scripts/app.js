@@ -12,6 +12,8 @@ class App {
       "sentence-count",
       "paragraph-count",
       "reading-time",
+      "avg-words-sentence",
+      "avg-chars-word",
       "paste-btn",
       "clear-btn",
       "word-frequency-chart",
@@ -125,6 +127,8 @@ class App {
       this.showCharCount(text);
       this.showCharCountNoSpaces(text);
       this.showReadingTime(text);
+      this.showAvgCharsPerWord(text);
+      this.showAvgWordsPerSentence(text);
 
       /* Debounce heavier operations */
       this.mediumLoadAnalysis(text);
@@ -283,6 +287,22 @@ class App {
 
     if (readingTime) {
       readingTime.textContent = window.textProcessor.getReadingTimeReadable(text);
+    }
+  }
+
+  showAvgCharsPerWord(text) {
+    const avgCharsWord = this.getElement("avg-chars-word");
+    
+    if (avgCharsWord) {
+      avgCharsWord.textContent = window.textProcessor.getAverageCharsPerWord(text).toLocaleString();
+    }
+  }
+
+  showAvgWordsPerSentence(text) {
+    const avgWordsSentence = this.getElement("avg-words-sentence");
+    
+    if (avgWordsSentence) {
+      avgWordsSentence.textContent = window.textProcessor.getAverageWordsPerSentence(text).toLocaleString();
     }
   }
 
