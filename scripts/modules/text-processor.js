@@ -235,6 +235,10 @@ export const calculateReadingTime = (text, wordsPerMinute = 250) =>
  * @returns string
  */
 export const getReadingTimeReadable = (text, wordsPerMinute = 250) => {
+  if (!wordsPerMinute || +wordsPerMinute === 0) {
+    return "0m 0s"; // avoid divide-by-zero infinity NaN display
+  }
+
   const totalTime = calculateReadingTime(text, wordsPerMinute);
 
   let seconds = 0;

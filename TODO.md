@@ -11,3 +11,4 @@
 - [X] Scale down contact, about, and privacy pages
 - [X] Add hours and days to reading time
 - [X] Fix paste button bug (not triggering recalculation)
+- [X] Make reading time adjustable

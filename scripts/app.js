@@ -6,6 +6,7 @@ class App {
   constructor() {
     const elementIdList = [
       "text-input",
+      "wpm-input",
       "word-count",
       "char-count",
       "char-no-space-count",
@@ -61,12 +62,17 @@ class App {
     console.log("App initialized successfully");
 
     const textInput = this.getElement("text-input");
+    const wpmInput = this.getElement("wpm-input");
     const pasteBtn = this.getElement("paste-btn");
     const clearBtn = this.getElement("clear-btn");
 
     if (textInput) {
       textInput.value = "";
       textInput.addEventListener("input", this.handleInput.bind(this));
+    }
+
+    if (wpmInput) {
+      wpmInput.addEventListener("input", this.handleWpmInput.bind(this));
     }
 
     if (clearBtn) {
@@ -114,6 +120,7 @@ class App {
     try {
       const text = event.target.value;
       const clearBtn = this.getElement("clear-btn");
+      const wpmInput = this.getElement("wpm-input");
 
       if (clearBtn) {
         if (text) {
@@ -126,7 +133,11 @@ class App {
       /* Cheap calculations */
       this.showCharCount(text);
       this.showCharCountNoSpaces(text);
-      this.showReadingTime(text);
+
+      const wpm = wpmInput ? wpmInput.value : 250;
+
+      this.showReadingTime(text, wpm);
+
       this.showAvgCharsPerWord(text);
       this.showAvgWordsPerSentence(text);
 
@@ -138,13 +149,26 @@ class App {
     }
   }
 
+  handleWpmInput(event) {
+    const textInput = this.getElement("text-input");
+
+    if (!textInput) {
+      return;
+    }
+
+    const text = textInput.value;
+    const wpm = event.target.value;
+
+    this.showReadingTime(text, wpm);
+  }
+
   handleClear() {
     const clearBtn = this.getElement("clear-btn");
     const textInput = this.getElement("text-input");
 
     if (textInput) {
       textInput.value = "";
-      textInput.dispatchEvent(new Event('input', { bubbles: true }));
+      textInput.dispatchEvent(new Event("input", { bubbles: true }));
     }
 
     if (clearBtn) {
@@ -162,7 +186,7 @@ class App {
         textInput.value += text;
 
         // Trigger the input event to run calculations
-        textInput.dispatchEvent(new Event('input', { bubbles: true }));
+        textInput.dispatchEvent(new Event("input", { bubbles: true }));
       } catch (e) {
         console.error("Cannot paste user content:", e);
       }
@@ -214,7 +238,9 @@ class App {
     const wordCount = this.getElement("word-count");
 
     if (wordCount) {
-      wordCount.textContent = window.textProcessor.getWordCount(text).toLocaleString();
+      wordCount.textContent = window.textProcessor
+        .getWordCount(text)
+        .toLocaleString();
     }
   }
 
@@ -228,7 +254,9 @@ class App {
     const charCount = this.getElement("char-count");
 
     if (charCount) {
-      charCount.textContent = window.textProcessor.getCharCount(text).toLocaleString();
+      charCount.textContent = window.textProcessor
+        .getCharCount(text)
+        .toLocaleString();
     }
   }
 
@@ -242,7 +270,9 @@ class App {
     const charNoSpaceCount = this.getElement("char-no-space-count");
 
     if (charNoSpaceCount) {
-      charNoSpaceCount.textContent = window.textProcessor.getCharCountNoSpaces(text).toLocaleString();
+      charNoSpaceCount.textContent = window.textProcessor
+        .getCharCountNoSpaces(text)
+        .toLocaleString();
     }
   }
 
@@ -257,7 +287,9 @@ class App {
     const sentenceCount = this.getElement("sentence-count");
 
     if (sentenceCount) {
-      sentenceCount.textContent = window.textProcessor.getSentenceCount(text).toLocaleString();
+      sentenceCount.textContent = window.textProcessor
+        .getSentenceCount(text)
+        .toLocaleString();
     }
   }
 
@@ -271,7 +303,9 @@ class App {
     const paragraphCount = this.getElement("paragraph-count");
 
     if (paragraphCount) {
-      paragraphCount.textContent = window.textProcessor.getParagraphCount(text).toLocaleString();
+      paragraphCount.textContent = window.textProcessor
+        .getParagraphCount(text)
+        .toLocaleString();
     }
   }
 
@@ -286,23 +320,28 @@ class App {
     const readingTime = this.getElement("reading-time");
 
     if (readingTime) {
-      readingTime.textContent = window.textProcessor.getReadingTimeReadable(text);
+      readingTime.textContent =
+        window.textProcessor.getReadingTimeReadable(text, wordsPerMinute);
     }
   }
 
   showAvgCharsPerWord(text) {
     const avgCharsWord = this.getElement("avg-chars-word");
-    
+
     if (avgCharsWord) {
-      avgCharsWord.textContent = window.textProcessor.getAverageCharsPerWord(text).toLocaleString();
+      avgCharsWord.textContent = window.textProcessor
+        .getAverageCharsPerWord(text)
+        .toLocaleString();
     }
   }
 
   showAvgWordsPerSentence(text) {
     const avgWordsSentence = this.getElement("avg-words-sentence");
-    
+
     if (avgWordsSentence) {
-      avgWordsSentence.textContent = window.textProcessor.getAverageWordsPerSentence(text).toLocaleString();
+      avgWordsSentence.textContent = window.textProcessor
+        .getAverageWordsPerSentence(text)
+        .toLocaleString();
     }
   }
 

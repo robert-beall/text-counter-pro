@@ -98,7 +98,7 @@
     <script type="module">
         import * as textProcessor from 'text-processor';
         import textReadability from 'text-readability';
-        
+
         window.textProcessor = textProcessor;
         window.textReadability = textReadability;
     </script>
@@ -225,16 +225,16 @@
         <section aria-labelledby="detailed-stats-heading" class="detailed-stats-section">
             <h2 id="detailed-stats-heading">Detailed Analysis</h2>
             <div role="region" aria-live="polite" aria-label="Detailed text statistics" class="detailed-stats-grid">
-                <div class="detailed-stat-card">
-                    <h3>Characters (no spaces)</h3>
-                    <div class="stat-display" id="char-no-space-count" aria-label="Character count without spaces">0
-                    </div>
-                </div>
-
-                <div class="detailed-stat-card">
-                    <h3>Reading Time</h3>
+                <div class="detailed-stat-card reading-speed-card">
+                    <h3>Time to Read</h3>
                     <div class="stat-display" id="reading-time" aria-label="Estimated reading time">0m 0s</div>
-                    <div class="stat-note">Based on 200 WPM</div>
+                    <div class="reading-speed-controls">
+                        <div class="wpm-input-group">
+                            <input type="number" id="wpm-input" class="wpm-input" value="250" min="50" max="1000"
+                                step="25" aria-label="Words per minute">
+                            <span class="wpm-unit">WPM</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="detailed-stat-card">
@@ -245,6 +245,12 @@
                 <div class="detailed-stat-card">
                     <h3>Average Characters per Word</h3>
                     <div class="stat-display" id="avg-chars-word" aria-label="Average characters per word">0</div>
+                </div>
+
+                <div class="detailed-stat-card">
+                    <h3>Characters (no spaces)</h3>
+                    <div class="stat-display" id="char-no-space-count" aria-label="Character count without spaces">0
+                    </div>
                 </div>
             </div>
         </section>
