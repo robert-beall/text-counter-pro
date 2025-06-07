@@ -6,6 +6,7 @@
 - [ ] Add grade level
 - [ ] Add Sentiment Analysis
 - [ ] Add Keyword Density
+- [ ] Darkmode?
 
 ## Complete
 - [X] Scale down contact, about, and privacy pages
