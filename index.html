@@ -90,23 +90,16 @@
     <script type="importmap">
         {
           "imports": {
+            "text-processor": "./scripts/modules/text-processor.js",
             "text-readability": "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm"
           }
         }
         </script>
     <script type="module">
+        import * as textProcessor from 'text-processor';
         import textReadability from 'text-readability';
-
-        const text = "Sample text for analysis";
-        const stats = {
-            grade: textReadability.fleschKincaidGrade(text),
-            ease: textReadability.fleschReadingEase(text),
-            sentences: textReadability.sentenceCount(text)
-        };
-
-        console.log(textReadability.sentenceCount(text));
-
-        // Make it globally available if needed
+        
+        window.textProcessor = textProcessor;
         window.textReadability = textReadability;
     </script>
     <script src="scripts/app.js" defer></script>

@@ -4,7 +4,10 @@
 - [ ] Remove "Show All" feature from common words and update heading to "Top ten most common words"
 - [ ] Add readability scores
 - [ ] Add grade level
-- [ ] Add hours and days to reading time
+- [ ] Add Sentiment Analysis
+- [ ] Add Keyword Density
 
 ## Complete
 - [X] Scale down contact, about, and privacy pages
+- [X] Add hours and days to reading time
+- [X] Fix paste button bug (not triggering recalculation)

@@ -84,7 +84,7 @@ class App {
    * @returns boolean
    */
   isReady() {
-    return this.missingElements.length === 0;
+    return this.missingElements.length === 0 && window.textProcessor !== null;
   }
 
   /**
@@ -101,67 +101,6 @@ class App {
     console.warn(`Element with id="${id} not found in DOM`);
     return null;
   }
-
-  /**
-   * Load the text-readability library dynamically
-   */
-  // async loadReadabilityLibrary() {
-  //   try {
-  //     // Try ES6 import first (works with web servers)
-  //     const cdnUrls = [
-  //       "./modules/text-readability.js",
-  //       "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm",
-  //       "https://esm.sh/text-readability@1.1.1",
-  //       "https://unpkg.com/text-readability@1.1.1/dist/index.js",
-  //     ];
-
-  //     for (const url of cdnUrls) {
-  //       try {
-  //         this.readabilityModule = await import(url);
-  //         console.log(`Readability library loaded successfully from ${url}`);
-  //         return;
-  //       } catch (error) {
-  //         console.warn(`Failed to load from ${url}:`, error);
-  //         continue;
-  //       }
-  //     }
-
-  //     // Fallback: Load via script tag for file:// protocol
-  //     await this.loadReadabilityViaScript();
-  //   } catch (error) {
-  //     console.warn("Could not load readability library:", error);
-  //     // App will continue to work without grade level analysis
-  //   }
-  // }
-
-  /**
-   * Fallback method to load readability library via script tag
-   */
-  // loadReadabilityViaScript() {
-  //   return new Promise((resolve, reject) => {
-  //     // Check if already loaded globally
-  //     if (window.textReadability) {
-  //       this.readabilityModule = window.textReadability;
-  //       resolve();
-  //       return;
-  //     }
-
-  //     const script = document.createElement("script");
-  //     script.src =
-  //       "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/dist/text-readability.min.js";
-  //     script.onload = () => {
-  //       if (window.textReadability) {
-  //         this.readabilityModule = window.textReadability;
-  //         console.log("Readability library loaded via script tag");
-  //         resolve();
-  //       } else {
-  //         reject(new Error("Library not available on window object"));
-  //       }
-  //     };
-  //     script.onerror = () => reject(new Error("Failed to load script"));
-  //     document.head.appendChild(script);
-  //   });
-  // }
 
   /**
    * Event handler used to call all analysis logic on
@@ -183,9 +122,9 @@ class App {
       }
 
       /* Cheap calculations */
-      this.calculateCharCount(text);
-      this.calculateCharCountNoSpaces(text);
-      this.calculateReadingTime(text);
+      this.showCharCount(text);
+      this.showCharCountNoSpaces(text);
+      this.showReadingTime(text);
 
       /* Debounce heavier operations */
       this.mediumLoadAnalysis(text);
@@ -201,14 +140,12 @@ class App {
 
     if (textInput) {
       textInput.value = "";
+      textInput.dispatchEvent(new Event('input', { bubbles: true }));
     }
 
     if (clearBtn) {
       clearBtn.setAttribute("disabled", true);
     }
-
-    this.resetStatistics();
-    this.clearWordFrequencyChart();
   }
 
   async handlePaste() {
@@ -219,42 +156,12 @@ class App {
       try {
         const text = await navigator.clipboard.readText();
         textInput.value += text;
+
+        // Trigger the input event to run calculations
+        textInput.dispatchEvent(new Event('input', { bubbles: true }));
       } catch (e) {
         console.error("Cannot paste user content:", e);
       }
-    }
-  }
-
-  resetStatistics() {
-    const charCount = this.getElement("char-count");
-    const charNoSpaceCount = this.getElement("char-no-space-count");
-    const wordCount = this.getElement("word-count");
-    const sentenceCount = this.getElement("sentence-count");
-    const paragraphCount = this.getElement("paragraph-count");
-    const readingTime = this.getElement("reading-time");
-
-    if (charCount) {
-      charCount.textContent = "0";
-    }
-
-    if (charNoSpaceCount) {
-      charNoSpaceCount.textContent = "0";
-    }
-
-    if (wordCount) {
-      wordCount.textContent = "0";
-    }
-
-    if (sentenceCount) {
-      sentenceCount.textContent = "0";
-    }
-
-    if (paragraphCount) {
-      paragraphCount.textContent = "0";
-    }
-
-    if (readingTime) {
-      readingTime.textContent = "0s";
     }
   }
 
@@ -276,20 +183,34 @@ class App {
   }
 
   /**
+   * Debounced function for running slightly resource-intensive operations while preserving user
+   * performance.
+   */
+  mediumLoadAnalysis = this.debounce((text) => {
+    this.showWordCount(text);
+    this.showSentenceCount(text);
+    this.showParagraphCount(text);
+  }, 100);
+
+  /**
+   * Debounced function for running heavier resource-intensive operations while preserving user
+   * performance.
+   */
+  heavyLoadAnalysis = this.debounce((text) => {
+    this.showWordFrequency(text);
+  }, 300);
+
+  /**
    * Calculates the number of words in the passed text and
    * displays the value in the 'word-count' element.
    *
    * @param {*} text input by user
    */
-  calculateWordCount(text) {
+  showWordCount(text) {
     const wordCount = this.getElement("word-count");
 
     if (wordCount) {
-      wordCount.textContent = text
-        .trim()
-        .split(/\s+/g)
-        .filter((w) => w.length > 0)
-        .length.toLocaleString();
+      wordCount.textContent = window.textProcessor.getWordCount(text).toLocaleString();
     }
   }
 
@@ -299,11 +220,25 @@ class App {
    *
    * @param {*} text input by user
    */
-  calculateCharCount(text) {
+  showCharCount(text) {
     const charCount = this.getElement("char-count");
 
     if (charCount) {
-      charCount.textContent = text.length.toLocaleString();
+      charCount.textContent = window.textProcessor.getCharCount(text).toLocaleString();
+    }
+  }
+
+  /**
+   * Calculates the number of non-whitespace characters in the passed text and
+   * displays the value in the 'char-no-space-count' element.
+   *
+   * @param {*} text input by user
+   */
+  showCharCountNoSpaces(text) {
+    const charNoSpaceCount = this.getElement("char-no-space-count");
+
+    if (charNoSpaceCount) {
+      charNoSpaceCount.textContent = window.textProcessor.getCharCountNoSpaces(text).toLocaleString();
     }
   }
 
@@ -314,70 +249,11 @@ class App {
    *
    * @param {*} text input by user
    */
-  calculateSentenceCount(text) {
-    console.log({text});
-    console.log(textReadability.textStandard(text));
-    console.log(textReadability.lexiconCount(text));
+  showSentenceCount(text) {
     const sentenceCount = this.getElement("sentence-count");
 
     if (sentenceCount) {
-      // Common abbreviations that shouldn't end sentences
-      const abbreviations = new Set([
-        "mr",
-        "mrs",
-        "ms",
-        "dr",
-        "prof",
-        "sr",
-        "jr",
-        "vs",
-        "etc",
-        "inc",
-        "ltd",
-        "corp",
-        "co",
-        "st",
-        "ave",
-        "blvd",
-        "rd",
-        "apt",
-        "no",
-        "vol",
-        "pp",
-        "ch",
-        "sec",
-        "fig",
-        "ref",
-        "i.e",
-        "e.g",
-        "cf",
-        "al",
-        "approx",
-      ]);
-
-      let sentences = text
-        .trim()
-        .split(/[.!?]/g)
-        .filter((s) => s.length > 0);
-
-      const validSentences = [];
-
-      for (let i = 0; i < sentences.length; i++) {
-        const sentence = sentences[i];
-
-        const words = sentence.split(/\s+/);
-        const lastWord = words[words.length - 1]?.toLowerCase();
-
-        if (abbreviations.has(lastWord) && i < sentences.length - 1) {
-          sentences[i + 1] = sentence + ". " + sentences[i + 1];
-
-          continue;
-        }
-
-        validSentences.push(sentence);
-      }
-
-      sentenceCount.textContent = validSentences.length.toLocaleString();
+      sentenceCount.textContent = window.textProcessor.getSentenceCount(text).toLocaleString();
     }
   }
 
@@ -387,14 +263,11 @@ class App {
    *
    * @param {*} text input by user
    */
-  calculateParagraphCount(text) {
+  showParagraphCount(text) {
     const paragraphCount = this.getElement("paragraph-count");
 
     if (paragraphCount) {
-      paragraphCount.textContent = text
-        .split(/\n\s*/)
-        .filter((p) => p.trim())
-        .length.toLocaleString();
+      paragraphCount.textContent = window.textProcessor.getParagraphCount(text).toLocaleString();
     }
   }
 
@@ -405,58 +278,24 @@ class App {
    * @param {*} text input by user
    * @param {*} wordsPerMinute optional parameter for more personalized calculation
    */
-  calculateReadingTime(text, wordsPerMinute = 250) {
+  showReadingTime(text, wordsPerMinute = 250) {
     const readingTime = this.getElement("reading-time");
 
     if (readingTime) {
-      const wordCount = text.trim().split(/\s+/).length;
-      const totalMinutes = wordCount / wordsPerMinute;
-
-      const minutes = Math.floor(totalMinutes);
-      const seconds = Math.round((totalMinutes - minutes) * 60);
-
-      // Format display text
-      let displayText;
-      if (minutes === 0) {
-        displayText = seconds <= 30 ? "< 1 min read" : "1 min read";
-      } else if (minutes === 1 && seconds === 0) {
-        displayText = "1 min read";
-      } else if (seconds === 0) {
-        displayText = `${minutes} min read`;
-      } else {
-        displayText = `${minutes + 1} min read`; // Round up for user experience
-      }
-
-      readingTime.textContent = `${minutes}m ${seconds}s`;
+      readingTime.textContent = window.textProcessor.getReadingTimeReadable(text);
     }
   }
 
-  calculateWordFrequency(text) {
-    const wordFrequencies = {};
+  showWordFrequency(text) {
+    const sortedEntries = window.textProcessor.calculateWordFrequency(text);
 
-    const words = text.toLowerCase().match(/\b\w+(?:'\w+)?\b/g);
-
-    if (!words || words.length === 0) {
+    if (!sortedEntries || sortedEntries.length === 0) {
       // Clear the chart if no words
       this.clearWordFrequencyChart();
       return;
     }
 
-    words.forEach((w) => {
-      if (w in wordFrequencies) {
-        wordFrequencies[w] += 1;
-      } else {
-        wordFrequencies[w] = 1;
-      }
-    });
-
-    const orderedList = Object.keys(wordFrequencies);
-
-    const sortedEntries = Object.entries(wordFrequencies).sort(
-      (a, b) => b[1] - a[1]
-    );
-
-    /** Add new logic here. */
+    const orderedList = sortedEntries.map(([word]) => word);
 
     // Update unique word count
     const uniqueWordCountElement = this.getElement("unique-word-count");
@@ -555,41 +394,6 @@ class App {
         </div>
     `;
   }
-
-  /**
-   * Calculates the number of non-whitespace characters in the passed text and
-   * displays the value in the 'char-no-space-count' element.
-   *
-   * @param {*} text input by user
-   */
-  calculateCharCountNoSpaces(text) {
-    const charNoSpaceCount = this.getElement("char-no-space-count");
-
-    if (charNoSpaceCount) {
-      charNoSpaceCount.textContent = text
-        .trim()
-        .replace(/\s/g, "")
-        .length.toLocaleString();
-    }
-  }
-
-  /**
-   * Debounced function for running slightly resource-intensive operations while preserving user
-   * performance.
-   */
-  mediumLoadAnalysis = this.debounce((text) => {
-    this.calculateWordCount(text);
-    this.calculateSentenceCount(text);
-    this.calculateParagraphCount(text);
-  }, 100);
-
-  /**
-   * Debounced function for running heavier resource-intensive operations while preserving user
-   * performance.
-   */
-  heavyLoadAnalysis = this.debounce((text) => {
-    this.calculateWordFrequency(text);
-  }, 300);
 }
 
 (() => {
