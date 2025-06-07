@@ -21,6 +21,7 @@ class App {
 
     this.elements = {};
     this.missingElements = [];
+    this.readabilityModule = null;
 
     elementIdList.forEach((id) => {
       const element = document.getElementById(id);
@@ -43,7 +44,7 @@ class App {
    *
    * @returns boolean
    */
-  init() {
+  async init() {
     if (!this.isReady()) {
       console.error("Cannot initialize app: missing required DOM elements");
       /*
@@ -51,6 +52,9 @@ class App {
        */
       return false;
     }
+
+    // Load readability library
+    // await this.loadReadabilityLibrary();
 
     console.log("App initialized successfully");
 
@@ -99,11 +103,65 @@ class App {
   }
 
   /**
-   * Event handler used to call all analysis logic on
-   * user input.
-   *
-   * @param event to handle
+   * Load the text-readability library dynamically
    */
+  // async loadReadabilityLibrary() {
+  //   try {
+  //     // Try ES6 import first (works with web servers)
+  //     const cdnUrls = [
+  //       "./modules/text-readability.js",
+  //       "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm",
+  //       "https://esm.sh/text-readability@1.1.1",
+  //       "https://unpkg.com/text-readability@1.1.1/dist/index.js",
+  //     ];
+
+  //     for (const url of cdnUrls) {
+  //       try {
+  //         this.readabilityModule = await import(url);
+  //         console.log(`Readability library loaded successfully from ${url}`);
+  //         return;
+  //       } catch (error) {
+  //         console.warn(`Failed to load from ${url}:`, error);
+  //         continue;
+  //       }
+  //     }
+
+  //     // Fallback: Load via script tag for file:// protocol
+  //     await this.loadReadabilityViaScript();
+  //   } catch (error) {
+  //     console.warn("Could not load readability library:", error);
+  //     // App will continue to work without grade level analysis
+  //   }
+  // }
+
+  /**
+   * Fallback method to load readability library via script tag
+   */
+  // loadReadabilityViaScript() {
+  //   return new Promise((resolve, reject) => {
+  //     // Check if already loaded globally
+  //     if (window.textReadability) {
+  //       this.readabilityModule = window.textReadability;
+  //       resolve();
+  //       return;
+  //     }
+
+  //     const script = document.createElement("script");
+  //     script.src =
+  //       "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/dist/text-readability.min.js";
+  //     script.onload = () => {
+  //       if (window.textReadability) {
+  //         this.readabilityModule = window.textReadability;
+  //         console.log("Readability library loaded via script tag");
+  //         resolve();
+  //       } else {
+  //         reject(new Error("Library not available on window object"));
+  //       }
+  //     };
+  //     script.onerror = () => reject(new Error("Failed to load script"));
+  //     document.head.appendChild(script);
+  //   });
+  // }
 
   /**
    * Event handler used to call all analysis logic on
@@ -131,6 +189,7 @@ class App {
 
       /* Debounce heavier operations */
       this.mediumLoadAnalysis(text);
+      this.heavyLoadAnalysis(text);
     } catch (e) {
       console.error("Error handling input:", e);
     }
@@ -256,6 +315,9 @@ class App {
    * @param {*} text input by user
    */
   calculateSentenceCount(text) {
+    console.log({text});
+    console.log(textReadability.textStandard(text));
+    console.log(textReadability.lexiconCount(text));
     const sentenceCount = this.getElement("sentence-count");
 
     if (sentenceCount) {
