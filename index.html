@@ -310,7 +310,7 @@
                     </div>
 
                     <div class="word-frequency-chart" id="word-frequency-chart" role="img"
-                        aria-label="Word frequency bar chart">
+                        aria-label="Word frequency bar chart" aria-describedby="word-frequency-description">
                         <div class="chart-placeholder">
                             <div class="placeholder-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
@@ -325,6 +325,10 @@
                                 </svg>
                             </div>
                             <p>Enter text above to see word frequency analysis</p>
+                        </div>
+                        <div id="word-frequency-description" class="sr-only">
+                            Interactive bar chart showing word frequency distribution. Use the Show All button to expand
+                            the full list.
                         </div>
                     </div>
                 </div>

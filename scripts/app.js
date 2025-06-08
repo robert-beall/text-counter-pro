@@ -320,8 +320,10 @@ class App {
     const readingTime = this.getElement("reading-time");
 
     if (readingTime) {
-      readingTime.textContent =
-        window.textProcessor.getReadingTimeReadable(text, wordsPerMinute);
+      readingTime.textContent = window.textProcessor.getReadingTimeReadable(
+        text,
+        wordsPerMinute
+      );
     }
   }
 
@@ -349,16 +351,13 @@ class App {
     const sortedEntries = window.textProcessor.calculateWordFrequency(text);
 
     if (!sortedEntries || sortedEntries.length === 0) {
-      // Clear the chart if no words
       this.clearWordFrequencyChart();
       return;
     }
 
-    const orderedList = sortedEntries.map(([word]) => word);
-
     // Update unique word count
     const uniqueWordCountElement = this.getElement("unique-word-count");
-    uniqueWordCountElement.textContent = orderedList.length;
+    uniqueWordCountElement.textContent = sortedEntries.length;
 
     // Get chart container and toggle button
     const chartContainer = this.getElement("word-frequency-chart");
@@ -367,65 +366,194 @@ class App {
     // Clear existing chart content
     chartContainer.innerHTML = "";
 
-    // Create bars container
+    // Create bars container with improved structure
     const barsContainer = document.createElement("div");
     barsContainer.className = "frequency-bars collapsed";
     barsContainer.id = "frequency-bars";
+    barsContainer.setAttribute("role", "list");
+    barsContainer.setAttribute("aria-label", "Word frequency chart");
+
+    // Performance: Use DocumentFragment for batch DOM operations
+    const fragment = document.createDocumentFragment();
 
     // Find the maximum frequency for scaling bars
     const maxFrequency = sortedEntries.length > 0 ? sortedEntries[0][1] : 1;
+    const totalWords = sortedEntries.reduce((sum, [, count]) => sum + count, 0);
 
-    // Create frequency bars for each word
-    sortedEntries.forEach(([word, count], index) => {
-      const barItem = document.createElement("div");
-      barItem.className = "frequency-bar-item";
+    // Performance: Limit initial render to improve performance
+    const initialRenderLimit = 50;
+    const itemsToRender = Math.min(sortedEntries.length, initialRenderLimit);
 
-      // Calculate bar width as percentage of max frequency
-      const barWidth = (count / maxFrequency) * 100;
+    // Create frequency bars for visible items
+    for (let i = 0; i < itemsToRender; i++) {
+      const [word, count] = sortedEntries[i];
+      const barItem = this.createFrequencyBarItem(
+        word,
+        count,
+        maxFrequency,
+        totalWords,
+        i
+      );
+      fragment.appendChild(barItem);
+    }
 
-      barItem.innerHTML = `
-            <div class="frequency-word">${word}</div>
-            <div class="frequency-bar-container">
-                <div class="frequency-bar" style="width: ${barWidth}%">
-                    <span class="frequency-count">${count}</span>
-                </div>
-            </div>
-        `;
-
-      barsContainer.appendChild(barItem);
-    });
-
+    barsContainer.appendChild(fragment);
     chartContainer.appendChild(barsContainer);
 
-    // Show/hide toggle button based on number of words
-    if (sortedEntries.length > 8) {
-      toggleButton.style.display = "flex";
+    // Enhanced toggle functionality for large datasets
+    this.setupToggleButton(
+      toggleButton,
+      barsContainer,
+      sortedEntries,
+      maxFrequency,
+      totalWords,
+      itemsToRender
+    );
+  }
 
-      // Set up toggle functionality
-      toggleButton.onclick = () => {
-        const isExpanded = barsContainer.classList.contains("expanded");
+  createFrequencyBarItem(word, count, maxFrequency, totalWords, index) {
+    const barItem = document.createElement("div");
+    barItem.className = "frequency-bar-item";
+    barItem.setAttribute("role", "listitem");
+    barItem.style.setProperty("--animation-delay", `${index * 0.05}s`);
 
-        if (isExpanded) {
-          barsContainer.classList.remove("expanded");
-          barsContainer.classList.add("collapsed");
-          toggleButton.classList.remove("expanded");
-          toggleButton.querySelector(".toggle-text").textContent = "Show All";
-          toggleButton.setAttribute("aria-label", "Show all words");
-        } else {
-          barsContainer.classList.remove("collapsed");
-          barsContainer.classList.add("expanded");
-          toggleButton.classList.add("expanded");
-          toggleButton.querySelector(".toggle-text").textContent = "Show";
-          toggleButton.setAttribute("aria-label", "Show fewer words");
-        }
-      };
-    } else {
+    // Calculate bar width and percentage
+    const barWidth = (count / maxFrequency) * 100;
+    const percentage = ((count / totalWords) * 100).toFixed(1);
+
+    // Escape word for HTML safety
+    const safeWord = this.escapeHtml(word);
+
+    barItem.innerHTML = `
+      <div class="frequency-word" aria-label="Word: ${safeWord}">${safeWord}</div>
+      <div class="frequency-bar-container">
+        <div class="frequency-bar" 
+             style="width: ${barWidth}%" 
+             role="img" 
+             aria-label="${safeWord}: ${count} occurrences, ${percentage}% of total">
+          <span class="frequency-count" aria-hidden="true">${count}</span>
+        </div>
+      </div>
+      <div class="frequency-percentage" aria-hidden="true">${percentage}%</div>
+    `;
+
+    return barItem;
+  }
+
+  setupToggleButton(
+    toggleButton,
+    barsContainer,
+    sortedEntries,
+    maxFrequency,
+    totalWords,
+    currentlyRendered
+  ) {
+    if (sortedEntries.length <= 8) {
       toggleButton.style.display = "none";
-      barsContainer.classList.add("expanded"); // Show all bars if 8 or fewer
+      barsContainer.classList.add("expanded");
+      return;
+    }
+
+    toggleButton.style.display = "flex";
+    const remainingCount = sortedEntries.length - currentlyRendered;
+
+    // Update button text with count
+    this.updateToggleButtonText(toggleButton, false, remainingCount);
+
+    let isExpanded = false;
+    let allItemsRendered = currentlyRendered >= sortedEntries.length;
+
+    toggleButton.onclick = () => {
+      if (!isExpanded && !allItemsRendered) {
+        // Lazy load remaining items
+        this.renderRemainingItems(
+          barsContainer,
+          sortedEntries,
+          maxFrequency,
+          totalWords,
+          currentlyRendered
+        );
+        allItemsRendered = true;
+      }
+
+      isExpanded = !isExpanded;
+
+      if (isExpanded) {
+        barsContainer.classList.remove("collapsed");
+        barsContainer.classList.add("expanded");
+        toggleButton.classList.add("expanded");
+        this.updateToggleButtonText(toggleButton, true, 0);
+        toggleButton.setAttribute("aria-label", "Show fewer words");
+      } else {
+        barsContainer.classList.remove("expanded");
+        barsContainer.classList.add("collapsed");
+        toggleButton.classList.remove("expanded");
+        this.updateToggleButtonText(toggleButton, false, remainingCount);
+        toggleButton.setAttribute("aria-label", "Show all words");
+
+        // Smooth scroll to top of chart
+        barsContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+  }
+
+  renderRemainingItems(
+    barsContainer,
+    sortedEntries,
+    maxFrequency,
+    totalWords,
+    startIndex
+  ) {
+    const fragment = document.createDocumentFragment();
+
+    // Render remaining items in batches to avoid blocking
+    const batchSize = 25;
+    let currentIndex = startIndex;
+
+    const renderBatch = () => {
+      const endIndex = Math.min(currentIndex + batchSize, sortedEntries.length);
+
+      for (let i = currentIndex; i < endIndex; i++) {
+        const [word, count] = sortedEntries[i];
+        const barItem = this.createFrequencyBarItem(
+          word,
+          count,
+          maxFrequency,
+          totalWords,
+          i
+        );
+        fragment.appendChild(barItem);
+      }
+
+      barsContainer.appendChild(fragment);
+      currentIndex = endIndex;
+
+      // Continue rendering if there are more items
+      if (currentIndex < sortedEntries.length) {
+        requestAnimationFrame(renderBatch);
+      }
+    };
+
+    renderBatch();
+  }
+
+  updateToggleButtonText(toggleButton, isExpanded, remainingCount) {
+    const toggleText = toggleButton.querySelector(".toggle-text");
+    if (isExpanded) {
+      toggleText.textContent = "Show Less";
+    } else {
+      toggleText.textContent =
+        remainingCount > 0 ? `Show All (${remainingCount} more)` : "Show All";
     }
   }
 
-  // Helper method to clear the word frequency chart
+  escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Enhanced helper method to clear the word frequency chart
   clearWordFrequencyChart() {
     const chartContainer = this.getElement("word-frequency-chart");
     const toggleButton = this.getElement("frequency-toggle");
@@ -437,20 +565,21 @@ class App {
     // Hide toggle button
     toggleButton.style.display = "none";
 
-    // Show placeholder
+    // Show enhanced placeholder
     chartContainer.innerHTML = `
-        <div class="chart-placeholder">
-            <div class="placeholder-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
-                    <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
-                    <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
-                    <path d="M8 14l2-2 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <p>Enter text above to see word frequency analysis</p>
+      <div class="chart-placeholder">
+        <div class="placeholder-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 14l2-2 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
+        <h4>Word Frequency Analysis</h4>
+        <p>Enter text above to see which words appear most frequently</p>
+      </div>
     `;
   }
 }
