@@ -13,3 +13,4 @@
 - [X] Add hours and days to reading time
 - [X] Fix paste button bug (not triggering recalculation)
 - [X] Make reading time adjustable
+- [X] Add floating scroll button

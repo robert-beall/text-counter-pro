@@ -533,3 +533,127 @@
       border: 2px solid var(--color-text-primary);
     }
   }
+
+  /* ==============================================
+   FLOATING SCROLL NAVIGATION
+   ============================================== */
+
+.scroll-nav-btn {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 100;
+  
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: var(--space-3) var(--space-4);
+  
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3), 
+              0 2px 6px rgba(0, 0, 0, 0.1);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  
+  /* Subtle pulse animation to draw attention */
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+.scroll-nav-btn:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4), 
+              0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-nav-btn:active {
+  transform: translateY(-1px);
+}
+
+.scroll-nav-text {
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.scroll-nav-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Icon rotation states */
+.scroll-nav-btn.scroll-up .scroll-nav-icon {
+  transform: rotate(180deg);
+}
+
+/* Hide button when not needed */
+.scroll-nav-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+/* Subtle pulse animation */
+@keyframes subtle-pulse {
+  0%, 100% { 
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3), 
+                0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  50% { 
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4), 
+                0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .scroll-nav-btn {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+  
+  .scroll-nav-text {
+    display: none; /* Hide text on very small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-nav-btn {
+    bottom: var(--space-3);
+    right: var(--space-3);
+    width: 48px;
+    height: 48px;
+    padding: var(--space-2);
+    border-radius: 50%;
+    justify-content: center;
+  }
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-nav-btn {
+    animation: none;
+    transition: none;
+  }
+  
+  .scroll-nav-icon {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .scroll-nav-btn {
+    border: 2px solid white;
+  }
+}
