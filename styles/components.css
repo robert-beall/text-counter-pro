@@ -657,3 +657,200 @@
     border: 2px solid white;
   }
 }
+
+.subsection-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  text-align: left;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-3);
+  letter-spacing: -0.025em;
+  position: relative;
+}
+
+.subsection-icon {
+  font-size: 1.25em;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 50%;
+  padding: 0.25em;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Icon hover effect for interactive feel */
+.analysis-subsection:hover .subsection-icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Enhanced analysis subsection styling */
+.analysis-subsection {
+  margin-bottom: var(--space-12);
+  scroll-margin-top: var(--space-8); /* For smooth scroll navigation */
+  position: relative;
+}
+
+.analysis-subsection:last-child {
+  margin-bottom: 0;
+}
+
+/* Add subtle background for better section separation */
+.analysis-subsection::before {
+  content: '';
+  position: absolute;
+  top: -var(--space-4);
+  left: -var(--space-4);
+  right: -var(--space-4);
+  bottom: -var(--space-4);
+  background: linear-gradient(135deg, 
+      rgba(59, 130, 246, 0.02) 0%, 
+      rgba(59, 130, 246, 0.01) 100%);
+  border-radius: 16px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.analysis-subsection:hover::before {
+  opacity: 1;
+}
+
+/* Word frequency card enhancements */
+.word-frequency-card {
+  background: var(--color-surface);
+  border-radius: 12px;
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.word-frequency-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.word-frequency-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.word-frequency-card:hover::before {
+  opacity: 1;
+}
+
+/* Stat note styling for quality metrics */
+.stat-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--space-1);
+  opacity: 0.8;
+}
+
+/* Enhanced card hover effects */
+.detailed-stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.detailed-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.detailed-stat-card:hover::before {
+  transform: translateX(0);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .subsection-heading {
+      font-size: var(--text-base);
+      gap: var(--space-2);
+      padding-bottom: var(--space-2);
+      margin-bottom: var(--space-4);
+  }
+  
+  .subsection-icon {
+      font-size: 1.1em;
+      width: 1.3em;
+      height: 1.3em;
+  }
+  
+  .analysis-subsection {
+      margin-bottom: var(--space-8);
+  }
+  
+  /* Remove hover effects on mobile for better performance */
+  .analysis-subsection::before,
+  .detailed-stat-card::before,
+  .word-frequency-card::before {
+      display: none;
+  }
+  
+  .analysis-subsection:hover .subsection-icon {
+      transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .subsection-icon {
+      background: var(--color-text-primary);
+      color: var(--color-surface);
+      border: 2px solid var(--color-text-primary);
+  }
+  
+  .subsection-heading {
+      border-bottom-color: var(--color-text-primary);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .subsection-icon,
+  .detailed-stat-card::before,
+  .word-frequency-card::before,
+  .analysis-subsection::before {
+      transition: none;
+  }
+  
+  .analysis-subsection:hover .subsection-icon {
+      transform: none;
+  }
+  
+  .detailed-stat-card:hover,
+  .word-frequency-card:hover {
+      transform: none;
+  }
+}
