@@ -300,7 +300,7 @@ export const calculateWordFrequency = (text) => {
  * @param {*} text - string 
  * @returns number (float)
  */
-export const getAverageWordsPerSentence = (text) => getWordCount(text) / getSentenceCount(text);
+export const getAverageWordsPerSentence = (text) => text.trim().length > 0 ? getWordCount(text) / getSentenceCount(text) : 0;
 
 /**
  * Calculate the average number of characters per word in the passed
@@ -309,7 +309,7 @@ export const getAverageWordsPerSentence = (text) => getWordCount(text) / getSent
  * @param {*} text - string 
  * @returns number (float)
  */
-export const getAverageCharsPerWord = (text) => getCharCountNoSpaces(text) / getWordCount(text);
+export const getAverageCharsPerWord = (text) => text.trim().length > 0 ? getCharCountNoSpaces(text) / getWordCount(text) : 0;
 
 /**
  * Helper function to determine if we should end a sentence.
