@@ -239,15 +239,7 @@
   /* ==============================================
      ENHANCED EXPAND/COLLAPSE FUNCTIONALITY
      ============================================== */
-  
-  .frequency-bars.collapsed .frequency-bar-item:nth-child(n+9) {
-    display: none;
-  }
-  
-  .frequency-bars.expanded .frequency-bar-item {
-    display: grid;
-  }
-  
+
   /* Loading indicator for large datasets */
   .frequency-bars.loading::after {
     content: "Loading more words...";

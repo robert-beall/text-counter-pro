@@ -91,14 +91,17 @@
         {
           "imports": {
             "text-processor": "./scripts/modules/text-processor.js",
-            "text-readability": "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm"
+            "text-readability": "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm",
+            "fuzzy-search": "./scripts/modules/fuzzy-search.js"
           }
         }
         </script>
     <script type="module">
+        import fuzzySearch from 'fuzzy-search';
         import * as textProcessor from 'text-processor';
         import textReadability from 'text-readability';
 
+        window.fuzzySearch = fuzzySearch;
         window.textProcessor = textProcessor;
         window.textReadability = textReadability;
     </script>

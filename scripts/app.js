@@ -26,6 +26,8 @@ class App {
     this.missingElements = [];
     this.readabilityModule = null;
 
+    this.wordFrequency = [];
+
     elementIdList.forEach((id) => {
       const element = document.getElementById(id);
 
@@ -225,7 +227,8 @@ class App {
    * performance.
    */
   heavyLoadAnalysis = this.debounce((text) => {
-    this.showWordFrequency(text);
+    this.wordFrequency = window.textProcessor.calculateWordFrequency(text);
+    this.showWordFrequency();
   }, 300);
 
   /**
@@ -347,8 +350,8 @@ class App {
     }
   }
 
-  showWordFrequency(text) {
-    const sortedEntries = window.textProcessor.calculateWordFrequency(text);
+  showWordFrequency(hideStopWords = true, query = "", limit = 10) {
+    const sortedEntries = window.fuzzySearch(query, hideStopWords ? this.filterStopWords() : this.wordFrequency, limit);
 
     if (!sortedEntries || sortedEntries.length === 0) {
       this.clearWordFrequencyChart();
@@ -361,7 +364,6 @@ class App {
 
     // Get chart container and toggle button
     const chartContainer = this.getElement("word-frequency-chart");
-    const toggleButton = this.getElement("frequency-toggle");
 
     // Clear existing chart content
     chartContainer.innerHTML = "";
@@ -381,7 +383,7 @@ class App {
     const totalWords = sortedEntries.reduce((sum, [, count]) => sum + count, 0);
 
     // Performance: Limit initial render to improve performance
-    const initialRenderLimit = 50;
+    const initialRenderLimit = limit;
     const itemsToRender = Math.min(sortedEntries.length, initialRenderLimit);
 
     // Create frequency bars for visible items
@@ -399,16 +401,6 @@ class App {
 
     barsContainer.appendChild(fragment);
     chartContainer.appendChild(barsContainer);
-
-    // Enhanced toggle functionality for large datasets
-    this.setupToggleButton(
-      toggleButton,
-      barsContainer,
-      sortedEntries,
-      maxFrequency,
-      totalWords,
-      itemsToRender
-    );
   }
 
   createFrequencyBarItem(word, count, maxFrequency, totalWords, index) {
@@ -440,113 +432,6 @@ class App {
     return barItem;
   }
 
-  setupToggleButton(
-    toggleButton,
-    barsContainer,
-    sortedEntries,
-    maxFrequency,
-    totalWords,
-    currentlyRendered
-  ) {
-    if (sortedEntries.length <= 8) {
-      toggleButton.style.display = "none";
-      barsContainer.classList.add("expanded");
-      return;
-    }
-
-    toggleButton.style.display = "flex";
-    const remainingCount = sortedEntries.length - currentlyRendered;
-
-    // Update button text with count
-    this.updateToggleButtonText(toggleButton, false, remainingCount);
-
-    let isExpanded = false;
-    let allItemsRendered = currentlyRendered >= sortedEntries.length;
-
-    toggleButton.onclick = () => {
-      if (!isExpanded && !allItemsRendered) {
-        // Lazy load remaining items
-        this.renderRemainingItems(
-          barsContainer,
-          sortedEntries,
-          maxFrequency,
-          totalWords,
-          currentlyRendered
-        );
-        allItemsRendered = true;
-      }
-
-      isExpanded = !isExpanded;
-
-      if (isExpanded) {
-        barsContainer.classList.remove("collapsed");
-        barsContainer.classList.add("expanded");
-        toggleButton.classList.add("expanded");
-        this.updateToggleButtonText(toggleButton, true, 0);
-        toggleButton.setAttribute("aria-label", "Show fewer words");
-      } else {
-        barsContainer.classList.remove("expanded");
-        barsContainer.classList.add("collapsed");
-        toggleButton.classList.remove("expanded");
-        this.updateToggleButtonText(toggleButton, false, remainingCount);
-        toggleButton.setAttribute("aria-label", "Show all words");
-
-        // Smooth scroll to top of chart
-        barsContainer.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-  }
-
-  renderRemainingItems(
-    barsContainer,
-    sortedEntries,
-    maxFrequency,
-    totalWords,
-    startIndex
-  ) {
-    const fragment = document.createDocumentFragment();
-
-    // Render remaining items in batches to avoid blocking
-    const batchSize = 25;
-    let currentIndex = startIndex;
-
-    const renderBatch = () => {
-      const endIndex = Math.min(currentIndex + batchSize, sortedEntries.length);
-
-      for (let i = currentIndex; i < endIndex; i++) {
-        const [word, count] = sortedEntries[i];
-        const barItem = this.createFrequencyBarItem(
-          word,
-          count,
-          maxFrequency,
-          totalWords,
-          i
-        );
-        fragment.appendChild(barItem);
-      }
-
-      barsContainer.appendChild(fragment);
-      currentIndex = endIndex;
-
-      // Continue rendering if there are more items
-      if (currentIndex < sortedEntries.length) {
-        requestAnimationFrame(renderBatch);
-      }
-    };
-
-    renderBatch();
-  }
-
-  updateToggleButtonText(toggleButton, isExpanded, remainingCount) {
-    const toggleText = toggleButton.querySelector(".toggle-text");
-    if (isExpanded) {
-      toggleText.textContent = "Show Less";
-    } else {
-      toggleText.textContent =
-        remainingCount > 0 ? `Show All (${remainingCount} more)` : "Show All";
-    }
-  }
-
   escapeHtml(text) {
     const div = document.createElement("div");
     div.textContent = text;
@@ -556,7 +441,6 @@ class App {
   // Enhanced helper method to clear the word frequency chart
   clearWordFrequencyChart() {
     const chartContainer = this.getElement("word-frequency-chart");
-    const toggleButton = this.getElement("frequency-toggle");
     const uniqueWordCountElement = this.getElement("unique-word-count");
 
     // Reset unique word count
@@ -581,6 +465,355 @@ class App {
         <p>Enter text above to see which words appear most frequently</p>
       </div>
     `;
+  }
+
+  filterStopWords() {
+    const stopWords = new Set([
+      "a",
+      "an",
+      "and",
+      "are",
+      "as",
+      "at",
+      "be",
+      "by",
+      "for",
+      "from",
+      "has",
+      "he",
+      "in",
+      "is",
+      "it",
+      "its",
+      "of",
+      "on",
+      "that",
+      "the",
+      "to",
+      "was",
+      "will",
+      "with",
+      "be",
+      "to",
+      "of",
+      "and",
+      "a",
+      "in",
+      "that",
+      "have",
+      "i",
+      "it",
+      "for",
+      "not",
+      "on",
+      "with",
+      "as",
+      "you",
+      "do",
+      "at",
+      "this",
+      "but",
+      "his",
+      "by",
+      "from",
+      "they",
+      "we",
+      "say",
+      "her",
+      "she",
+      "or",
+      "an",
+      "will",
+      "my",
+      "one",
+      "all",
+      "would",
+      "there",
+      "their",
+      "what",
+      "so",
+      "up",
+      "out",
+      "if",
+      "about",
+      "who",
+      "get",
+      "which",
+      "go",
+      "me",
+      "when",
+      "make",
+      "can",
+      "like",
+      "time",
+      "no",
+      "just",
+      "him",
+      "know",
+      "take",
+      "people",
+      "into",
+      "year",
+      "your",
+      "good",
+      "some",
+      "could",
+      "them",
+      "see",
+      "other",
+      "than",
+      "then",
+      "now",
+      "look",
+      "only",
+      "come",
+      "its",
+      "over",
+      "think",
+      "also",
+      "work",
+      "life",
+      "still",
+      "should",
+      "after",
+      "being",
+      "made",
+      "before",
+      "here",
+      "through",
+      "where",
+      "much",
+      "way",
+      "well",
+      "new",
+      "want",
+      "because",
+      "any",
+      "these",
+      "give",
+      "day",
+      "most",
+      "us",
+      "may",
+      "say",
+      "each",
+      "which",
+      "she",
+      "how",
+      "two",
+      "more",
+      "very",
+      "what",
+      "know",
+      "just",
+      "first",
+      "get",
+      "over",
+      "think",
+      "where",
+      "much",
+      "go",
+      "good",
+      "new",
+      "write",
+      "our",
+      "used",
+      "me",
+      "man",
+      "too",
+      "any",
+      "day",
+      "same",
+      "right",
+      "look",
+      "think",
+      "also",
+      "around",
+      "another",
+      "came",
+      "three",
+      "high",
+      "upon",
+      "show",
+      "again",
+      "change",
+      "off",
+      "went",
+      "old",
+      "number",
+      "great",
+      "tell",
+      "men",
+      "say",
+      "small",
+      "every",
+      "found",
+      "still",
+      "between",
+      "name",
+      "should",
+      "home",
+      "big",
+      "give",
+      "air",
+      "line",
+      "set",
+      "own",
+      "under",
+      "read",
+      "last",
+      "never",
+      "us",
+      "left",
+      "end",
+      "why",
+      "while",
+      "might",
+      "next",
+      "sound",
+      "below",
+      "saw",
+      "something",
+      "thought",
+      "both",
+      "few",
+      "those",
+      "always",
+      "looked",
+      "show",
+      "large",
+      "often",
+      "together",
+      "asked",
+      "house",
+      "don't",
+      "world",
+      "going",
+      "want",
+      "school",
+      "important",
+      "until",
+      "form",
+      "food",
+      "keep",
+      "children",
+      "feet",
+      "land",
+      "side",
+      "without",
+      "boy",
+      "once",
+      "animal",
+      "life",
+      "enough",
+      "took",
+      "sometimes",
+      "four",
+      "head",
+      "above",
+      "kind",
+      "began",
+      "almost",
+      "live",
+      "page",
+      "got",
+      "earth",
+      "need",
+      "far",
+      "hand",
+      "high",
+      "year",
+      "mother",
+      "light",
+      "country",
+      "father",
+      "let",
+      "night",
+      "picture",
+      "being",
+      "study",
+      "second",
+      "soon",
+      "story",
+      "since",
+      "white",
+      "ever",
+      "paper",
+      "hard",
+      "near",
+      "sentence",
+      "better",
+      "best",
+      "across",
+      "during",
+      "today",
+      "however",
+      "sure",
+      "knew",
+      "it's",
+      "try",
+      "told",
+      "young",
+      "sun",
+      "thing",
+      "whole",
+      "hear",
+      "example",
+      "heard",
+      "several",
+      "change",
+      "answer",
+      "room",
+      "sea",
+      "against",
+      "top",
+      "turned",
+      "learn",
+      "point",
+      "city",
+      "play",
+      "toward",
+      "five",
+      "himself",
+      "usually",
+      "money",
+      "seen",
+      "didn't",
+      "car",
+      "morning",
+      "i'm",
+      "body",
+      "upon",
+      "family",
+      "later",
+      "turn",
+      "move",
+      "face",
+      "door",
+      "cut",
+      "done",
+      "group",
+      "true",
+      "leave",
+      "color",
+      "red",
+      "friend",
+      "pretty",
+      "eat",
+      "far",
+      "sea",
+      "really",
+      "open",
+    ]);
+
+    const filtered = [];
+    for (let i = 0; i < this.wordFrequency.length; i++) {
+      const [word, frequency] = this.wordFrequency[i];
+      if (!stopWords.has(word.toLowerCase())) {
+        filtered.push(this.wordFrequency[i]);
+      }
+    }
+    return filtered;
   }
 }
 
