@@ -18,7 +18,6 @@ class App {
       "paste-btn",
       "clear-btn",
       "word-frequency-chart",
-      "frequency-toggle",
       "unique-word-count",
     ];
 
