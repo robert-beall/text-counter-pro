@@ -350,8 +350,8 @@ class App {
     }
   }
 
-  showWordFrequency(hideStopWords = true, query = "", limit = 10) {
-    const sortedEntries = window.fuzzySearch(query, hideStopWords ? this.filterStopWords() : this.wordFrequency, limit);
+  showWordFrequency(hideStopWords = true, limit = 10) {
+    const sortedEntries = hideStopWords ? this.filterStopWords() : this.wordFrequency;
 
     if (!sortedEntries || sortedEntries.length === 0) {
       this.clearWordFrequencyChart();

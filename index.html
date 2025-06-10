@@ -91,17 +91,14 @@
         {
           "imports": {
             "text-processor": "./scripts/modules/text-processor.js",
-            "text-readability": "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm",
-            "fuzzy-search": "./scripts/modules/fuzzy-search.js"
+            "text-readability": "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm"
           }
         }
         </script>
     <script type="module">
-        import fuzzySearch from 'fuzzy-search';
         import * as textProcessor from 'text-processor';
         import textReadability from 'text-readability';
 
-        window.fuzzySearch = fuzzySearch;
         window.textProcessor = textProcessor;
         window.textReadability = textReadability;
     </script>
@@ -301,15 +298,6 @@
                             <span class="frequency-value" id="unique-word-count"
                                 aria-label="Number of unique words">0</span>
                         </div>
-                        <button type="button" class="frequency-toggle" id="frequency-toggle" aria-label="Show all words"
-                            style="display: none;">
-                            <span class="toggle-text">Show All</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </button>
                     </div>
 
                     <div class="word-frequency-chart" id="word-frequency-chart" role="img"
