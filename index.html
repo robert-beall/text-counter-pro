@@ -298,6 +298,31 @@
                             <span class="frequency-value" id="unique-word-count"
                                 aria-label="Number of unique words">0</span>
                         </div>
+
+                        <div class="frequency-actions">
+                            <div class="frequency-checkbox-group">
+                                <input type="checkbox" id="hide-common-words" class="form-checkbox" checked
+                                    aria-describedby="hide-common-words-help">
+                                <div class="form-checkbox-custom"></div>
+                                <label for="hide-common-words" class="checkbox-label">Hide common words</label>
+                            </div>
+                            <div id="hide-common-words-help" class="sr-only">When checked, excludes frequently used
+                                words like 'the', 'and', 'is' from the analysis</div>
+
+                            <button id="export-frequency-data" class="export-button" disabled
+                                aria-label="Export word frequency data">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                Export Data
+                            </button>
+                        </div>
                     </div>
 
                     <div class="word-frequency-chart" id="word-frequency-chart" role="img"
