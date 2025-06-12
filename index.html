@@ -76,6 +76,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
+    <!-- Tailwind CSS via CDN -->
+    <!-- Place AFTER your existing CSS files to maintain specificity -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+    <script>
+        // Apply the configuration
+        tailwind.config = window.tailwindConfig;
+    </script>
+
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/globals.css">
@@ -153,6 +163,8 @@
             </button>
         </nav>
     </header>
+
+    <div class="bg-blue">Hello World</div>
 
     <main role="main" id="main">
         <!-- Hero Section -->
