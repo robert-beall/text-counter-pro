@@ -2,15 +2,8 @@
    HERO SECTION
    ============================================== */
 
-.hero-section {
-  text-align: center;
-  padding: var(--space-4) var(--space-6) var(--space-4);
-  max-width: var(--container-md);
-  margin: 0 auto;
-}
-
 #hero-heading {
-  font-size: var(--text-2xl);
+  /* font-size: var(--text-2xl); */
   font-weight: 700;
   color: var(--color-text-primary);
   margin-bottom: var(--space-2);
@@ -306,14 +299,6 @@
 
 @media (max-width: 768px) {
   /* Hero section mobile */
-  .hero-section {
-    padding: var(--space-2) var(--space-4) var(--space-4);
-  }
-
-  #hero-heading {
-    font-size: var(--text-xl);
-  }
-
   .hero-description {
     font-size: var(--text-base);
     display: none;
