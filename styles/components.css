@@ -1,24 +1,4 @@
 /* ==============================================
-   HERO SECTION
-   ============================================== */
-
-#hero-heading {
-  /* font-size: var(--text-2xl); */
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-2);
-  letter-spacing: -0.025em;
-}
-
-.hero-description {
-  font-size: var(--text-lg);
-  color: var(--color-text-secondary);
-  line-height: var(--leading-relaxed);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* ==============================================
      STATISTICS TOOLBAR
      ============================================== */
 
@@ -300,8 +280,8 @@
 @media (max-width: 768px) {
   /* Hero section mobile */
   .hero-description {
-    font-size: var(--text-base);
-    display: none;
+    /* font-size: var(--text-base); */
+    /* display: none; */
   }
 
   /* Toolbar mobile layout */
