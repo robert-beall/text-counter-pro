@@ -35,7 +35,8 @@ window.tailwindConfig = {
       },
       fontFamily: {
         primary: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
-        mono: ['"SF Mono"', 'Monaco', '"Cascadia Code"', 'monospace']
+        mono: ['"SF Mono"', 'Monaco', '"Cascadia Code"', 'monospace'],
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif']
       },
       fontSize: {
         'xs': ['clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem)', { lineHeight: '1.25' }],
@@ -46,6 +47,7 @@ window.tailwindConfig = {
         '2xl': ['clamp(1.5rem, 1.3rem + 0.8vw, 2rem)', { lineHeight: '1.25' }]
       },
       lineHeight: {
+        'none': '1',
         'tight': '1.25',
         'normal': '1.5',
         'relaxed': '1.75'

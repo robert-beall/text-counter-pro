@@ -1,164 +1,4 @@
 /* ==============================================
-     STATISTICS TOOLBAR
-     ============================================== */
-
-.stats-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: var(--space-4);
-  margin-bottom: var(--space-4);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  gap: var(--space-4);
-  flex-wrap: wrap;
-}
-
-.stats-group {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-1);
-  min-width: 60px;
-}
-
-.stat-label {
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stat-value {
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--color-primary);
-  line-height: 1;
-}
-
-/* Toolbar Actions */
-.toolbar-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.toolbar-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  white-space: nowrap;
-}
-
-.toolbar-btn:hover:not(:disabled) {
-  background: var(--color-primary-dark);
-  transform: translateY(-1px);
-}
-
-.toolbar-btn:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.toolbar-btn.secondary {
-  background: var(--color-border);
-  color: var(--color-text-secondary);
-}
-
-.toolbar-btn.secondary:hover:not(:disabled) {
-  background: var(--color-text-muted);
-  color: var(--color-text-primary);
-}
-
-.toolbar-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.toolbar-btn svg {
-  flex-shrink: 0;
-}
-
-/* ==============================================
-     TEXT AREA COMPONENT
-     ============================================== */
-
-.text-analysis-section {
-  max-width: var(--container-md);
-  margin: 0 auto var(--space-12);
-  padding: 0 var(--space-6);
-}
-
-.text-input-container {
-  background: var(--color-surface);
-  border-radius: 12px;
-  padding: var(--space-4);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  border: 1px solid var(--color-border);
-  transition: all 0.2s ease-in-out;
-}
-
-.text-input-container:focus-within {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 0 3px rgba(59, 130, 246, 0.1);
-  border-color: var(--color-primary);
-}
-
-/* The main textarea */
-#text-input {
-  width: 100%;
-  min-height: 200px;
-  padding: var(--space-4);
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  color: var(--color-text-primary);
-  background-color: var(--color-surface);
-  resize: vertical;
-  transition: all 0.2s ease-in-out;
-}
-
-#text-input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-#text-input::placeholder {
-  color: var(--color-text-muted);
-  font-style: normal;
-}
-
-/* Help text below textarea */
-.input-help {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  margin-top: var(--space-3);
-  text-align: center;
-}
-
-/* ==============================================
      DETAILED STATISTICS SECTION
      ============================================== */
 
@@ -278,75 +118,8 @@
      ============================================== */
 
 @media (max-width: 768px) {
-  /* Hero section mobile */
-  .hero-description {
-    /* font-size: var(--text-base); */
-    /* display: none; */
-  }
-
-  /* Toolbar mobile layout */
-  .stats-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-4);
-  }
-
-  .stats-group {
-    justify-content: space-around;
-    gap: var(--space-4);
-  }
-
-  .stat-item {
-    min-width: auto;
-    flex: 1;
-  }
-
-  .toolbar-actions {
-    justify-content: center;
-  }
-
-  .toolbar-btn {
-    flex: 1;
-    justify-content: center;
-    padding: var(--space-3) var(--space-4);
-  }
-
-  /* Text input mobile */
-  #text-input {
-    min-height: 150px;
-    font-size: 16px; /* Prevents zoom on iOS */
-  }
-
-  /* Section padding adjustments */
-  .text-analysis-section,
-  .detailed-stats-section {
-    padding: 0 var(--space-4);
-    margin-bottom: var(--space-8);
-  }
-
-  /* Larger statistics on mobile */
-  .stat-value {
-    font-size: var(--text-xl);
-  }
-
   .stat-display {
     font-size: var(--text-xl);
-  }
-}
-
-/* Extra small screens */
-@media (max-width: 480px) {
-  .stats-group {
-    grid-template-columns: repeat(2, 1fr);
-    display: grid;
-    gap: var(--space-3);
-  }
-
-  .toolbar-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2);
-    width: 100%;
   }
 }
 
@@ -355,8 +128,7 @@
      ============================================== */
 
 /* Focus indicators for keyboard navigation */
-.detailed-stat-card:focus,
-.toolbar-btn:focus {
+.detailed-stat-card:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -371,9 +143,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .detailed-stat-card,
-  .stats-toolbar,
-  .text-input-container {
+  .detailed-stat-card {
     border: 2px solid var(--color-text-primary);
   }
 }
