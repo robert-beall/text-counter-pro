@@ -114,7 +114,7 @@
     <script src="scripts/app.js" defer></script>
 </head>
 
-<body class="font-primary bg-background text-primary leading-normal">
+<body class="font-primary bg-background text-primary leading-normal scroll-smooth">
     <!-- Tailwind CSS Navbar Replacement -->
     <header role="banner"
         class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 backdrop-blur-sm bg-white/95">
@@ -313,9 +313,159 @@
         </section>
 
         <!-- Detailed Statistics Section -->
-        <section aria-labelledby="detailed-stats-heading" class="detailed-stats-section">
-            <h2 id="detailed-stats-heading" tabindex="-1">Detailed Analysis</h2>
+        <section aria-labelledby="detailed-stats-heading"
+            class="detailed-stats-section max-w-container-xl mt-0 mx-auto mb-12 py-0 px-6">
+            <h2 id="detailed-stats-heading"
+                class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight" tabindex="-1">Detailed
+                Analysis</h2>
+            <!-- Reading Metrics Section -->
+            <section class="w-full max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Section Header -->
+                <div class="mb-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg">
+                            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                </path>
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-semibold text-text-primary">Reading Metrics</h2>
+                    </div>
+                    <div class="h-px bg-gradient-to-r from-border via-primary-200 to-border"></div>
+                </div>
 
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Reading Time Card -->
+                    <article
+                        class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 text-center"
+                        role="region" aria-labelledby="reading-time-heading">
+
+                        <header class="mb-4">
+                            <h3 id="reading-time-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200">
+                                ⏱️ Reading Time
+                            </h3>
+                        </header>
+
+                        <div class="mb-4">
+                            <div id="reading-time" class="text-3xl font-bold text-primary-600 mb-3" aria-live="polite">
+                                0m 0s
+                            </div>
+                            <p class="text-sm text-text-secondary mb-3">
+                                Adjust speed for accuracy
+                            </p>
+
+                            <div class="flex items-center justify-center">
+                                <div
+                                    class="wpm-input-group relative flex items-center bg-background border border-border rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:border-primary-300 focus-within:shadow-custom-blue focus-within:border-primary overflow-hidden motion-reduce:transition-none contrast-more:border-2 contrast-more:border-text-primary">
+                                    <input type="number" id="wpm-input"
+                                        class="wpm-input px-3 py-2 w-20 text-center text-sm font-medium bg-transparent border-0 outline-none"
+                                        value="250" min="50" max="1000" step="25" aria-label="Words per minute">
+                                    <span
+                                        class="px-2 py-2 text-xs font-medium text-primary-600 bg-primary-50 border-l border-border">
+                                        WPM
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Flesch Reading Ease Analysis Card -->
+                    <article
+                        class="group bg-surface border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 text-center"
+                        role="region" aria-labelledby="flesch-heading" aria-describedby="flesch-description">
+
+                        <header class="mb-4">
+                            <h3 id="reading-time-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200">
+                                ✨ Reading Ease
+                            </h3>
+                        </header>
+
+                        <div class="space-y-2 sm:space-y-3">
+                            <div class="flex items-baseline gap-2 sm:gap-3 font-mono justify-center">
+                                <div id="readability-score" class="text-3xl font-bold text-text-secondary mb-3"
+                                    role="status" aria-live="polite" aria-label="Reading ease score">
+                                    0
+                                </div>
+                                <span class="text-xs font-bold sm:text-sm text-text-muted" aria-label="out of 100">
+                                    / 100
+                                </span>
+                            </div>
+
+                            <div class="min-h-[2.5rem] sm:min-h-[3rem]">
+                                <p id="readability-explanation"
+                                    class="text-xs sm:text-sm text-text-secondary leading-relaxed break-words"
+                                    role="status" aria-live="polite" aria-label="Reading ease explanation">
+                                    Enter text above to analyze reading difficulty and get instant feedback on
+                                    readability.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Subtle visual enhancement for better card hierarchy -->
+                        <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                            aria-hidden="true">
+                        </div>
+                    </article>
+
+                    <!-- Flesch Reading Ease Analysis Card -->
+                    <article
+                        class="group bg-surface border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 text-center"
+                        role="region" aria-labelledby="grade-level-heading" aria-describedby="grade-level-description">
+
+                        <header class="mb-4">
+                            <h3 id="grade-level-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200">
+                                🎓 Text Grade Level
+                            </h3>
+                        </header>
+
+                        <div class="space-y-2 sm:space-y-3">
+                            <div class="flex items-baseline gap-2 sm:gap-3 font-mono justify-center">
+                                <div id="grade-level" class="text-xl font-bold text-primary mb-3"
+                                    role="status" aria-live="polite" aria-label="Grade level">
+                                    N/A
+                                </div>
+                            </div>
+
+                            <div class="min-h-[2.5rem] sm:min-h-[3rem]">
+                                <p id="grade-level-description"
+                                    class="text-xs sm:text-sm text-text-secondary leading-relaxed break-words"
+                                    role="status" aria-live="polite" aria-label="Grade level description">
+                                    Shows the U.S. grade level needed to understand your text. Lower grades mean easier comprehension for most readers.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Subtle visual enhancement for better card hierarchy -->
+                        <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                            aria-hidden="true">
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article
+                        class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200">
+                        <header class="mb-4">
+                            <h3
+                                class="text-lg font-medium text-text-primary group-hover:text-primary-600 transition-colors duration-200">
+                                Reading Streak</h3>
+                        </header>
+                        <div class="mb-3">
+                            <div class="text-3xl font-bold text-primary-600 mb-1">45 days</div>
+                            <p class="text-sm text-text-secondary leading-relaxed">Consecutive days with at least 30
+                                minutes of focused reading</p>
+                        </div>
+                        <footer>
+                            <p class="text-xs font-medium text-text-muted uppercase tracking-wide">Current Streak</p>
+                        </footer>
+                    </article>
+                </div>
+            </section>
             <!-- Reading Metrics Subsection -->
             <div class="analysis-subsection" role="region" aria-labelledby="reading-metrics-heading">
                 <h3 id="reading-metrics-heading" class="subsection-heading">
@@ -326,14 +476,14 @@
                     class="detailed-stats-grid">
                     <div class="detailed-stat-card reading-speed-card">
                         <h4>Time to Read</h4>
-                        <div class="stat-display" id="reading-time" aria-label="Estimated reading time">0m 0s</div>
-                        <div class="reading-speed-controls">
+                        <div class="stat-display" id="reading-time-old" aria-label="Estimated reading time">0m 0s</div>
+                        <!-- <div class="reading-speed-controls">
                             <div class="wpm-input-group">
                                 <input type="number" id="wpm-input" class="wpm-input" value="250" min="50" max="1000"
                                     step="25" aria-label="Words per minute">
                                 <span class="wpm-unit">WPM</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="detailed-stat-card">
@@ -470,10 +620,14 @@
         </section>
     </main>
 
-    <button id="scroll-nav-btn" class="scroll-nav-btn" aria-label="Scroll to detailed analysis">
-        <span class="scroll-nav-text">Detailed Analysis</span>
-        <svg class="scroll-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+    <button id="scroll-nav-btn"
+        class="scroll-nav-btn flex align-center gap-2 bg-primary text-white border-none font-semibold cursor-pointer shadow-custom-blue transition-all duration-300 ease-out translate-y-0 fixed bottom-3 right-3 w-[36px] h-[36px] p-2 rounded-full md:rounded-3xl justify-center md:bottom-4 md:right-4 md:py-2 md:px-3 md:text-xs md:w-auto md:h-auto lg:bottom-6 lg:right-6 z-[100] lg:py-3 lg:pb-4 lg:text-sm animate-subtle-pulse hover:bg-primary-dark hover:shadow-custom-dark-blue hover:-translate-y-0.5 active:-translate-y-[1px] motion-reduce:animate-none motion-reduce:transition-none contrast-more:border-2 contrast-more:border-white"
+        aria-label="Scroll to detailed analysis">
+        <span
+            class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">Detailed
+            Analysis</span>
+        <svg class="scroll-nav-icon shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none"
+            width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
         </svg>

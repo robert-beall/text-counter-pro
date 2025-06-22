@@ -2,6 +2,7 @@
 class ScrollNavigation {
   constructor() {
     this.button = document.getElementById("scroll-nav-btn");
+    this.svg = this.button.querySelector("svg");
     this.textElement = this.button.querySelector(".scroll-nav-text");
 
     // Target the specific heading elements
@@ -108,7 +109,9 @@ class ScrollNavigation {
     const documentHeight = document.documentElement.scrollHeight;
     const isNearBottom = currentScrollY + windowHeight >= documentHeight - 100;
 
-    this.button.classList.toggle("hidden", isNearBottom);
+    this.button.classList.toggle("opacity-0", isNearBottom);
+    this.button.classList.toggle("pointer-events-none", isNearBottom);
+    this.button.classList.toggle("translate-y-2.5", isNearBottom);
 
     this.lastScrollY = currentScrollY;
   }
@@ -120,11 +123,13 @@ class ScrollNavigation {
         "aria-label",
         "Scroll to detailed analysis section"
       );
-      this.button.classList.remove("scroll-up");
+      // this.button.classList.remove("scroll-up");
+      this.svg.classList.remove("rotate-180");
     } else {
       this.textElement.textContent = "Back to Top";
       this.button.setAttribute("aria-label", "Scroll back to page title");
-      this.button.classList.add("scroll-up");
+      // this.button.classList.add("scroll-up");
+      this.svg.classList.add("rotate-180");
     }
   }
 }

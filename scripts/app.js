@@ -13,6 +13,9 @@ class App {
       "sentence-count",
       "paragraph-count",
       "reading-time",
+      "readability-score",
+      "readability-explanation",
+      "grade-level",
       "avg-words-sentence",
       "avg-chars-word",
       "paste-btn",
@@ -219,6 +222,8 @@ class App {
     this.showWordCount(text);
     this.showSentenceCount(text);
     this.showParagraphCount(text);
+    this.showReadabilityScore(text);
+    this.showGradeLevel(text);
   }, 100);
 
   /**
@@ -326,6 +331,70 @@ class App {
         text,
         wordsPerMinute
       );
+    }
+  }
+
+  showReadabilityScore(text) {
+    const readabilityScore = this.getElement("readability-score");
+    const readabilityExplanation = this.getElement("readability-explanation");
+
+    if (readabilityScore && readabilityExplanation) {
+      if (text.trim().length === 0) {
+        readabilityScore.textContent = "0";
+        readabilityExplanation.textContent = "Enter text above to analyze reading difficulty and get instant feedback on readability.";
+        readabilityScore.classList.remove("text-red-500", "text-orange-500", "text-yellow-500", "text-green-500", "text-primary");
+        return;
+      }
+
+      const score = window.textReadability.fleschReadingEase(text);
+      let explanation = "";
+
+      if (score < 10) {
+        explanation = "Extremely difficult to read. Best suited for academic papers, legal documents, or technical literature.";
+        readabilityScore.classList.add("text-red-500");
+      } else if (score < 30) {
+        explanation = "Very difficult to read. Appropriate for scholarly articles, professional journals, and complex technical documentation.";
+        readabilityScore.classList.add("text-red-500");
+      } else if (score < 50) {
+        explanation = "Difficult to read. Suitable for academic textbooks, business reports, and professional communications.";
+        readabilityScore.classList.add("text-orange-500");
+      } else if (score < 60) {
+        explanation = "Somewhat challenging. Good for educational content, news articles, and business writing.";
+        readabilityScore.classList.add("text-yellow-500");
+      } else if (score < 70) {
+        explanation = "Plain English. Ideal for general audiences, web content, and most business communications.";
+        readabilityScore.classList.add("text-green-500");
+      } else if (score < 80) {
+        explanation = "Easy to read. Perfect for marketing copy, blog posts, and content targeting broad audiences.";
+        readabilityScore.classList.add("text-green-500");
+      } else {
+        explanation = "Very easy to read. Excellent for children's content, simple instructions, and maximum accessibility.";
+        readabilityScore.classList.add("text-primary");
+      }
+
+      readabilityScore.textContent = score.toLocaleString();
+      readabilityExplanation.textContent = explanation;
+    }
+  }
+
+  showGradeLevel(text) {
+    const gradeLevel = this.getElement("grade-level");
+
+    if (gradeLevel) {
+      if (text.trim().length === 0) {
+        gradeLevel.textContent = "N/A";
+        return;
+      }
+
+      const score = Math.floor(window.textReadability.fleschKincaidGrade(text));
+
+      if (score <= 1) {
+        gradeLevel.textContent = "1st Grade or Lower";
+      } else if (score > 12) {
+        gradeLevel.textContent = "College Level or Higher";
+      } else {
+        gradeLevel.textContent = `${score}th Grade`;
+      }
     }
   }
 
@@ -444,9 +513,6 @@ class App {
 
     // Reset unique word count
     uniqueWordCountElement.textContent = "0";
-
-    // Hide toggle button
-    toggleButton.style.display = "none";
 
     // Show enhanced placeholder
     chartContainer.innerHTML = `

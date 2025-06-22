@@ -72,6 +72,32 @@ window.tailwindConfig = {
       },
       gridTemplateColumns: {
         'auto-fit-280': 'repeat(auto-fit, minmax(280px, 1fr))'
+      },
+      keyframes: {
+        'subtle-pulse': {
+          '0%, 100%': {
+            boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3), 0 2px 6px rgba(0, 0, 0, 0.1)'
+          },
+          '50%': {
+            boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15)'
+          }
+        },
+        'pulse': {
+          '0%, 100%': {
+            transform: 'scale(1)'
+          },
+          '50%': {
+            transform: 'scale(1.05)'
+          }
+        }
+      },
+      animation: {
+        'subtle-pulse': 'subtle-pulse 3s ease-in-out infinite',
+        'pulse': 'pulse 300ms ease-in-out infinite'
+      },
+      boxShadow: {
+        'custom-blue': '0 4px 12px rgba(59, 130, 246, 0.3), 0 2px 6px rgba(0, 0, 0, 0.1)',
+        'custom-dark-blue': '0 6px 16px rgba(59, 130, 246, 0.4), 0 4px 8px rgba(0, 0, 0, 0.15)'
       }
     }
   },
