@@ -14,6 +14,7 @@ class App {
       "paragraph-count",
       "reading-time",
       "readability-score",
+      "readability-heading",
       "readability-explanation",
       "grade-level",
       "avg-words-sentence",
@@ -337,43 +338,55 @@ class App {
   showReadabilityScore(text) {
     const readabilityScore = this.getElement("readability-score");
     const readabilityExplanation = this.getElement("readability-explanation");
+    const readabilityHeading = this.getElement("readability-heading");
 
-    if (readabilityScore && readabilityExplanation) {
+    if (readabilityScore && readabilityExplanation && readabilityHeading) {
       if (text.trim().length === 0) {
         readabilityScore.textContent = "0";
         readabilityExplanation.textContent = "Enter text above to analyze reading difficulty and get instant feedback on readability.";
         readabilityScore.classList.remove("text-red-500", "text-orange-500", "text-yellow-500", "text-green-500", "text-primary");
+        readabilityHeading.classList.add("hidden");
         return;
       }
 
       const score = window.textReadability.fleschReadingEase(text);
+      let headingText = "";
       let explanation = "";
 
       if (score < 10) {
-        explanation = "Extremely difficult to read. Best suited for academic papers, legal documents, or technical literature.";
+        headingText = "Extremely difficult";
+        explanation = "Best suited for academic papers, legal documents, or technical literature.";
         readabilityScore.classList.add("text-red-500");
       } else if (score < 30) {
-        explanation = "Very difficult to read. Appropriate for scholarly articles, professional journals, and complex technical documentation.";
+        headingText = "Very Difficult";
+        explanation = "Appropriate for scholarly articles, professional journals, and complex technical documentation.";
         readabilityScore.classList.add("text-red-500");
       } else if (score < 50) {
-        explanation = "Difficult to read. Suitable for academic textbooks, business reports, and professional communications.";
+        headingText = "Difficult";
+        explanation = "Suitable for academic textbooks, business reports, and professional communications.";
         readabilityScore.classList.add("text-orange-500");
       } else if (score < 60) {
-        explanation = "Somewhat challenging. Good for educational content, news articles, and business writing.";
+        headingText = "Somewhat Challenging";
+        explanation = "Good for educational content, news articles, and business writing.";
         readabilityScore.classList.add("text-yellow-500");
       } else if (score < 70) {
-        explanation = "Plain English. Ideal for general audiences, web content, and most business communications.";
+        headingText = "Plain English";
+        explanation = "Ideal for general audiences, web content, and most business communications.";
         readabilityScore.classList.add("text-green-500");
       } else if (score < 80) {
-        explanation = "Easy to read. Perfect for marketing copy, blog posts, and content targeting broad audiences.";
+        headingText = "Easy";
+        explanation = "Perfect for marketing copy, blog posts, and content targeting broad audiences.";
         readabilityScore.classList.add("text-green-500");
       } else {
-        explanation = "Very easy to read. Excellent for children's content, simple instructions, and maximum accessibility.";
+        headingText = "Very Easy";
+        explanation = "Excellent for children's content, simple instructions, and maximum accessibility.";
         readabilityScore.classList.add("text-primary");
       }
 
       readabilityScore.textContent = score.toLocaleString();
       readabilityExplanation.textContent = explanation;
+      readabilityHeading.textContent = headingText;
+      readabilityHeading.classList.remove("hidden");
     }
   }
 
@@ -391,7 +404,7 @@ class App {
       if (score <= 1) {
         gradeLevel.textContent = "1st Grade or Lower";
       } else if (score > 12) {
-        gradeLevel.textContent = "College Level or Higher";
+        gradeLevel.textContent = "College or Higher";
       } else {
         gradeLevel.textContent = `${score}th Grade`;
       }
