@@ -9,7 +9,6 @@ class App {
       "wpm-input",
       "word-count",
       "char-count",
-      "char-no-space-count",
       "sentence-count",
       "paragraph-count",
       "reading-time",
@@ -21,8 +20,6 @@ class App {
       "avg-chars-word",
       "paste-btn",
       "clear-btn",
-      "word-frequency-chart",
-      "unique-word-count",
     ];
 
     this.elements = {};
@@ -137,7 +134,7 @@ class App {
 
       /* Cheap calculations */
       this.showCharCount(text);
-      this.showCharCountNoSpaces(text);
+      // this.showCharCountNoSpaces(text);
 
       const wpm = wpmInput ? wpmInput.value : 250;
 
@@ -232,8 +229,8 @@ class App {
    * performance.
    */
   heavyLoadAnalysis = this.debounce((text) => {
-    this.wordFrequency = window.textProcessor.calculateWordFrequency(text);
-    this.showWordFrequency();
+    // this.wordFrequency = window.textProcessor.calculateWordFrequency(text);
+    // this.showWordFrequency();
   }, 300);
 
   /**
@@ -429,120 +426,6 @@ class App {
         .getAverageWordsPerSentence(text)
         .toLocaleString();
     }
-  }
-
-  showWordFrequency(hideStopWords = true, limit = 10) {
-    const sortedEntries = hideStopWords ? this.filterStopWords() : this.wordFrequency;
-
-    if (!sortedEntries || sortedEntries.length === 0) {
-      this.clearWordFrequencyChart();
-      return;
-    }
-
-    // Update unique word count
-    const uniqueWordCountElement = this.getElement("unique-word-count");
-    uniqueWordCountElement.textContent = sortedEntries.length;
-
-    // Get chart container and toggle button
-    const chartContainer = this.getElement("word-frequency-chart");
-
-    // Clear existing chart content
-    chartContainer.innerHTML = "";
-
-    // Create bars container with improved structure
-    const barsContainer = document.createElement("div");
-    barsContainer.className = "frequency-bars collapsed";
-    barsContainer.id = "frequency-bars";
-    barsContainer.setAttribute("role", "list");
-    barsContainer.setAttribute("aria-label", "Word frequency chart");
-
-    // Performance: Use DocumentFragment for batch DOM operations
-    const fragment = document.createDocumentFragment();
-
-    // Find the maximum frequency for scaling bars
-    const maxFrequency = sortedEntries.length > 0 ? sortedEntries[0][1] : 1;
-    const totalWords = sortedEntries.reduce((sum, [, count]) => sum + count, 0);
-
-    // Performance: Limit initial render to improve performance
-    const initialRenderLimit = limit;
-    const itemsToRender = Math.min(sortedEntries.length, initialRenderLimit);
-
-    // Create frequency bars for visible items
-    for (let i = 0; i < itemsToRender; i++) {
-      const [word, count] = sortedEntries[i];
-      const barItem = this.createFrequencyBarItem(
-        word,
-        count,
-        maxFrequency,
-        totalWords,
-        i
-      );
-      fragment.appendChild(barItem);
-    }
-
-    barsContainer.appendChild(fragment);
-    chartContainer.appendChild(barsContainer);
-  }
-
-  createFrequencyBarItem(word, count, maxFrequency, totalWords, index) {
-    const barItem = document.createElement("div");
-    barItem.className = "frequency-bar-item";
-    barItem.setAttribute("role", "listitem");
-    barItem.style.setProperty("--animation-delay", `${index * 0.05}s`);
-
-    // Calculate bar width and percentage
-    const barWidth = (count / maxFrequency) * 100;
-    const percentage = ((count / totalWords) * 100).toFixed(1);
-
-    // Escape word for HTML safety
-    const safeWord = this.escapeHtml(word);
-
-    barItem.innerHTML = `
-      <div class="frequency-word" aria-label="Word: ${safeWord}">${safeWord}</div>
-      <div class="frequency-bar-container">
-        <div class="frequency-bar" 
-             style="width: ${barWidth}%" 
-             role="img" 
-             aria-label="${safeWord}: ${count} occurrences, ${percentage}% of total">
-          <span class="frequency-count" aria-hidden="true">${count}</span>
-        </div>
-      </div>
-      <div class="frequency-percentage" aria-hidden="true">${percentage}%</div>
-    `;
-
-    return barItem;
-  }
-
-  escapeHtml(text) {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-  // Enhanced helper method to clear the word frequency chart
-  clearWordFrequencyChart() {
-    const chartContainer = this.getElement("word-frequency-chart");
-    const uniqueWordCountElement = this.getElement("unique-word-count");
-
-    // Reset unique word count
-    uniqueWordCountElement.textContent = "0";
-
-    // Show enhanced placeholder
-    chartContainer.innerHTML = `
-      <div class="chart-placeholder">
-        <div class="placeholder-icon" aria-hidden="true">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
-            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
-            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
-            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
-            <path d="M8 14l2-2 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Word Frequency Analysis</h4>
-        <p>Enter text above to see which words appear most frequently</p>
-      </div>
-    `;
   }
 
   filterStopWords() {
