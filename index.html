@@ -88,7 +88,6 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/globals.css">
     <link rel="stylesheet" href="styles/components.css">
 
     <!-- Scripts -->
@@ -149,19 +148,19 @@
                         </a>
                     </li>
                     <li>
-                        <a href="about_page.html"
+                        <a href="about.html"
                             class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             About
                         </a>
                     </li>
                     <li>
-                        <a href="contact_page.html"
+                        <a href="contact.html"
                             class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             Contact
                         </a>
                     </li>
                     <li>
-                        <a href="privacy_page.html"
+                        <a href="privacy.html"
                             class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             Privacy
                         </a>
@@ -199,19 +198,19 @@
                     </a>
                 </li>
                 <li class="w-full">
-                    <a href="about_page.html"
+                    <a href="about.html"
                         class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
                         About
                     </a>
                 </li>
                 <li class="w-full">
-                    <a href="contact_page.html"
+                    <a href="contact.html"
                         class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
                         Contact
                     </a>
                 </li>
                 <li class="w-full">
-                    <a href="privacy_page.html"
+                    <a href="privacy.html"
                         class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
                         Privacy
                     </a>
@@ -223,11 +222,11 @@
     <main role="main" id="main" class="max-w-container-lg mx-auto my-0 p-6">
         <!-- Hero Section -->
         <section aria-labelledby="hero-heading"
-            class="hero-section text-center py-4 px-6 md:pt-2 md:px-4 md:pb-4 max-w-container-md my-0 mx-auto">
+            class="text-center py-4 px-6 md:pt-2 md:px-4 md:pb-4 max-w-container-md my-0 mx-auto">
             <h1 id="hero-heading" class="text-2xl font-bold text-text-primary mb-2 tracking-[-0.025em]" tabindex="-1">
                 Free Text Analysis Tool</h1>
             <p
-                class="hero-description text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto">
+                class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto">
                 Count words, characters, sentences, and paragraphs instantly.</p>
         </section>
 
@@ -312,7 +311,7 @@
 
         <!-- Detailed Statistics Section -->
         <section aria-labelledby="detailed-stats-heading"
-            class="detailed-stats-section max-w-container-xl mt-0 mx-auto mb-12 py-0 px-6">
+            class="max-w-container-xl mt-0 mx-auto mb-12 py-0 px-6">
             <h2 id="detailed-stats-heading"
                 class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight" tabindex="-1">Detailed
                 Analysis</h2>
@@ -373,11 +372,11 @@
                                     Reading speed in words per minute (WPM). Default is 250 WPM, which is average adult
                                     reading speed.
                                 </label>
-                                <div class="wpm-input-group relative flex items-center bg-background border border-border rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:border-primary-300 focus-within:shadow-custom-blue focus-within:border-primary overflow-hidden motion-reduce:transition-none contrast-more:border-2 contrast-more:border-text-primary"
+                                <div class="relative flex items-center bg-background border border-border rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:border-primary-300 focus-within:shadow-custom-blue focus-within:border-primary overflow-hidden motion-reduce:transition-none contrast-more:border-2 contrast-more:border-text-primary"
                                     role="group" aria-labelledby="wpm-input-label">
 
                                     <input type="number" id="wpm-input" name="reading-speed"
-                                        class="wpm-input px-3 py-2 w-20 text-center text-sm font-medium bg-transparent border-0 outline-none"
+                                        class="px-3 py-2 w-20 text-center text-sm font-medium bg-transparent border-0 outline-none"
                                         value="250" min="50" max="1000" step="25"
                                         aria-label="Words per minute reading speed" aria-describedby="wpm-help-text"
                                         data-testid="wpm-input" inputmode="numeric" autocomplete="off">
@@ -629,12 +628,12 @@
     </main>
 
     <button id="scroll-nav-btn"
-        class="scroll-nav-btn flex align-center gap-2 bg-primary text-white border-none font-semibold cursor-pointer shadow-custom-blue transition-all duration-300 ease-out translate-y-0 fixed bottom-3 right-3 w-[36px] h-[36px] p-2 rounded-full md:rounded-3xl justify-center md:bottom-4 md:right-4 md:py-2 md:px-3 md:text-xs md:w-auto md:h-auto lg:bottom-6 lg:right-6 z-[100] lg:py-3 lg:pb-4 lg:text-sm animate-subtle-pulse hover:bg-primary-dark hover:shadow-custom-dark-blue hover:-translate-y-0.5 active:-translate-y-[1px] motion-reduce:animate-none motion-reduce:transition-none contrast-more:border-2 contrast-more:border-white"
+        class="flex align-center gap-2 bg-primary text-white border-none font-semibold cursor-pointer shadow-custom-blue transition-all duration-300 ease-out translate-y-0 fixed bottom-3 right-3 w-[36px] h-[36px] p-2 rounded-full md:rounded-3xl justify-center md:bottom-4 md:right-4 md:py-2 md:px-3 md:text-xs md:w-auto md:h-auto lg:bottom-6 lg:right-6 z-[100] lg:py-3 lg:pb-4 lg:text-sm animate-subtle-pulse hover:bg-primary-dark hover:shadow-custom-dark-blue hover:-translate-y-0.5 active:-translate-y-[1px] motion-reduce:animate-none motion-reduce:transition-none contrast-more:border-2 contrast-more:border-white"
         aria-label="Scroll to detailed analysis">
         <span
             class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">Detailed
             Analysis</span>
-        <svg class="scroll-nav-icon shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none"
+        <svg class="shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none"
             width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
@@ -661,7 +660,7 @@
                 <!-- Brand Section -->
                 <div class="flex flex-col gap-4 text-center md:text-left">
                     <a href=""
-                        class="footer-logo inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center md:justify-start"
+                        class="inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center md:justify-start"
                         aria-label="Text Counter Pro - Home">
                         <div
                             class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-custom-blue">
@@ -685,10 +684,10 @@
                         <li><a href=""
                                 class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Home</a>
                         </li>
-                        <li><a href="about_page.html"
+                        <li><a href="about.html"
                                 class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">About</a>
                         </li>
-                        <li><a href="contact_page.html"
+                        <li><a href="contact.html"
                                 class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Contact</a>
                         </li>
                     </ul>
@@ -698,7 +697,7 @@
                 <div class="text-center md:text-left">
                     <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Legal</h3>
                     <ul class="flex flex-col gap-3 list-none">
-                        <li><a href="privacy_page.html"
+                        <li><a href="privacy.html"
                                 class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Privacy
                                 Policy</a></li>
                     </ul>
@@ -711,23 +710,13 @@
                 <p class="text-gray-500 text-sm m-0">&copy; 2025 Text Counter Pro. All rights reserved.</p>
                 <nav aria-label="Footer legal navigation">
                     <ul class="flex gap-6 list-none m-0 p-0">
-                        <li><a href="privacy_page.html"
+                        <li><a href="privacy.html"
                                 class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light">Privacy</a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </div>
-
-        <!-- Back to Top Button -->
-        <button
-            class="back-to-top fixed bottom-6 right-6 w-12 h-12 bg-primary text-white border-none rounded-full cursor-pointer flex items-center justify-center shadow-custom-blue transition-all duration-300 opacity-0 invisible z-50 hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-custom-dark-blue focus:outline-2 focus:outline-primary focus:outline-offset-2"
-            aria-label="Back to top">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
     </footer>
 
     <!-- Skip to main content link for accessibility -->

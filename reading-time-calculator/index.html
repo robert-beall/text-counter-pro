@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary Meta Tags -->
+    <title>Text Counter Pro - Free Word Counter & Text Analysis Tool</title>
+    <meta name="title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
+    <meta name="description"
+        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics. Perfect for writers, students, and content creators.">
+    <meta name="keywords"
+        content="word counter, character counter, text analysis, word count tool, reading time calculator, text statistics, writing tool">
+    <meta name="author" content="Text Counter Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.github.io/">
+    <meta property="og:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
+    <meta property="og:description"
+        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
+    <meta property="og:image" content="https://yoursite.github.io/og-image.jpg">
+    <meta property="og:site_name" content="Text Counter Pro">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yoursite.github.io/">
+    <meta name="twitter:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
+    <meta name="twitter:description"
+        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
+    <meta name="twitter:image" content="https://yoursite.github.io/twitter-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Text Counter Pro",
+        "description": "Free online word counter and text analysis tool",
+        "url": "https://yoursite.github.io/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Word counting",
+            "Character counting", 
+            "Reading time calculation",
+            "Text statistics",
+            "Sentence analysis",
+            "Paragraph counting",
+            "Word frequency analysis"
+        ]
+    }
+    </script>
+
+    <!-- Performance & Security -->
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="theme-color" content="#3b82f6">
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Tailwind CSS via CDN -->
+    <!-- Place AFTER your existing CSS files to maintain specificity -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind.config.js"></script>
+    <script>
+        // Apply the configuration
+        tailwind.config = window.tailwindConfig;
+    </script>
+
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/components.css">
+
+    <!-- Scripts -->
+    <script src="../scripts/header.js" defer></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "text-processor": "../scripts/modules/text-processor.js",
+            "text-readability": "https://cdn.jsdelivr.net/npm/text-readability@1.1.1/+esm"
+          }
+        }
+        </script>
+    <script type="module">
+        import * as textProcessor from 'text-processor';
+        import textReadability from 'text-readability';
+
+        window.textProcessor = textProcessor;
+        window.textReadability = textReadability;
+    </script>
+    <!-- <script src="scripts/scroll-nav.js"></script> -->
+    <script src="../scripts/reading-time.js" defer></script>
+</head>
+
+<body class="font-primary bg-background text-primary leading-normal scroll-smooth">
+    <!-- Tailwind CSS Navbar Replacement -->
+    <header role="banner"
+        class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+        <nav role="navigation" aria-label="Main navigation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+
+                <!-- Logo and Branding -->
+                <a href=""
+                    class="flex items-center gap-3 text-gray-900 no-underline transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
+                    aria-label="Text Counter Pro - Home">
+                    <!-- Logo Icon -->
+                    <div
+                        class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 rounded-full flex items-center justify-center bg-white shadow-md shadow-blue-500/15 overflow-hidden">
+                        <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager"
+                            width="48" height="48" class="w-full h-full rounded-full object-cover object-center">
+                    </div>
+
+                    <!-- Logo Text -->
+                    <div class="flex flex-col leading-tight">
+                        <span class="text-base sm:text-lg lg:text-lg font-bold text-gray-900 tracking-tight">
+                            Text Counter
+                            <span class="sm:hidden"> Pro</span>
+                        </span>
+                        <span class="hidden sm:block text-xs lg:text-sm text-gray-600 font-medium">Pro</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li>
+                        <a href="" aria-current="page"
+                            class="relative text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-2 rounded-md transition-all duration-200 hover:bg-blue-100 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-0.5 after:bg-blue-600 after:rounded-sm">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="privacy.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            Privacy
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Menu Toggle -->
+                <button
+                    class="mobile-menu-toggle md:hidden text-gray-600 group inline-flex w-12 h-12 bg-white text-center items-center justify-center rounded-md hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                    aria-pressed="false"
+                    onclick="this.setAttribute('aria-pressed', !(this.getAttribute('aria-pressed') === 'true'))">
+                    <span class="sr-only">Menu</span>
+                    <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect
+                            class="origin-center -translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-x-0 group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[315deg]"
+                            y="7" width="16" height="2" rx="1"></rect>
+                        <rect
+                            class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-[[aria-pressed=true]]:rotate-45"
+                            y="7" width="16" height="2" rx="1"></rect>
+                        <rect
+                            class="origin-center translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[135deg]"
+                            y="7" width="16" height="2" rx="1"></rect>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <ul
+                class="nav-menu md:hidden hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg flex-col space-y-0 px-4 py-4 space-x-0">
+                <li class="w-full">
+                    <a href="" aria-current="page"
+                        class="block px-4 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-md w-full">
+                        Home
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="about.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        About
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="contact.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        Contact
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="privacy.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        Privacy
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main" id="main" class="max-w-container-lg mx-auto my-0 p-6">
+        <!-- Hero Section -->
+        <section aria-labelledby="hero-heading"
+            class="text-center py-4 px-6 md:pt-2 md:px-4 md:pb-4 max-w-container-md my-0 mx-auto">
+            <h1 id="hero-heading" class="text-2xl font-bold text-text-primary mb-2 tracking-[-0.025em]" tabindex="-1">
+                Reading Time Calculator
+            </h1>
+            <p class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto">
+                Calculate how long it takes to read any text with customizable reading speed settings.
+            </p>
+        </section>
+
+        <!-- Calculator Section -->
+        <section aria-labelledby="calculator-heading" class="max-w-container-md mt-0 mx-auto mb-8 text-center">
+            <h2 id="calculator-heading" class="sr-only">Reading Time Calculator Tool</h2>
+
+            <!-- Results Display -->
+            <div class="bg-surface border border-border rounded-xl p-6 mb-4 shadow-sm" role="region"
+                aria-label="Reading time results" aria-live="polite">
+                <div class="flex items-center justify-center gap-8 mb-4">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary mb-2" id="reading-time-display">0m 0s</div>
+                        <div class="text-sm text-text-secondary">Reading Time</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-semibold text-text-primary mb-2" id="word-count-display">0</div>
+                        <div class="text-sm text-text-secondary">Words</div>
+                    </div>
+                </div>
+
+                <!-- Reading Speed Controls -->
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <label for="reading-speed-slider" class="text-sm font-medium text-text-secondary">Reading
+                        Speed:</label>
+                    <div class="flex items-center gap-3">
+                        <input type="range" id="reading-speed-slider" min="100" max="500" value="250" step="25"
+                            class="w-32 h-2 bg-border rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-100"
+                            aria-label="Adjust reading speed in words per minute">
+                        <div class="flex items-center gap-1">
+                            <span id="speed-display" class="text-lg font-semibold text-primary">250</span>
+                            <span class="text-sm text-text-secondary">WPM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Speed Presets -->
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button type="button"
+                        class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors"
+                        data-speed="150">Slow (150)</button>
+                    <button type="button" class="px-3 py-1 text-xs bg-primary text-white rounded-md"
+                        data-speed="250">Average (250)</button>
+                    <button type="button"
+                        class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors"
+                        data-speed="300">Fast (300)</button>
+                    <button type="button"
+                        class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors"
+                        data-speed="400">Very Fast (400)</button>
+                </div>
+            </div>
+
+            <!-- Text Input Area -->
+            <div
+                class="bg-surface rounded-xl p-4 shadow-sm border border-border transition-all duration-200 ease-in-out focus-within:shadow-md focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500">
+                <label for="text-input" class="sr-only">Enter your text to calculate reading time</label>
+                <textarea id="text-input" placeholder="Paste or type your text here to calculate reading time..."
+                    spellcheck="false" autocorrect="off" autocapitalize="off"
+                    class="w-full min-h-[200px] md:min-h-[250px] p-4 border-2 border-border rounded-lg font-primary text-base leading-relaxed text-text-primary bg-surface resize-y transition-all duration-200 ease-in-out focus:outline-none focus:border-primary focus:ring-4 focus:ring-blue-100 placeholder:text-text-muted placeholder:font-normal">
+        </textarea>
+                <div class="text-sm text-text-muted mt-3 text-center">
+                    Reading time updates automatically as you type or paste content.
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section aria-labelledby="faq-heading" class="max-w-container-lg mx-auto mb-12 px-6">
+            <h2 id="faq-heading" class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight">
+                Frequently Asked Questions
+            </h2>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What is the average reading speed?</h3>
+                    <p class="text-text-secondary leading-relaxed">The average adult reads at 200-300 words per minute.
+                        Our calculator defaults to 250 WPM, which represents typical silent reading speed for most
+                        people.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How accurate is this calculator?</h3>
+                    <p class="text-text-secondary leading-relaxed">Reading time estimates are based on word count and
+                        your selected WPM. Actual reading time may vary based on text complexity, familiarity with the
+                        topic, and individual reading habits.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">Can I adjust the reading speed?</h3>
+                    <p class="text-text-secondary leading-relaxed">Yes! Use the slider or preset buttons to match your
+                        reading speed. Beginners typically read at 150-200 WPM, while speed readers can exceed 400 WPM.
+                    </p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What types of content work best?</h3>
+                    <p class="text-text-secondary leading-relaxed">This calculator works for any text content including
+                        articles, blog posts, books, documents, and essays. Complex technical content may require slower
+                        reading speeds.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-primary-50 rounded-xl p-8 text-center max-w-container-md mx-auto mb-8">
+            <h2 class="text-xl font-semibold text-text-primary mb-4">Need More Text Analysis Tools?</h2>
+            <p class="text-text-secondary mb-6 leading-relaxed">
+                Get comprehensive text analysis including word count, readability scores, and detailed statistics with
+                our complete text analysis tool.
+            </p>
+            <a href="/"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Try Full Text Analyzer
+            </a>
+        </section>
+    </main>
+
+    <button id="scroll-nav-btn"
+        class="flex align-center gap-2 bg-primary text-white border-none font-semibold cursor-pointer shadow-custom-blue transition-all duration-300 ease-out translate-y-0 fixed bottom-3 right-3 w-[36px] h-[36px] p-2 rounded-full md:rounded-3xl justify-center md:bottom-4 md:right-4 md:py-2 md:px-3 md:text-xs md:w-auto md:h-auto lg:bottom-6 lg:right-6 z-[100] lg:py-3 lg:pb-4 lg:text-sm animate-subtle-pulse hover:bg-primary-dark hover:shadow-custom-dark-blue hover:-translate-y-0.5 active:-translate-y-[1px] motion-reduce:animate-none motion-reduce:transition-none contrast-more:border-2 contrast-more:border-white"
+        aria-label="Scroll to detailed analysis">
+        <span
+            class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">Detailed
+            Analysis</span>
+        <svg class="shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none" width="20"
+            height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <aside role="complementary" aria-label="Advertisement" class="max-w-container-md my-8 mx-auto py-0 px-6">
+        <!-- Ad spaces placeholder -->
+        <div aria-label="Sponsored content"
+            class="ad-placeholder bg-border border-2 border-dashed border-text-muted rounded-lg text-center text-text-muted min-h-[120px] flex items-center justify-center before:content-['Advertisement_Space'] before:text-sm before:text-text-muted before:opacity-70">
+            <!-- Advertisement content will be inserted here -->
+        </div>
+    </aside>
+
+    <!-- Footer Section -->
+    <footer role="contentinfo"
+        class="bg-gradient-to-br from-gray-800 to-gray-900 text-gray-200 mt-16 relative overflow-hidden">
+        <!-- Subtle background pattern -->
+        <div class="absolute inset-0 bg-gradient-radial-blue opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <!-- Main Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8">
+                <!-- Brand Section -->
+                <div class="flex flex-col gap-4 text-center md:text-left">
+                    <a href=""
+                        class="inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center md:justify-start"
+                        aria-label="Text Counter Pro - Home">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-custom-blue">
+                            <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
+                                width="40" height="40" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <div class="flex flex-col leading-tight">
+                            <span class="text-lg font-bold text-white tracking-tight">Text Counter</span>
+                            <span class="text-sm text-gray-400 font-medium">Pro</span>
+                        </div>
+                    </a>
+                    <p class="text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0">
+                        Free text analysis tool for writers, students, and content creators.
+                    </p>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Navigation</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href=""
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Home</a>
+                        </li>
+                        <li><a href="about.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">About</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Legal</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href="privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div
+                class="border-t border-white border-opacity-10 pt-6 flex flex-col md:flex-row gap-4 items-center text-center md:text-left md:justify-between">
+                <p class="text-gray-500 text-sm m-0">&copy; 2025 Text Counter Pro. All rights reserved.</p>
+                <nav aria-label="Footer legal navigation">
+                    <ul class="flex gap-6 list-none m-0 p-0">
+                        <li><a href="privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light">Privacy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to main content</a>
+</body>
+
+</html>
