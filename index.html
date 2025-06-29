@@ -650,60 +650,80 @@
         </div>
     </aside>
 
-    <!-- Enhanced Footer Section -->
-    <footer role="contentinfo" class="">
-        <div class="footer-content">
+    <!-- Footer Section -->
+    <footer role="contentinfo"
+        class="bg-gradient-to-br from-gray-800 to-gray-900 text-gray-200 mt-16 relative overflow-hidden">
+        <!-- Subtle background pattern -->
+        <div class="absolute inset-0 bg-gradient-radial-blue opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-12 relative z-10">
             <!-- Main Footer Grid -->
-            <div class="footer-grid">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8">
                 <!-- Brand Section -->
-                <div class="footer-brand">
-                    <a href="" class="footer-logo" aria-label="Text Counter Pro - Home">
-                        <div class="footer-logo-icon">
+                <div class="flex flex-col gap-4 text-center md:text-left">
+                    <a href=""
+                        class="footer-logo inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center md:justify-start"
+                        aria-label="Text Counter Pro - Home">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-custom-blue">
                             <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
-                                width="40" height="40">
+                                width="40" height="40" class="w-full h-full rounded-full object-cover">
                         </div>
-                        <div class="footer-logo-text">
-                            <span class="footer-logo-title">Text Counter</span>
-                            <span class="footer-logo-subtitle">Pro</span>
+                        <div class="flex flex-col leading-tight">
+                            <span class="text-lg font-bold text-white tracking-tight">Text Counter</span>
+                            <span class="text-sm text-gray-400 font-medium">Pro</span>
                         </div>
                     </a>
-                    <p class="footer-description">
+                    <p class="text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0">
                         Free text analysis tool for writers, students, and content creators.
                     </p>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="about_page.html">About</a></li>
-                        <li><a href="contact_page.html">Contact</a></li>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Navigation</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href=""
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Home</a>
+                        </li>
+                        <li><a href="about_page.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">About</a>
+                        </li>
+                        <li><a href="contact_page.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Contact</a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Legal Links -->
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy_page.html">Privacy Policy</a></li>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Legal</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href="privacy_page.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Privacy
+                                Policy</a></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <p>&copy; 2025 Text Counter Pro. All rights reserved.</p>
+            <div
+                class="border-t border-white border-opacity-10 pt-6 flex flex-col md:flex-row gap-4 items-center text-center md:text-left md:justify-between">
+                <p class="text-gray-500 text-sm m-0">&copy; 2025 Text Counter Pro. All rights reserved.</p>
                 <nav aria-label="Footer legal navigation">
-                    <ul>
-                        <li><a href="privacy_page.html">Privacy</a></li>
+                    <ul class="flex gap-6 list-none m-0 p-0">
+                        <li><a href="privacy_page.html"
+                                class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light">Privacy</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
 
         <!-- Back to Top Button -->
-        <button class="back-to-top" aria-label="Back to top">
+        <button
+            class="back-to-top fixed bottom-6 right-6 w-12 h-12 bg-primary text-white border-none rounded-full cursor-pointer flex items-center justify-center shadow-custom-blue transition-all duration-300 opacity-0 invisible z-50 hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-custom-dark-blue focus:outline-2 focus:outline-primary focus:outline-offset-2"
+            aria-label="Back to top">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />

@@ -73,6 +73,10 @@ window.tailwindConfig = {
       gridTemplateColumns: {
         'auto-fit-280': 'repeat(auto-fit, minmax(280px, 1fr))'
       },
+      // NEW: Added background gradients for the footer pattern
+      backgroundImage: {
+        'gradient-radial-blue': 'radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)'
+      },
       keyframes: {
         'subtle-pulse': {
           '0%, 100%': {
