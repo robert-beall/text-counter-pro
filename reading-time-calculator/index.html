@@ -35,10 +35,10 @@
     <meta name="twitter:image" content="https://yoursite.github.io/twitter-image.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- Structured Data -->
@@ -125,7 +125,7 @@
                     <!-- Logo Icon -->
                     <div
                         class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 rounded-full flex items-center justify-center bg-white shadow-md shadow-blue-500/15 overflow-hidden">
-                        <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager"
+                        <img src="../assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager"
                             width="48" height="48" class="w-full h-full rounded-full object-cover object-center">
                     </div>
 
@@ -250,33 +250,52 @@
                 </div>
 
                 <!-- Reading Speed Controls -->
-                <div class="flex items-center justify-center gap-4 mb-4">
-                    <label for="reading-speed-slider" class="text-sm font-medium text-text-secondary">Reading
-                        Speed:</label>
-                    <div class="flex items-center gap-3">
-                        <input type="range" id="reading-speed-slider" min="100" max="500" value="250" step="25"
-                            class="w-32 h-2 bg-border rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-100"
-                            aria-label="Adjust reading speed in words per minute">
-                        <div class="flex items-center gap-1">
-                            <span id="speed-display" class="text-lg font-semibold text-primary">250</span>
-                            <span class="text-sm text-text-secondary">WPM</span>
-                        </div>
+                <div class="mb-4">
+                    <div class="text-sm font-medium text-text-secondary mb-3 text-center">Reading Speed</div>
+                    <div class="flex items-center justify-center gap-1 mb-3">
+                        <span id="speed-display" class="text-2xl font-bold text-primary">250</span>
+                        <span class="text-sm text-text-secondary">WPM</span>
                     </div>
-                </div>
 
-                <!-- Speed Presets -->
-                <div class="flex flex-wrap justify-center gap-2">
-                    <button type="button"
-                        class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors"
-                        data-speed="150">Slow (150)</button>
-                    <button type="button" class="px-3 py-1 text-xs bg-primary text-white rounded-md"
-                        data-speed="250">Average (250)</button>
-                    <button type="button"
-                        class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors"
-                        data-speed="300">Fast (300)</button>
-                    <button type="button"
-                        class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors"
-                        data-speed="400">Very Fast (400)</button>
+                    <!-- Speed adjustment buttons -->
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <button type="button" id="speed-down"
+                            class="w-8 h-8 flex items-center justify-center bg-border text-text-secondary rounded-full hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                            aria-label="Decrease reading speed">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <input type="number" id="speed-input" value="250" min="100" max="500" step="25"
+                            class="w-20 px-2 py-1 text-center text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                            aria-label="Reading speed in words per minute">
+                        <button type="button" id="speed-up"
+                            class="w-8 h-8 flex items-center justify-center bg-border text-text-secondary rounded-full hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                            aria-label="Increase reading speed">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Speed Presets -->
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button type="button"
+                            class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                            data-speed="150">Slow (150)</button>
+                        <button type="button"
+                            class="px-3 py-1 text-xs bg-primary text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary-dark"
+                            data-speed="250">Average (250)</button>
+                        <button type="button"
+                            class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                            data-speed="300">Fast (300)</button>
+                        <button type="button"
+                            class="px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                            data-speed="400">Very Fast (400)</button>
+                    </div>
                 </div>
             </div>
 
@@ -287,7 +306,7 @@
                 <textarea id="text-input" placeholder="Paste or type your text here to calculate reading time..."
                     spellcheck="false" autocorrect="off" autocapitalize="off"
                     class="w-full min-h-[200px] md:min-h-[250px] p-4 border-2 border-border rounded-lg font-primary text-base leading-relaxed text-text-primary bg-surface resize-y transition-all duration-200 ease-in-out focus:outline-none focus:border-primary focus:ring-4 focus:ring-blue-100 placeholder:text-text-muted placeholder:font-normal">
-        </textarea>
+                </textarea>
                 <div class="text-sm text-text-muted mt-3 text-center">
                     Reading time updates automatically as you type or paste content.
                 </div>
@@ -386,7 +405,7 @@
                         aria-label="Text Counter Pro - Home">
                         <div
                             class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-custom-blue">
-                            <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
+                            <img src="../assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
                                 width="40" height="40" class="w-full h-full rounded-full object-cover">
                         </div>
                         <div class="flex flex-col leading-tight">
