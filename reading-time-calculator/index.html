@@ -6,34 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Primary Meta Tags -->
-    <title>Text Counter Pro - Free Word Counter & Text Analysis Tool</title>
-    <meta name="title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="description"
-        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics. Perfect for writers, students, and content creators.">
-    <meta name="keywords"
-        content="word counter, character counter, text analysis, word count tool, reading time calculator, text statistics, writing tool">
-    <meta name="author" content="Text Counter Pro">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yoursite.github.io/">
-    <meta property="og:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta property="og:description"
-        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
-    <meta property="og:image" content="https://yoursite.github.io/og-image.jpg">
-    <meta property="og:site_name" content="Text Counter Pro">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://yoursite.github.io/">
-    <meta name="twitter:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="twitter:description"
-        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
-    <meta name="twitter:image" content="https://yoursite.github.io/twitter-image.jpg">
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
@@ -41,43 +13,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Text Counter Pro",
-        "description": "Free online word counter and text analysis tool",
-        "url": "https://yoursite.github.io/",
-        "applicationCategory": "Utility",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "featureList": [
-            "Word counting",
-            "Character counting", 
-            "Reading time calculation",
-            "Text statistics",
-            "Sentence analysis",
-            "Paragraph counting",
-            "Word frequency analysis"
-        ]
-    }
-    </script>
-
     <!-- Performance & Security -->
     <meta name="referrer" content="origin-when-cross-origin">
     <meta name="theme-color" content="#3b82f6">
 
     <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
     <!-- Tailwind CSS via CDN -->
-    <!-- Place AFTER your existing CSS files to maintain specificity -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind.config.js"></script>
     <script>
@@ -107,7 +50,6 @@
         window.textProcessor = textProcessor;
         window.textReadability = textReadability;
     </script>
-    <!-- <script src="scripts/scroll-nav.js"></script> -->
     <script src="../scripts/reading-time.js" defer></script>
 </head>
 
@@ -219,30 +161,32 @@
         </nav>
     </header>
 
-    <!-- Breadcrumbs Navigation -->
-    <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 border-b border-gray-100">
-        <ol class="flex items-center space-x-2 text-sm">
-            <li>
-                <a href="../index.html"
-                    class="text-blue-600 hover:text-blue-800 transition-colors duration-200 font-medium flex items-center gap-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+    <nav aria-label="Breadcrumb"
+        class="max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 border-b border-border">
+        <ol class="flex items-center text-xs sm:text-sm overflow-x-auto scrollbar-hide">
+            <li class="flex-shrink-0">
+                <a href="../"
+                    class="text-primary hover:text-primary-dark transition-colors duration-200 font-medium flex items-center gap-1 min-w-0">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 5a2 2 0 012-2h4a2 2 0 012 2v0H8v0z"></path>
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                     </svg>
-                    Text Counter Pro
+                    <span class="truncate max-w-[120px] sm:max-w-none">Text Counter Pro</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20"
+            <li class="flex items-center flex-shrink-0 mx-1 sm:mx-2">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4 text-text-muted" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                         clip-rule="evenodd"></path>
                 </svg>
-                <span class="text-gray-600 font-medium" aria-current="page">Reading Time Calculator</span>
+            </li>
+            <li class="flex-shrink-0">
+                <span class="text-text-secondary font-medium truncate max-w-[150px] sm:max-w-none" aria-current="page">
+                    Reading Time Calculator
+                </span>
             </li>
         </ol>
     </nav>
@@ -252,9 +196,10 @@
         <section aria-labelledby="hero-heading"
             class="text-center py-4 px-6 md:pt-2 md:px-4 md:pb-4 max-w-container-xl my-0 mx-auto">
             <h1 id="hero-heading" class="text-2xl font-bold text-text-primary mb-2 tracking-[-0.025em]">
-                Free Reading Time Calculator - Estimate Reading Duration Instantly
+                Reading Time Calculator <span class="hidden md:inline">- Estimate Duration Instantly</span>
             </h1>
-            <p class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto">
+            <p
+                class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto hidden md:block">
                 Calculate how long it takes to read any text with customizable reading speed settings.
             </p>
         </section>

@@ -1,0 +1,81 @@
+{
+  "name": "Text Counter Pro",
+  "short_name": "TextCounter",
+  "description": "Professional text analysis and word counting tool with reading time calculator, character count, and comprehensive text statistics.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafbfc",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["productivity", "utilities", "education"],
+  "icons": [
+    {
+      "src": "assets/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/text-counter-pro-icon.png",
+      "sizes": "80x80",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/text-counter-pro-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/text-counter-pro-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Text Analysis",
+      "short_name": "Analysis",
+      "description": "Full text analysis with word count, character count, and statistics",
+      "url": "/text-analysis/",
+      "icons": [
+        {
+          "src": "assets/text-counter-pro-icon.png",
+          "sizes": "80x80",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Reading Time",
+      "short_name": "ReadTime",
+      "description": "Calculate reading time for your text",
+      "url": "/reading-time-calculator/",
+      "icons": [
+        {
+          "src": "assets/text-counter-pro-icon.png",
+          "sizes": "80x80",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
+}
