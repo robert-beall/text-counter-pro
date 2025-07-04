@@ -1,18 +1,17 @@
 class ReadingTime {
     constructor() {
+        this.readingSpeed = 250; 
+
         const elementIdList = [
             "text-input",
             "speed-display",
             "reading-time-display",
             "word-count-display",
             "speed-input",
-            "speed-up",
-            "speed-down",
+            "speed-input-mobile",
             "paste-btn",
             "clear-btn",
         ];
-
-        this.presetButtons = document.querySelectorAll('[data-speed]');
 
         this.elements = {};
         this.missingElements = [];
@@ -55,8 +54,7 @@ class ReadingTime {
         const textInput = this.getElement("text-input");
         const speedDisplay = this.getElement("speed-display");
         const speedInput = this.getElement("speed-input");
-        const speedUpBtn = this.getElement("speed-up");
-        const speedDownBtn = this.getElement("speed-down");
+        const speedInputMobile = this.getElement("speed-input-mobile");
         const pasteBtn = this.getElement("paste-btn");
         const clearBtn = this.getElement("clear-btn");
 
@@ -69,40 +67,20 @@ class ReadingTime {
             speedInput.addEventListener("input", () => {
                 let value = parseInt(speedInput.value);
                 if (value < 0) value = 0;
-                this.value = value;
-                speedDisplay.textContent = value;
-                this.updatePresetButtons(value);
+                this.readingSpeed = value;
+                speedDisplay.textContent = value.toLocaleString();
+                this.updateDisplay();
             });
         }
 
-        if (speedUpBtn) {
-            speedUpBtn.addEventListener("click", () => {
-                let value = parseInt(speedInput.value) + 25;
-                if (value > 500) value = 500;
+        if (speedInputMobile) {
+            speedInputMobile.addEventListener("input", () => {
+                let value = parseInt(speedInputMobile.value);
+                this.readingSpeed = value;
+                if (value < 0) value = 0;
                 speedInput.value = value;
-                speedDisplay.textContent = value;
-                this.updatePresetButtons(value);
-            });
-        }
-
-        if (speedDownBtn) {
-            speedDownBtn.addEventListener("click", () => {
-                let value = parseInt(speedInput.value) - 25;
-                if (value < 100) value = 100;
-                speedInput.value = value;
-                speedDisplay.textContent = value;
-                this.updatePresetButtons(value);
-            });
-        }
-
-        if (this.presetButtons) {
-            this.presetButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const speed = button.dataset.speed;
-                    speedInput.value = speed;
-                    speedDisplay.textContent = speed;
-                    this.updatePresetButtons(speed);
-                });
+                speedDisplay.textContent = value.toLocaleString();
+                this.updateDisplay();
             });
         }
 
@@ -200,6 +178,14 @@ class ReadingTime {
         }
     }
 
+    updateDisplay() {
+        const textInput = this.getElement("text-input");
+        if (textInput) {
+            this.showReadingTime(textInput.value, this.readingSpeed);
+            this.showWordCount(textInput.value);
+        }
+    }
+
     /**
    * Calculates the number of words in the passed text and
    * displays the value in the 'word-count-display' element.
@@ -232,23 +218,6 @@ class ReadingTime {
                 wordsPerMinute
             );
         }
-    }
-
-    updatePresetButtons(currentSpeed) {
-        const textInput = this.getElement("text-input");
-
-        if (textInput && this.presetButtons) {
-            const text = textInput.value;
-            this.showReadingTime(text, currentSpeed);
-            this.presetButtons.forEach(button => {
-                if (button.dataset.speed == currentSpeed) {
-                    button.className = 'px-3 py-1 text-xs bg-primary text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary-dark';
-                } else {
-                    button.className = 'px-3 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary';
-                }
-            });
-        }
-
     }
 }
 

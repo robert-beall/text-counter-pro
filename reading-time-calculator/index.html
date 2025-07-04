@@ -204,129 +204,101 @@
             </p>
         </section>
 
-        <!-- Calculator Section -->
-        <section aria-labelledby="calculator-heading" class="max-w-container-xl mt-0 mx-auto mb-8 px-4">
-            <h2 id="calculator-heading" class="sr-only">Reading Time Calculator Tool</h2>
+        <!-- Text Analysis Section -->
+        <section aria-labelledby="text-input-heading" class="max-w-container-md mt-0 mx-auto mb-8 text-center">
+            <h2 id="text-input-heading" class="sr-only">Text Input and Analysis</h2>
 
-            <!-- Main Calculator Layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+            <!-- Statistics Toolbar -->
+            <div class="bg-surface border border-border contrast-more:border-2 contrast-more:border-gray-900 rounded-xl p-4 mb-4 shadow-sm"
+                role="region" aria-label="Text statistics toolbar" aria-live="polite">
 
-                <!-- Text Input Area (First on Mobile, Left on Desktop) -->
-                <div role="application" aria-label="Text input for reading time calculation"
-                    class="bg-surface rounded-xl p-4 shadow-sm border border-border transition-all duration-200 ease-in-out focus-within:shadow-md focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500 order-1">
-
-                    <!-- Textarea Controls -->
-                    <div class="flex justify-between items-center mb-3">
-                        <label for="text-input" class="text-sm font-medium text-text-secondary">Enter Your Text</label>
-                        <div class="flex gap-2">
-                            <button type="button" id="paste-btn"
-                                class="flex items-center gap-2 px-3 py-2 bg-primary text-white border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-primary-dark hover:-translate-y-px active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                                aria-label="Paste text from clipboard">
-                                <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <span>Paste</span>
-                            </button>
-                            <button type="button" id="clear-btn"
-                                class="flex items-center gap-2 px-3 py-2 bg-border text-text-secondary border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-text-muted hover:text-text-primary active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                                aria-label="Clear all text">
-                                <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <span>Clear</span>
-                            </button>
+                <!-- First Row: Stats and Buttons -->
+                <div
+                    class="flex items-stretch lg:items-center justify-between flex-col md:flex-row gap-4 flex-wrap mb-4 md:mb-auto">
+                    <div
+                        class="grid grid-cols-2 gap-3 md:flex md:justify-around md:gap-4 items-center md:gap-6 md:flex-wrap">
+                        <div
+                            class="min-w-auto lg:min-width-[60px] flex flex-auto flex-col lg:flex-initial items-center gap-1">
+                            <span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Reading
+                                Time</span>
+                            <span class="!leading-none text-xl lg:text-lg font-bold text-primary"
+                                id="reading-time-display" aria-label="Character count">0m 0s</span>
+                        </div>
+                        <div
+                            class="min-w-auto lg:min-width-[60px] flex flex-auto flex-col lg:flex-initial items-center gap-1">
+                            <span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Words</span>
+                            <span class="!leading-none text-xl lg:text-lg font-bold text-primary"
+                                id="word-count-display" aria-label="Word count">0</span>
                         </div>
                     </div>
 
-                    <textarea id="text-input"
-                        placeholder="Start typing or paste your text here to calculate reading time..."
-                        spellcheck="false" autocorrect="off" autocapitalize="off" autofocus
-                        class="w-full min-h-[300px] md:min-h-[400px] p-4 border-2 border-border rounded-lg font-primary text-base leading-relaxed text-text-primary bg-surface resize-y transition-all duration-200 ease-in-out focus:outline-none focus:border-primary focus:ring-4 focus:ring-blue-100 placeholder:text-text-muted placeholder:font-normal">
-            </textarea>
-
-                    <div class="text-sm text-text-muted mt-3 text-center">
-                        Reading time updates automatically as you type or paste content.
+                    <div
+                        class="grid grid-cols-2 gap-2 w-full md:justify-center md:flex md:items-center lg:justify-start md:w-auto">
+                        <div class="relative hidden md:block">
+                            <input type="number" id="speed-input"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-text-secondary bg-transparent rounded-lg border border-border appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
+                                value="250"/>
+                            <label for="speed-input"
+                                class="absolute text-sm text-text-secondary duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-surface px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Words per Minute</label>
+                        </div>
+                        <button type="button"
+                            class="flex items-center gap-2 px-3 py-2 bg-primary text-white border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-primary-dark hover:-translate-y-px active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none md:flex-1 md:justify-center md:px-4 md:py-3"
+                            id="paste-btn" aria-label="Paste text from clipboard">
+                            <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span>Paste</span>
+                        </button>
+                        <button type="button"
+                            class="flex items-center gap-2 px-3 py-2 bg-border text-text-secondary border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-text-muted hover:text-text-primary active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none md:flex-1 md:justify-center md:px-4 md:py-3"
+                            id="clear-btn" aria-label="Clear all text" disabled>
+                            <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>Clear</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Controls Panel (Second on Mobile, Right on Desktop) -->
-                <div class="order-2 space-y-3">
-
-                    <!-- Results Display -->
-                    <div class="bg-surface border border-border rounded-xl p-4 shadow-sm" role="region"
-                        aria-label="Reading time results" aria-live="polite">
-                        <div class="flex items-center justify-center gap-6 mb-2">
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-primary mb-1" id="reading-time-display">0m 0s</div>
-                                <div class="text-xs text-text-secondary">Reading Time</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-xl font-semibold text-text-primary mb-1" id="word-count-display">0
-                                </div>
-                                <div class="text-xs text-text-secondary">Words</div>
-                            </div>
+                <!-- Second Row: Slider Controls -->
+                <div class="flex flex-col md:flex-row items-center gap-3 pt-4 border-t border-border md:hidden">
+                    <div class="flex flex-col md:flex-row items-center gap-3 w-full text-center">
+                        <div class="flex flex-col items-center gap-1">
+                            <span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Words per
+                                Minute</span>
+                            <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="speed-display"
+                                aria-label="Speed value">250</span>
+                        </div>
+                        <div class="flex-1 w-full md:w-auto">
+                            <input id="speed-input-mobile" type="range" min="0" max="500" value="250"
+                                class="w-full h-2 bg-primary-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                                aria-label="Speed slider control">
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Reading Speed Controls -->
-                    <div class="bg-surface border border-border rounded-xl p-4 shadow-sm">
-                        <div class="text-sm font-medium text-text-secondary mb-3 text-center">Reading Speed</div>
-
-                        <div class="flex items-center justify-center gap-1 mb-3">
-                            <span id="speed-display" class="text-xl font-bold text-primary">250</span>
-                            <span class="text-sm text-text-secondary">WPM</span>
-                        </div>
-
-                        <!-- Speed adjustment buttons -->
-                        <div class="flex items-center justify-center gap-2 mb-3">
-                            <button type="button" id="speed-down"
-                                class="w-8 h-8 flex items-center justify-center bg-border text-text-secondary rounded-full hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                                aria-label="Decrease reading speed">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                            </button>
-                            <input type="number" id="speed-input" value="250" min="100" max="500" step="25"
-                                class="w-20 px-2 py-1 text-center text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-                                aria-label="Reading speed in words per minute">
-                            <button type="button" id="speed-up"
-                                class="w-8 h-8 flex items-center justify-center bg-border text-text-secondary rounded-full hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                                aria-label="Increase reading speed">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </svg>
-                            </button>
-                        </div>
-
-                        <!-- Speed Presets (2x2 Grid) -->
-                        <div class="grid grid-cols-2 gap-2">
-                            <button type="button"
-                                class="px-2 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                                data-speed="150">Slow</button>
-                            <button type="button"
-                                class="px-2 py-1 text-xs bg-primary text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                                data-speed="250">Average</button>
-                            <button type="button"
-                                class="px-2 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                                data-speed="300">Fast</button>
-                            <button type="button"
-                                class="px-2 py-1 text-xs bg-border text-text-secondary rounded-md hover:bg-primary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                                data-speed="400">Very Fast</button>
-                        </div>
-                    </div>
+            <!-- Text Input Area -->
+            <div role="application" aria-label="Reading speed calculator"
+                class="bg-surface rounded-xl p-4 shadow-sm border border-border transition-all duration-200 ease-in-out focus-within:shadow-md focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500 contrast-more:border-2 contrast-more:border-gray-900">
+                <label for="text-input" class="sr-only">Enter your text for analysis</label>
+                <textarea id="text-input" name="text-input" aria-describedby="text-input-help"
+                    placeholder="Start typing or paste your text here to calculate reading time..."
+                    spellcheck="false" autocorrect="off" autocapitalize="off" autofocus
+                    class="w-full min-h-[150px] md:min-h-[200px] p-4 border-2 border-border rounded-lg font-primary text-base leading-relaxed text-text-primary bg-surface resize-y transition-all duration-200 ease-in-out focus:outline-none focus:border-primary focus:ring-4 focus:ring-blue-100 placeholder:text-text-muted placeholder:font-normal">
+                </textarea>
+                <div id="text-input-help" class="text-sm text-text-muted mt-3 text-center">
+                    Reading time updates automatically as you type or paste content.
                 </div>
             </div>
         </section>
@@ -354,7 +326,7 @@
 
                 <div class="bg-surface border border-border rounded-xl p-6">
                     <h3 class="text-lg font-semibold text-text-primary mb-3">Can I adjust the reading speed?</h3>
-                    <p class="text-text-secondary leading-relaxed">Yes! Use the slider or preset buttons to match your
+                    <p class="text-text-secondary leading-relaxed">Yes! Update the <strong>words per minute (WPM)</strong> to match your
                         reading speed. Beginners typically read at 150-200 WPM, while speed readers can exceed 400 WPM.
                     </p>
                 </div>
