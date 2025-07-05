@@ -15,6 +15,35 @@ export const getCharCount = (text) => text.length;
 export const getCharCountNoSpaces = (text) => text.replace(/\s/g, "").length;
 
 /**
+ * Count special characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getSpecialCharCount = (text) => {
+    // Count digits, punctuation, and symbols (excluding letters and whitespace)
+    return (text.match(/[^a-zA-Z\s]/g) || []).length;
+}
+
+/**
+ * Get a breakdown of special characters in the passed text string.
+ * @param {*} text - string
+ * @returns {Object} - breakdown of special character counts
+ */
+export const getSpecialCharCountBreakdown = (text) => {
+    const numbers = (text.match(/\d/g) || []).length;
+    const punctuation = (text.match(/[.,;:!?'"()[\]{}-]/g) || []).length;
+    const symbols = (text.match(/[^a-zA-Z\d\s.,;:!?'"()[\]{}-]/g) || []).length;
+    
+    return {
+        total: numbers + punctuation + symbols,
+        numbers: numbers,
+        punctuation: punctuation,
+        symbols: symbols
+    };
+}
+
+/**
  * Get a list of words in the passed text string.
  *
  * @param {*} text - string
