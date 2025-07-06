@@ -21,8 +21,117 @@ export const getCharCountNoSpaces = (text) => text.replace(/\s/g, "").length;
  * @returns number
  */
 export const getSpecialCharCount = (text) => {
-    // Count digits, punctuation, and symbols (excluding letters and whitespace)
-    return (text.match(/[^a-zA-Z\s]/g) || []).length;
+  // Count digits, punctuation, and symbols (excluding letters and whitespace)
+  return (text.match(/[^a-zA-Z\s]/g) || []).length;
+}
+
+/** 
+ * Get the number of letters (both uppercase and lowercase) in the passed text string.
+ * @param {*} text - string
+ * @returns number
+ */
+export const getLettersCharCount = (text) => {
+  // Count letters (both uppercase and lowercase)
+  return (text.match(/[a-zA-Z]/g) || []).length;
+}
+
+/**
+ * Get the number of uppercase characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getUpperCaseCharCount = (text) => {
+  // Count uppercase letters
+  return (text.match(/[A-Z]/g) || []).length;
+}
+
+/**
+ * Get the number of lowercase characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getLowerCaseCharCount = (text) => {
+  // Count lowercase letters
+  return (text.match(/[a-z]/g) || []).length;
+}
+
+/**
+ * Get the number of numeric characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getNumbersCharCount = (text) => {
+  // Count digits
+  return (text.match(/\d/g) || []).length;
+}
+
+/** 
+ * Get the number of whitespace characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getWhitespaceCharCount = (text) => {
+  // Count whitespace characters (spaces, tabs, newlines)
+  return (text.match(/\s/g) || []).length;
+}
+
+/** 
+ * Get the number of space characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getSpaceCharCount = (text) => {
+  // Count space characters specifically
+  return (text.match(/ /g) || []).length;
+}
+
+/**
+ * Get the number of tab characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getTabCharCount = (text) => {
+  // Count tab characters specifically
+  return (text.match(/\t/g) || []).length;
+}
+
+/**
+ * Get the number of newline characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getNewLineCharCount = (text) => {
+  // Count newline characters specifically
+  return (text.match(/\n/g) || []).length;
+}
+
+/**
+ * Get the number of punctuation characters in the passed text string.
+ * @param {*} text - string
+ * @returns number
+ */
+export const getPunctuationCharCount = (text) => {
+  // Count punctuation characters (.,;:!?'"()[]{}-)
+  return (text.match(/[.,;:!?'"()[\]{}-]/g) || []).length;
+}
+
+/** 
+ * Get the number of emoji characters in the passed text string.
+ * This function uses a regex pattern that matches a wide range of emoji characters.
+ * Note: This may not cover all emojis, especially newer ones, as Unicode is constantly evolving.
+ * @param {*} text - string
+ * @returns number
+ */
+export const getEmojiCharCount = (text) => {
+  // Count emoji characters using Unicode ranges
+  return (text.match(/[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F018}-\u{1F270}]|[^\w\s.,!?;:'"()\-_]/gu) || []).length;
 }
 
 /**
@@ -31,16 +140,16 @@ export const getSpecialCharCount = (text) => {
  * @returns {Object} - breakdown of special character counts
  */
 export const getSpecialCharCountBreakdown = (text) => {
-    const numbers = (text.match(/\d/g) || []).length;
-    const punctuation = (text.match(/[.,;:!?'"()[\]{}-]/g) || []).length;
-    const symbols = (text.match(/[^a-zA-Z\d\s.,;:!?'"()[\]{}-]/g) || []).length;
-    
-    return {
-        total: numbers + punctuation + symbols,
-        numbers: numbers,
-        punctuation: punctuation,
-        symbols: symbols
-    };
+  const numbers = (text.match(/\d/g) || []).length;
+  const punctuation = (text.match(/[.,;:!?'"()[\]{}-]/g) || []).length;
+  const symbols = (text.match(/[^a-zA-Z\d\s.,;:!?'"()[\]{}-]/g) || []).length;
+
+  return {
+    total: numbers + punctuation + symbols,
+    numbers: numbers,
+    punctuation: punctuation,
+    symbols: symbols
+  };
 }
 
 /**
@@ -338,7 +447,7 @@ export const getAverageWordsPerSentence = (text) => text.trim().length > 0 ? get
  * @param {*} text - string 
  * @returns number (float)
  */
-export const getAverageCharsPerWord = (text) => text.trim().length > 0 ? getCharCountNoSpaces(text) / getWordCount(text) : 0;
+export const getAverageCharsPerWord = (text) => text.trim().length > 0 && getWordCount(text) > 0 ? getCharCountNoSpaces(text) / getWordCount(text) : 0;
 
 /**
  * Helper function to determine if we should end a sentence.

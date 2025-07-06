@@ -1,6 +1,6 @@
 class ReadingTime {
     constructor() {
-        this.readingSpeed = 250; 
+        this.readingSpeed = 250;
 
         const elementIdList = [
             "text-input",
@@ -96,10 +96,10 @@ class ReadingTime {
     }
 
     /**
-   * Simple helper method to check if application is ready.
-   *
-   * @returns boolean
-   */
+    * Simple helper method to check if application is ready.
+    *
+    * @returns boolean
+    */
     isReady() {
         return this.missingElements.length === 0 && window.textProcessor !== null;
     }
