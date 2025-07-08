@@ -259,9 +259,9 @@
                     </div>
                     <div class="flex flex-col items-center gap-1 min-w-0 p-2">
                         <span
-                            class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Symbol<br>Count</span>
-                        <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="special-char-count"
-                            aria-label="Special characters count">0</span>
+                            class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Punctuation<br>Count</span>
+                        <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="punctuation-count"
+                            aria-label="Punctuation count">0</span>
                     </div>
                 </div>
 
@@ -536,17 +536,18 @@
 
                     <!-- Punctuation Card -->
                     <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                        role="region" aria-labelledby="punctuation-heading" data-testid="punctuation-breakdown">
+                        role="region" aria-labelledby="special-char-heading" data-testid="special-char-breakdown">
                         <div class="mb-3">
                             <h3 id="punctuation-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                ❗ Punctuation
+                                ✳️ Special Characters
                             </h3>
                             <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                <span id="punctuation-count">0</span>
+                                <span id="special-char-count">0</span>
                             </div>
                         </div>
                         <p class="text-xs text-text-secondary">
-                            Periods, commas, etc.
+                            mathematical operators, currency symbols, brackets, and other non-punctuation symbols like
+                            @, #, $, %, &, etc.
                         </p>
                     </div>
 
@@ -605,9 +606,6 @@
                             <h3 id="unicode-heading" class="text-sm font-semibold text-text-primary mb-2">
                                 🌐 Unicode
                             </h3>
-                            <div class="text-2xl font-bold text-primary-600 mb-1" aria-live="polite">
-                                <span id="unicode-count">0</span>
-                            </div>
                         </div>
                         <div class="space-y-1">
                             <div class="flex justify-between text-xs text-text-secondary">
@@ -622,6 +620,96 @@
                     </div>
                 </div>
             </section>
+        </section>
+
+        <!-- FAQ Section -->
+        <section aria-labelledby="faq-heading" class="max-w-container-lg mx-auto mb-12 px-6">
+            <h2 id="faq-heading" class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight">
+                Frequently Asked Questions
+            </h2>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between total
+                        characters and characters without spaces?</h3>
+                    <p class="text-text-secondary leading-relaxed">Total character count includes everything: letters,
+                        numbers, punctuation, spaces, tabs, and line breaks. Character count without spaces excludes all
+                        whitespace, showing only visible content like letters, numbers, and symbols.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How do social media character limits work?
+                    </h3>
+                    <p class="text-text-secondary leading-relaxed">Our tool shows remaining characters for major
+                        platforms: Twitter/X (280), Instagram captions (2,200), Facebook posts (63,206), and LinkedIn
+                        posts (3,000). It automatically updates as you type to show how much space you have left.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between punctuation
+                        and special characters?</h3>
+                    <p class="text-text-secondary leading-relaxed">Punctuation includes standard marks like periods,
+                        commas, question marks, and quotation marks. Special characters include mathematical operators
+                        (+, -, ×), currency symbols ($, €, £), brackets, and technical symbols like @, #, %, &.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How is average word length calculated?</h3>
+                    <p class="text-text-secondary leading-relaxed">Average word length divides the total non-whitespace
+                        characters by the number of words. This character density metric helps analyze text complexity
+                        and readability - shorter averages indicate simpler text.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How are emojis and Unicode characters
+                        counted?</h3>
+                    <p class="text-text-secondary leading-relaxed">Emojis count as special characters and may use
+                        multiple Unicode code points. Our tool accurately handles all Unicode characters including
+                        accented letters, foreign scripts, and complex emojis across different languages and writing
+                        systems.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">When is 'Y' counted as a vowel versus
+                        consonant?</h3>
+                    <p class="text-text-secondary leading-relaxed">Y is counted as a vowel when it makes a vowel sound
+                        (like in "gym," "my," or "happy") and as a consonant when it makes a consonant sound (like in
+                        "yes" or "beyond"). Our tool follows standard English linguistic rules.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between ASCII and
+                        non-ASCII characters?</h3>
+                    <p class="text-text-secondary leading-relaxed">ASCII characters include basic English letters,
+                        numbers, and common symbols (codes 0-127). Non-ASCII characters include accented letters (é, ñ),
+                        foreign alphabets (中文, العربية), emojis, and extended Unicode symbols.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">Can I use this character counter for any
+                        language?</h3>
+                    <p class="text-text-secondary leading-relaxed">Yes! Our character counter works with all languages
+                        and writing systems including English, Spanish, Chinese, Arabic, Japanese, Russian, and more. It
+                        properly handles Unicode characters, right-to-left text, and complex scripts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-primary-50 rounded-xl p-8 text-center max-w-container-md mx-auto mb-8">
+            <h2 class="text-xl font-semibold text-text-primary mb-4">Need More Text Analysis Tools?</h2>
+            <p class="text-text-secondary mb-6 leading-relaxed">
+                Get comprehensive text analysis including word count, readability scores, and detailed statistics with
+                our complete text analysis tool.
+            </p>
+            <a href="/"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Try Full Text Analyzer
+            </a>
         </section>
     </main>
 

@@ -22,6 +22,10 @@ class CharacterCounter {
             'linebreaks-count',
             'punctuation-count',
             'emoji-count',
+            'vowels-count',
+            'consonants-count',
+            'ascii-count',
+            'non-ascii-count',
         ];
 
         this.elements = {};
@@ -135,6 +139,10 @@ class CharacterCounter {
             this.showLinebreaksCount(text);
             this.showPunctuationCount(text);
             this.showEmojiCount(text);
+            this.showVowelsCount(text);
+            this.showConsonantsCount(text);
+            this.showAsciiCount(text);
+            this.showNonAsciiCount(text);
         } catch (e) {
             console.error('Error handling input:', e);
         }
@@ -436,6 +444,54 @@ class CharacterCounter {
         if (emojiCountElement) {
             const count = window.textProcessor.getEmojiCharCount(text);
            emojiCountElement.textContent = count.toLocaleString();
+        }
+    }
+
+    /**
+     * Show the vowel character count for the given text.
+     *
+     * @param {*} text
+     */
+    showVowelsCount(text) {
+        const vowelsCountElement = this.getElement('vowels-count');
+        if (vowelsCountElement) {
+            vowelsCountElement.textContent = window.textProcessor.getVowelCharCount(text).toLocaleString();
+        }
+    }
+
+    /**     
+     * Show the consonant character count for the given text.
+     *
+     * @param {*} text
+     */
+    showConsonantsCount(text) {
+        const consonantsCountElement = this.getElement('consonants-count');
+        if (consonantsCountElement) {
+            consonantsCountElement.textContent = window.textProcessor.getConsonantCharCount(text).toLocaleString();
+        }
+    }
+
+    /**
+     * Show the ASCII character count for the given text.
+     *
+     * @param {*} text
+     */
+    showAsciiCount(text) {  
+        const asciiCountElement = this.getElement('ascii-count');
+        if (asciiCountElement) {
+            asciiCountElement.textContent = window.textProcessor.getAsciiCharCount(text).toLocaleString();
+        }
+    }
+
+    /**
+     * Show the non-ASCII character count for the given text.
+     *
+     * @param {*} text
+     */
+    showNonAsciiCount(text) {   
+        const nonAsciiCountElement = this.getElement('non-ascii-count');
+        if (nonAsciiCountElement) {
+            nonAsciiCountElement.textContent = window.textProcessor.getNonAsciiCharCount(text).toLocaleString();
         }
     }
 }

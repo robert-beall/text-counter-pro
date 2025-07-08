@@ -15,14 +15,16 @@ export const getCharCount = (text) => text.length;
 export const getCharCountNoSpaces = (text) => text.replace(/\s/g, "").length;
 
 /**
- * Count special characters in the passed text string.
+ * Count special characters in the passed text string, excluding letters, numbers, spaces, and punctuation.
  *
  * @param {*} text - string
  * @returns number
  */
 export const getSpecialCharCount = (text) => {
-  // Count digits, punctuation, and symbols (excluding letters and whitespace)
-  return (text.match(/[^a-zA-Z\s]/g) || []).length;
+  // Exclude letters, numbers, spaces, and common punctuation
+  // Match any character that is NOT a letter, digit, whitespace, or punctuation
+  // Punctuation: . , ; : ! ? ' " ( ) [ ] { } - _
+  return (text.match(/[^a-zA-Z0-9\s.,;:!?'"()[\]{}\-_]/g) || []).length;
 }
 
 /** 
@@ -132,6 +134,58 @@ export const getPunctuationCharCount = (text) => {
 export const getEmojiCharCount = (text) => {
   // Count emoji characters using Unicode ranges
   return (text.match(/[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F018}-\u{1F270}]|[^\w\s.,!?;:'"()\-_]/gu) || []).length;
+}
+
+/**
+ * Get the number of vowel characters in the passed text string.
+ *
+ * @param {*} text - string
+ * @returns number
+ */
+export const getVowelCharCount = (text) => {
+  // Count vowels (both uppercase and lowercase)
+  // Count vowels (A, E, I, O, U, and Y/y when used as a vowel)
+  // Treat 'y' as a vowel when it is not at the start of a word and is surrounded by non-vowels
+  const matches = text.match(/[aeiouAEIOU]/g) || [];
+  // Match 'y' or 'Y' as a vowel: not at the start of a word and not surrounded by vowels
+  const yMatches = text.match(/(?<!\b)[yY](?![aeiouAEIOU])/g) || [];
+  return matches.length + yMatches.length;
+}
+
+/**
+ * Get the number of consonant characters in the passed text string.
+ * @param {*} text - string
+ * @returns number
+ */
+export const getConsonantCharCount = (text) => {
+  // Count consonants (both uppercase and lowercase), including 'Y'/'y' only when used as a consonant
+  // 'Y' is a consonant when at the start of a word or when surrounded by vowels
+  // First, count all consonant letters except 'Y'/'y'
+  const consonantMatches = text.match(/[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]/g) || [];
+  // Now, count 'Y'/'y' as consonant: at the start of a word or after a vowel
+  const yConsonantMatches = text.match(/\b[yY]|[aeiouAEIOU][yY]/g) || [];
+  return consonantMatches.length + yConsonantMatches.length;
+}
+
+/**
+ * Get the number of ASCII characters in the passed text string.
+ * @param {*} text - string
+ * @returns number
+ */
+export const getAsciiCharCount = (text) => {
+  // Count ASCII characters (0-127)
+  return (text.match(/[\x00-\x7F]/g) || []).length;
+}
+
+/**  
+ * Get the number of non-ASCII characters in the passed text string.
+ * Non-ASCII characters are those with a code point of 128 or higher.
+ * @param {*} text - string
+ * @returns number
+ */
+export const getNonAsciiCharCount = (text) => {
+  // Count non-ASCII characters (128 and above)
+  return (text.match(/[^\x00-\x7F]/g) || []).length;
 }
 
 /**
