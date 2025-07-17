@@ -566,3 +566,148 @@ const shouldEndSentence = (sentence, abbreviations) => {
 const isJustPunctuation = (str) => {
   return /^[.!?…\s]+$/.test(str);
 };
+
+export const getPassiveVoicePercentage = (text) => {
+  if (!text || typeof text !== 'string') return 0;
+  
+  const sentences = getSentences(text);
+  if (sentences.length === 0) return 0;
+  
+  let passiveCount = 0;
+  
+  // Common auxiliary verbs used in passive voice
+  const auxiliaryVerbs = [
+    'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+    'have been', 'has been', 'had been', 'will be', 'would be',
+    'can be', 'could be', 'may be', 'might be', 'must be',
+    'should be', 'shall be', 'ought to be'
+  ];
+  
+  // Common past participle endings for regular verbs
+  const pastParticipleEndings = ['ed', 'en', 'ne', 'wn', 'nt'];
+  
+  // Irregular past participles (common ones)
+  const irregularPastParticiples = [
+    'done', 'gone', 'taken', 'given', 'seen', 'known', 'shown',
+    'written', 'spoken', 'broken', 'chosen', 'frozen', 'stolen',
+    'beaten', 'eaten', 'fallen', 'forgotten', 'hidden', 'ridden',
+    'risen', 'driven', 'thrown', 'grown', 'blown', 'flown',
+    'drawn', 'worn', 'torn', 'born', 'sworn', 'cut', 'hit',
+    'put', 'shut', 'hurt', 'set', 'let', 'bet', 'cost',
+    'burst', 'cast', 'split', 'spread', 'read', 'led', 'fed',
+    'held', 'told', 'sold', 'built', 'sent', 'spent', 'lent',
+    'bent', 'kept', 'slept', 'wept', 'swept', 'felt', 'dealt',
+    'meant', 'learnt', 'burnt', 'heard', 'made', 'paid', 'laid',
+    'said', 'stood', 'understood', 'found', 'bound', 'wound',
+    'hung', 'sung', 'rung', 'won', 'run', 'begun', 'come',
+    'become', 'overcome', 'brought', 'bought', 'thought',
+    'fought', 'caught', 'taught', 'sought', 'wrought'
+  ];
+  
+  sentences.forEach(sentence => {
+    const words = getWords(sentence.toLowerCase());
+    if (words.length < 2) return;
+    
+    let hasAuxiliary = false;
+    let auxiliaryIndex = -1;
+    
+    // Check for auxiliary verbs
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      
+      // Check single word auxiliaries
+      if (auxiliaryVerbs.includes(word)) {
+        hasAuxiliary = true;
+        auxiliaryIndex = i;
+        break;
+      }
+      
+      // Check multi-word auxiliaries
+      if (i < words.length - 1) {
+        const twoWords = `${word} ${words[i + 1]}`;
+        if (auxiliaryVerbs.includes(twoWords)) {
+          hasAuxiliary = true;
+          auxiliaryIndex = i;
+          break;
+        }
+      }
+      
+      if (i < words.length - 2) {
+        const threeWords = `${word} ${words[i + 1]} ${words[i + 2]}`;
+        if (auxiliaryVerbs.includes(threeWords)) {
+          hasAuxiliary = true;
+          auxiliaryIndex = i;
+          break;
+        }
+      }
+    }
+    
+    if (!hasAuxiliary) return;
+    
+    // Look for past participle after auxiliary verb
+    let hasPastParticiple = false;
+    
+    for (let i = auxiliaryIndex + 1; i < words.length; i++) {
+      const word = words[i];
+      
+      // Skip adverbs and common words that might appear between auxiliary and participle
+      if (['not', 'never', 'always', 'often', 'usually', 'sometimes', 
+           'frequently', 'rarely', 'seldom', 'already', 'still', 'just',
+           'recently', 'finally', 'completely', 'totally', 'fully',
+           'partially', 'briefly', 'quickly', 'slowly', 'carefully',
+           'properly', 'correctly', 'incorrectly', 'well', 'badly'].includes(word)) {
+        continue;
+      }
+      
+      // Check if word is a past participle
+      if (irregularPastParticiples.includes(word)) {
+        hasPastParticiple = true;
+        break;
+      }
+      
+      // Check for regular past participle endings
+      for (const ending of pastParticipleEndings) {
+        if (word.endsWith(ending) && word.length > ending.length) {
+          // Additional check to avoid false positives
+          if (ending === 'ed' && word.length > 3) {
+            hasPastParticiple = true;
+            break;
+          } else if (ending !== 'ed' && word.length > 2) {
+            hasPastParticiple = true;
+            break;
+          }
+        }
+      }
+      
+      if (hasPastParticiple) break;
+      
+      // If we hit a verb that's not a past participle, it's likely not passive
+      if (word.match(/^(to|will|would|can|could|may|might|must|should|shall)$/)) {
+        break;
+      }
+      
+      // Stop searching after a reasonable distance
+      if (i - auxiliaryIndex > 5) break;
+    }
+    
+    if (hasPastParticiple) {
+      passiveCount++;
+    }
+  });
+  
+  // Calculate percentage
+  const percentage = (passiveCount / sentences.length) * 100;
+  return Math.round(percentage * 100) / 100; // Round to 2 decimal places
+};
+
+export const getPassiveVoiceDescription = (text) => {
+  const percentage = getPassiveVoicePercentage(text);
+  
+  if (percentage === 0) return "Not Passive";
+  if (percentage <= 5) return "Minimal Passivity";
+  if (percentage <= 10) return "Low Passivity";
+  if (percentage <= 15) return "Moderate Passivity";
+  if (percentage <= 25) return "High Passivity";
+  if (percentage <= 35) return "Very High Passivity";
+  return "Excessive Passivity";
+};
