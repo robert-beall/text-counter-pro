@@ -378,7 +378,9 @@
                         <div id="flesch-context-description">
                             <p id="flesch-explanation" class="text-sm text-text-secondary leading-relaxed"
                                 aria-live="polite" role="status">
-                                Enter your text above to instantly analyze reading difficulty, improve content accessibility, and optimize readability scores for better SEO performance and user engagement.
+                                Enter your text above to instantly analyze reading difficulty, improve content
+                                accessibility, and optimize readability scores for better SEO performance and user
+                                engagement.
                             </p>
                         </div>
                     </div>
@@ -440,6 +442,89 @@
             </div>
         </section>
 
+        <!-- Readability FAQ Section -->
+        <section aria-labelledby="readability-faq-heading" class="max-w-container-lg mx-auto mb-12 px-6">
+            <h2 id="readability-faq-heading"
+                class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight">
+                Readability Analysis Questions
+            </h2>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What is Flesch Reading Ease and how is it
+                        scored?</h3>
+                    <p class="text-text-secondary leading-relaxed">Flesch Reading Ease scores text from 0-100 based on
+                        sentence length and syllable count. Higher scores mean easier reading: 90-100 (very easy), 80-89
+                        (easy), 70-79 (fairly easy), 60-69 (standard), 50-59 (fairly difficult), 30-49 (difficult), 0-29
+                        (very difficult). Most web content should aim for 60+ for broad accessibility.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How does Flesch-Kinkaid Grade Level work?
+                    </h3>
+                    <p class="text-text-secondary leading-relaxed">Flesch-Kinkaid Grade Level estimates the U.S. school
+                        grade needed to understand your text. It uses average sentence length and syllables per word to
+                        calculate reading difficulty. A score of 8.0 means 8th-grade reading level. Most websites target
+                        6th-8th grade level for maximum audience reach and SEO benefits.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What is text passivity percentage and why
+                        does it matter?</h3>
+                    <p class="text-text-secondary leading-relaxed">Text passivity percentage measures how often you use
+                        passive voice (like "mistakes were made" vs "we made mistakes"). Our tool analyzes sentences for
+                        auxiliary verbs (is, was, been) followed by past participles. Lower percentages indicate more
+                        direct, engaging writing that performs better for SEO and user engagement.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What's a good readability score for
+                        websites and blogs?</h3>
+                    <p class="text-text-secondary leading-relaxed">For web content, aim for Flesch Reading Ease scores
+                        of 60-70, Flesch-Kinkaid Grade Level of 6-8, and passive voice under 10%. These ranges ensure
+                        your content is accessible to most readers while maintaining professional quality. Better
+                        readability often correlates with higher search engine rankings and user engagement.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How do readability scores affect SEO
+                        performance?</h3>
+                    <p class="text-text-secondary leading-relaxed">Search engines favor content that's easy to read and
+                        understand. Clear, readable text with appropriate grade levels increases dwell time, reduces
+                        bounce rates, and improves user signals. Google's algorithms consider readability as a ranking
+                        factor, especially for featured snippets and voice search results.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">Why should I reduce passive voice in my
+                        writing?</h3>
+                    <p class="text-text-secondary leading-relaxed">Active voice makes writing more direct, engaging, and
+                        easier to understand. It creates stronger sentences, improves clarity, and keeps readers
+                        interested. High passive voice percentages can make content feel wordy or evasive. Most style
+                        guides recommend keeping passive voice under 5-10% for professional writing.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How accurate are automated readability
+                        formulas?</h3>
+                    <p class="text-text-secondary leading-relaxed">Readability formulas provide reliable estimates but
+                        aren't perfect. They analyze surface features like sentence length and syllables but can't
+                        assess content complexity, technical terminology, or reader background knowledge. Use them as
+                        helpful guidelines while considering your specific audience and content type.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">Can I use this readability checker for
+                        academic or technical writing?</h3>
+                    <p class="text-text-secondary leading-relaxed">Yes, but interpret results differently for
+                        specialized content. Academic papers naturally score higher grade levels due to technical
+                        vocabulary and complex concepts. Focus on improving sentence structure and reducing unnecessary
+                        passive voice while maintaining accuracy. Even technical writing benefits from clarity and
+                        conciseness.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
         <section class="bg-primary-50 rounded-xl p-8 text-center max-w-container-md mx-auto mb-8">
             <h2 class="text-xl font-semibold text-text-primary mb-4">Need More Text Analysis Tools?</h2>
@@ -462,7 +547,8 @@
         class="flex align-center gap-2 bg-primary text-white border-none font-semibold cursor-pointer shadow-custom-blue transition-all duration-300 ease-out translate-y-0 fixed bottom-3 right-3 w-[36px] h-[36px] p-2 rounded-full md:rounded-3xl justify-center md:bottom-4 md:right-4 md:py-2 md:px-3 md:text-xs md:w-auto md:h-auto lg:bottom-6 lg:right-6 z-[100] lg:py-3 lg:pb-4 lg:text-sm animate-subtle-pulse hover:bg-primary-dark hover:shadow-custom-dark-blue hover:-translate-y-0.5 active:-translate-y-[1px] motion-reduce:animate-none motion-reduce:transition-none contrast-more:border-2 contrast-more:border-white"
         aria-label="Scroll to Detailed Analysis">
         <span
-            class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">Additional Context</span>
+            class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">Additional
+            Context</span>
         <svg class="shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none" width="20"
             height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
