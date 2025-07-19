@@ -604,8 +604,12 @@ export const getPassiveVoicePercentage = (text) => {
     'fought', 'caught', 'taught', 'sought', 'wrought'
   ];
   
+  const cleanWord = (word) => {
+    return word.replace(/[^\w]/g, '').toLowerCase();
+  };
+  
   sentences.forEach(sentence => {
-    const words = getWords(sentence.toLowerCase());
+    const words = getWords(sentence.toLowerCase()).map(cleanWord).filter(w => w.length > 0);
     if (words.length < 2) return;
     
     let hasAuxiliary = false;
@@ -710,4 +714,34 @@ export const getPassiveVoiceDescription = (text) => {
   if (percentage <= 25) return "High Passivity";
   if (percentage <= 35) return "Very High Passivity";
   return "Excessive Passivity";
+};
+
+export const getPassiveVoiceExtendedDescription = (text) => {
+  const percentage = getPassiveVoicePercentage(text);
+  
+  if (percentage === 0) {
+    return "This text contains no passive voice constructions, demonstrating excellent active voice usage. Active voice creates direct, clear sentences where the subject performs the action, making your writing more engaging and easier to follow. This approach helps readers immediately understand who is responsible for each action, creating stronger, more confident prose.";
+  }
+  
+  if (percentage <= 5) {
+    return "This text uses passive voice very sparingly, which represents optimal writing practice. With minimal passive voice usage, your writing maintains strong clarity and directness while occasionally using passive constructions where they serve a specific purpose. This balance creates engaging, readable content that keeps readers focused on the action and actors involved.";
+  }
+  
+  if (percentage <= 10) {
+    return "This text demonstrates good passive voice control with low usage that supports readability. Active voice dominates your writing, creating clear, direct sentences that engage readers effectively. The occasional passive voice likely serves specific purposes, such as emphasizing the action over the actor or maintaining flow between sentences. This level maintains strong reader engagement.";
+  }
+  
+  if (percentage <= 15) {
+    return "This text shows moderate passive voice usage that begins to impact readability. While still within acceptable ranges for most writing contexts, you may want to review passive constructions to ensure they serve specific purposes. Converting some passive sentences to active voice would create more direct, engaging prose and help readers more easily identify who is performing each action.";
+  }
+  
+  if (percentage <= 25) {
+    return "This text contains high levels of passive voice that likely reduce readability and reader engagement. Passive constructions can make writing feel indirect, wordy, and sometimes unclear about who is responsible for actions. Consider revising many of these passive sentences to active voice to create stronger, more direct communication that better connects with your audience.";
+  }
+  
+  if (percentage <= 35) {
+    return "This text exhibits very high passive voice usage that significantly impacts clarity and engagement. Excessive passive voice creates distance between readers and the content, often making writing feel academic, indirect, or evasive. Substantial revision toward active voice would dramatically improve readability, making your writing more compelling and easier to understand.";
+  }
+  
+  return "This text contains excessive passive voice that severely hampers readability and engagement. Such heavy reliance on passive constructions creates wordy, indirect prose that obscures responsibility and action. Readers may struggle to follow your meaning and lose interest due to the indirect style. Comprehensive revision focusing on active voice construction would transform this text into clear, engaging communication.";
 };

@@ -4,6 +4,7 @@ class ScrollNavigation {
     this.button = document.getElementById("scroll-nav-btn");
     this.svg = this.button.querySelector("svg");
     this.textElement = this.button.querySelector(".scroll-nav-text");
+    this.originalText = this.textElement.textContent;
 
     // Target the specific heading elements
     this.detailedStatsHeading = document.getElementById(
@@ -118,7 +119,7 @@ class ScrollNavigation {
 
   updateButtonState() {
     if (this.isScrollingDown) {
-      this.textElement.textContent = "Detailed Analysis";
+      this.textElement.textContent = this.originalText;
       this.button.setAttribute(
         "aria-label",
         "Scroll to detailed analysis section"
