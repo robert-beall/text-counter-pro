@@ -108,7 +108,7 @@
         window.textReadability = textReadability;
     </script>
     <script src="../scripts/scroll-nav.js"></script>
-    <script src="../scripts/character-counter.js" defer></script>
+    <script src="../scripts/word-counter.js" defer></script>
 </head>
 
 <body class="font-primary bg-background text-primary leading-normal scroll-smooth">
@@ -255,7 +255,8 @@
             class="text-center py-4 px-6 md:pt-2 md:px-4 md:pb-4 max-w-container-md my-0 mx-auto">
             <h1 id="hero-heading" class="text-2xl font-bold text-text-primary mb-2 tracking-[-0.025em]" tabindex="-1">
                 Word Counter - Text Analysis & Writing Statistics</h1>
-            <p class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto">
+            <p
+                class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto hidden md:block">
                 Paste your text below to instantly count words, analyze frequency, and get detailed writing statistics.
             </p>
         </section>
@@ -301,7 +302,7 @@
                                     class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Most
                                     Common<br>Word*</span>
                                 <span class="!leading-none text-xl lg:text-lg font-bold text-primary"
-                                    id="most-common-word" aria-label="Most common meaningful word">0</span>
+                                    id="most-common-word" aria-label="Most common meaningful word">N/A</span>
                             </div>
                         </div>
 
@@ -365,314 +366,110 @@
                     class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight" tabindex="-1">
                     Detailed
                     Analysis</h2>
-                <!-- Social Media Snippets Section -->
+
+                <!-- Word Analysis Section -->
                 <section class="w-full max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <!-- Section Header -->
-                    <div class="mb-8">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg">
-                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
-                                </svg>
-                            </div>
-                            <h2 class="text-xl font-semibold text-text-primary">Social Media Limits</h2>
-                        </div>
-                        <div class="h-px bg-gradient-to-r from-border via-primary-200 to-border"></div>
-                    </div>
-
-                    <!-- Cards Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Twitter/X Card -->
-                        <article
-                            class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 text-left"
-                            role="region" aria-labelledby="twitter-heading" itemscope
-                            itemtype="https://schema.org/SocialMediaPosting" data-testid="twitter-snippet">
-
-                            <header class="mb-4">
-                                <h3 id="twitter-heading"
-                                    class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
-                                    itemprop="name">
-                                    🐦 Twitter/X
-                                </h3>
-                            </header>
-
-                            <div class="mb-4">
-                                <div id="twitter-snippet" class="text-3xl font-bold text-primary-600 mb-3"
-                                    aria-live="polite" aria-atomic="true" role="status"
-                                    aria-describedby="twitter-description">
-                                    <span id="twitter-char-count">280</span> <span
-                                        class="text-base text-text-secondary">/
-                                        280</span>
-                                </div>
-
-                                <p id="twitter-description" class="text-sm text-text-secondary leading-relaxed">
-                                    Optimize your post for Twitter/X's 280-character limit. Perfect for quick updates
-                                    and
-                                    engaging content.
-                                </p>
-                            </div>
-                        </article>
-
-                        <!-- Instagram Card -->
-                        <article
-                            class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 text-left"
-                            role="region" aria-labelledby="instagram-heading" itemscope
-                            itemtype="https://schema.org/SocialMediaPosting" data-testid="instagram-snippet">
-
-                            <header class="mb-4">
-                                <h3 id="instagram-heading"
-                                    class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
-                                    itemprop="name">
-                                    📸 Instagram
-                                </h3>
-                            </header>
-
-                            <div class="mb-4">
-                                <div id="instagram-snippet" class="text-3xl font-bold text-primary-600 mb-3"
-                                    aria-live="polite" aria-atomic="true" role="status"
-                                    aria-describedby="instagram-description">
-                                    <span id="instagram-char-count">2,200</span> <span
-                                        class="text-base text-text-secondary">/ 2,200</span>
-                                </div>
-
-                                <p id="instagram-description" class="text-sm text-text-secondary leading-relaxed">
-                                    Craft engaging Instagram captions up to 2,200 characters. Great for storytelling and
-                                    building community.
-                                </p>
-                            </div>
-                        </article>
-
-                        <!-- Facebook Card -->
-                        <article
-                            class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 text-left"
-                            role="region" aria-labelledby="facebook-heading" itemscope
-                            itemtype="https://schema.org/SocialMediaPosting" data-testid="facebook-snippet">
-
-                            <header class="mb-4">
-                                <h3 id="facebook-heading"
-                                    class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
-                                    itemprop="name">
-                                    📘 Facebook
-                                </h3>
-                            </header>
-
-                            <div class="mb-4">
-                                <div id="facebook-snippet" class="text-3xl font-bold text-primary-600 mb-3"
-                                    aria-live="polite" aria-atomic="true" role="status"
-                                    aria-describedby="facebook-description">
-                                    <span id="facebook-char-count">63,206</span> <span
-                                        class="text-base text-text-secondary">/ 63,206</span>
-                                </div>
-
-                                <p id="facebook-description" class="text-sm text-text-secondary leading-relaxed">
-                                    Share longer-form content on Facebook. Ideal for detailed updates, articles, and
-                                    community discussions.
-                                </p>
-                            </div>
-                        </article>
-
-                        <!-- LinkedIn Card -->
-                        <article
-                            class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 text-left"
-                            role="region" aria-labelledby="linkedin-heading" itemscope
-                            itemtype="https://schema.org/SocialMediaPosting" data-testid="linkedin-snippet">
-
-                            <header class="mb-4">
-                                <h3 id="linkedin-heading"
-                                    class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
-                                    itemprop="name">
-                                    💼 LinkedIn
-                                </h3>
-                            </header>
-
-                            <div class="mb-4">
-                                <div id="linkedin-snippet" class="text-3xl font-bold text-primary-600 mb-3"
-                                    aria-live="polite" aria-atomic="true" role="status"
-                                    aria-describedby="linkedin-description">
-                                    <span id="linkedin-char-count">3,000</span> <span
-                                        class="text-base text-text-secondary">/ 3,000</span>
-                                </div>
-
-                                <p id="linkedin-description" class="text-sm text-text-secondary leading-relaxed">
-                                    Professional networking posts up to 3,000 characters. Perfect for thought leadership
-                                    and
-                                    industry insights.
-                                </p>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-                <!-- Character Breakdown Section -->
-                <section class="w-full max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <!-- Section Header -->
-                    <div class="mb-8">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg">
-                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                            </div>
-                            <h2 class="text-xl font-semibold text-text-primary">Character Breakdown</h2>
-                        </div>
-                        <div class="h-px bg-gradient-to-r from-border via-primary-200 to-border"></div>
-                    </div>
-
                     <!-- Stats Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                        <!-- Letters Card -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                        <!-- Unique Words Card -->
                         <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="letters-heading" data-testid="letters-breakdown">
+                            role="region" aria-labelledby="unique-words-heading" data-testid="unique-words-breakdown">
                             <div class="mb-3">
-                                <h3 id="letters-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    📝 Letters
-                                </h3>
-                                <div class="text-2xl font-bold text-primary-600 mb-1" aria-live="polite">
-                                    <span id="letters-count">0</span>
-                                </div>
-                            </div>
-                            <div class="space-y-1">
-                                <div class="flex justify-between text-xs text-text-secondary">
-                                    <span>Uppercase:</span>
-                                    <span id="uppercase-count" class="font-medium">0</span>
-                                </div>
-                                <div class="flex justify-between text-xs text-text-secondary">
-                                    <span>Lowercase:</span>
-                                    <span id="lowercase-count" class="font-medium">0</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Numbers Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="numbers-heading" data-testid="numbers-breakdown">
-                            <div class="mb-3">
-                                <h3 id="numbers-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    🔢 Numbers
+                                <h3 id="unique-words-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                    🔤 Unique Words
                                 </h3>
                                 <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="numbers-count">0</span>
+                                    <span id="unique-words-count">0</span>
                                 </div>
                             </div>
                             <p class="text-xs text-text-secondary">
-                                Digits 0-9
+                                Total distinct words used
                             </p>
                         </div>
 
-                        <!-- Whitespace Card -->
+                        <!-- Longest Word Card -->
                         <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="whitespace-heading" data-testid="whitespace-breakdown">
+                            role="region" aria-labelledby="longest-word-heading" data-testid="longest-word-breakdown">
                             <div class="mb-3">
-                                <h3 id="whitespace-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    ⬜ Whitespace
+                                <h3 id="longest-word-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                    📏 Longest Word
                                 </h3>
-                                <div class="text-2xl font-bold text-primary-600 mb-1" aria-live="polite">
-                                    <span id="whitespace-count">0</span>
+                                <div class="text-lg font-bold text-primary-600 mb-1 break-all" aria-live="polite">
+                                    <span id="longest-word">-</span>
                                 </div>
-                            </div>
-                            <div class="space-y-1">
-                                <div class="flex justify-between text-xs text-text-secondary">
-                                    <span>Spaces:</span>
-                                    <span id="spaces-count" class="font-medium">0</span>
-                                </div>
-                                <div class="flex justify-between text-xs text-text-secondary">
-                                    <span>Tabs:</span>
-                                    <span id="tabs-count" class="font-medium">0</span>
-                                </div>
-                                <div class="flex justify-between text-xs text-text-secondary">
-                                    <span>Line breaks:</span>
-                                    <span id="linebreaks-count" class="font-medium">0</span>
+                                <div class="text-xs text-text-secondary">
+                                    <span id="longest-word-length">0</span> characters
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Punctuation Card -->
+                        <!-- Shortest Word Card -->
                         <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="special-char-heading" data-testid="special-char-breakdown">
+                            role="region" aria-labelledby="shortest-word-heading" data-testid="shortest-word-breakdown">
                             <div class="mb-3">
-                                <h3 id="punctuation-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    ✳️ Special Characters
+                                <h3 id="shortest-word-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                    📐 Shortest Word
+                                </h3>
+                                <div class="text-lg font-bold text-primary-600 mb-1" aria-live="polite">
+                                    <span id="shortest-word">-</span>
+                                </div>
+                                <div class="text-xs text-text-secondary">
+                                    <span id="shortest-word-length">0</span> characters
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Average Words per Sentence Card -->
+                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
+                            role="region" aria-labelledby="avg-words-sentence-heading"
+                            data-testid="avg-words-sentence-breakdown">
+                            <div class="mb-3">
+                                <h3 id="avg-words-sentence-heading"
+                                    class="text-sm font-semibold text-text-primary mb-2">
+                                    📊 Avg Words/Sentence
                                 </h3>
                                 <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="special-char-count">0</span>
+                                    <span id="avg-words-per-sentence">0</span>
                                 </div>
                             </div>
                             <p class="text-xs text-text-secondary">
-                                mathematical operators, currency symbols, brackets, and other non-punctuation symbols
-                                like
-                                @, #, $, %, &, etc.
+                                Average sentence length
                             </p>
                         </div>
 
-                        <!-- Special Characters Card -->
+                        <!-- Paragraph Count Card -->
                         <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="emoji-heading" data-testid="emoji-breakdown">
+                            role="region" aria-labelledby="paragraph-count-heading"
+                            data-testid="paragraph-count-breakdown">
                             <div class="mb-3">
-                                <h3 id="emoji-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    🙂 Emojis and Special Characters
+                                <h3 id="paragraph-count-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                    📝 Paragraphs
                                 </h3>
                                 <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="emoji-count">0</span>
+                                    <span id="paragraph-count">0</span>
                                 </div>
                             </div>
                             <p class="text-xs text-text-secondary">
-                                Emojis and special characters
+                                Total paragraph count
                             </p>
                         </div>
 
-                        <!-- Vowels Card -->
+                        <!-- Average Sentences per Paragraph Card -->
                         <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="vowels-heading" data-testid="vowels-breakdown">
+                            role="region" aria-labelledby="avg-sentences-paragraph-heading"
+                            data-testid="avg-sentences-paragraph-breakdown">
                             <div class="mb-3">
-                                <h3 id="vowels-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    🔤 Vowels
+                                <h3 id="avg-sentences-paragraph-heading"
+                                    class="text-sm font-semibold text-text-primary mb-2">
+                                    📈 Avg Sentences/Paragraph
                                 </h3>
                                 <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="vowels-count">0</span>
+                                    <span id="avg-sentences-per-paragraph">0</span>
                                 </div>
                             </div>
                             <p class="text-xs text-text-secondary">
-                                A, E, I, O, U (and Y)
+                                Average paragraph length
                             </p>
-                        </div>
-
-                        <!-- Consonants Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="consonants-heading" data-testid="consonants-breakdown">
-                            <div class="mb-3">
-                                <h3 id="consonants-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    🔠 Consonants
-                                </h3>
-                                <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="consonants-count">0</span>
-                                </div>
-                            </div>
-                            <p class="text-xs text-text-secondary">
-                                All other letters
-                            </p>
-                        </div>
-
-                        <!-- Unicode Categories Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="unicode-heading" data-testid="unicode-breakdown">
-                            <div class="mb-3">
-                                <h3 id="unicode-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    🌐 Unicode
-                                </h3>
-                            </div>
-                            <div class="space-y-1">
-                                <div class="flex justify-between text-xs text-text-secondary">
-                                    <span>ASCII:</span>
-                                    <span id="ascii-count" class="font-medium">0</span>
-                                </div>
-                                <div class="flex justify-between text-xs text-text-secondary">
-                                    <span>Non-ASCII:</span>
-                                    <span id="non-ascii-count" class="font-medium">0</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -686,87 +483,78 @@
 
                 <div class="grid gap-6 md:grid-cols-2">
                     <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between total
-                            characters and characters without spaces?</h3>
-                        <p class="text-text-secondary leading-relaxed">Total character count includes everything:
-                            letters,
-                            numbers, punctuation, spaces, tabs, and line breaks. Character count without spaces excludes
-                            all
-                            whitespace, showing only visible content like letters, numbers, and symbols.</p>
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">How does the word counter determine
+                            word count?</h3>
+                        <p class="text-text-secondary leading-relaxed">Words are counted by splitting text on whitespace
+                            and punctuation. Contractions like "don't" count as one word, while hyphenated words like
+                            "mother-in-law" are typically counted as separate words. Numbers and symbols are included in
+                            the count.</p>
                     </div>
 
                     <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How do social media character limits
-                            work?
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">What is average word length and why
+                            does it matter?</h3>
+                        <p class="text-text-secondary leading-relaxed">Average word length divides total letters by word
+                            count, excluding spaces and punctuation. It's a key readability indicator - shorter averages
+                            (3-4 letters) suggest simpler text, while longer averages (6+ letters) indicate more complex
+                            vocabulary.</p>
+                    </div>
+
+                    <div class="bg-surface border border-border rounded-xl p-6">
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">How are sentences counted and
+                            identified?</h3>
+                        <p class="text-text-secondary leading-relaxed">Sentences are identified by terminal punctuation
+                            marks: periods, question marks, and exclamation points. Abbreviations like "Dr." or "U.S.A."
+                            are handled intelligently to avoid false sentence breaks. Empty lines don't count as
+                            sentences.</p>
+                    </div>
+
+                    <div class="bg-surface border border-border rounded-xl p-6">
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">How is the most common word determined?
                         </h3>
-                        <p class="text-text-secondary leading-relaxed">Our tool shows remaining characters for major
-                            platforms: Twitter/X (280), Instagram captions (2,200), Facebook posts (63,206), and
-                            LinkedIn
-                            posts (3,000). It automatically updates as you type to show how much space you have left.
-                        </p>
+                        <p class="text-text-secondary leading-relaxed">The tool counts frequency of each unique word,
+                            ignoring case differences ("The" and "the" are the same). Common stop words like "the,"
+                            "and," "of" typically appear most frequently. Ties are broken alphabetically or by first
+                            appearance.</p>
                     </div>
 
                     <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between
-                            punctuation
-                            and special characters?</h3>
-                        <p class="text-text-secondary leading-relaxed">Punctuation includes standard marks like periods,
-                            commas, question marks, and quotation marks. Special characters include mathematical
-                            operators
-                            (+, -, ×), currency symbols ($, €, £), brackets, and technical symbols like @, #, %, &.</p>
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between total and
+                            unique word count?</h3>
+                        <p class="text-text-secondary leading-relaxed">Total word count includes every word instance,
+                            while unique word count shows distinct words only. If "cat" appears 5 times, it adds 5 to
+                            total count but only 1 to unique count. Higher unique counts indicate richer vocabulary
+                            diversity.</p>
                     </div>
 
                     <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How is average word length calculated?
-                        </h3>
-                        <p class="text-text-secondary leading-relaxed">Average word length divides the total
-                            non-whitespace
-                            characters by the number of words. This character density metric helps analyze text
-                            complexity
-                            and readability - shorter averages indicate simpler text.</p>
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">How are longest and shortest words
+                            identified?</h3>
+                        <p class="text-text-secondary leading-relaxed">Word length is measured by character count,
+                            excluding spaces and punctuation. If multiple words tie for longest/shortest, the tool
+                            typically shows the first occurrence. Contractions count their full length including
+                            apostrophes.</p>
                     </div>
 
                     <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How are emojis and Unicode characters
-                            counted?</h3>
-                        <p class="text-text-secondary leading-relaxed">Emojis count as special characters and may use
-                            multiple Unicode code points. Our tool accurately handles all Unicode characters including
-                            accented letters, foreign scripts, and complex emojis across different languages and writing
-                            systems.</p>
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">What does average sentence length
+                            measure?</h3>
+                        <p class="text-text-secondary leading-relaxed">Average sentence length divides total word count
+                            by sentence count. It's a crucial readability metric - shorter sentences (10-15 words) are
+                            easier to read, while longer sentences (20+ words) can be more challenging and may indicate
+                            complex writing.</p>
                     </div>
 
                     <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">When is 'Y' counted as a vowel versus
-                            consonant?</h3>
-                        <p class="text-text-secondary leading-relaxed">Y is counted as a vowel when it makes a vowel
-                            sound
-                            (like in "gym," "my," or "happy") and as a consonant when it makes a consonant sound (like
-                            in
-                            "yes" or "beyond"). Our tool follows standard English linguistic rules.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between ASCII and
-                            non-ASCII characters?</h3>
-                        <p class="text-text-secondary leading-relaxed">ASCII characters include basic English letters,
-                            numbers, and common symbols (codes 0-127). Non-ASCII characters include accented letters (é,
-                            ñ),
-                            foreign alphabets (中文, العربية), emojis, and extended Unicode symbols.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">Can I use this character counter for
-                            any
-                            language?</h3>
-                        <p class="text-text-secondary leading-relaxed">Yes! Our character counter works with all
-                            languages
-                            and writing systems including English, Spanish, Chinese, Arabic, Japanese, Russian, and
-                            more. It
-                            properly handles Unicode characters, right-to-left text, and complex scripts.</p>
+                        <h3 class="text-lg font-semibold text-text-primary mb-3">How are paragraphs counted and
+                            analyzed?</h3>
+                        <p class="text-text-secondary leading-relaxed">Paragraphs are identified by double line breaks
+                            or significant whitespace gaps. The tool counts total paragraphs and calculates average
+                            sentences per paragraph, helping assess text structure and organization for better
+                            readability and flow.</p>
                     </div>
                 </div>
             </section>
-
             <!-- CTA Section -->
             <section class="bg-primary-50 rounded-xl p-8 text-center max-w-container-md mx-auto mb-8">
                 <h2 class="text-xl font-semibold text-text-primary mb-4">Need More Text Analysis Tools?</h2>
