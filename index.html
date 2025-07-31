@@ -225,8 +225,7 @@
             class="text-center py-4 px-6 md:pt-2 md:px-4 md:pb-4 max-w-container-md my-0 mx-auto">
             <h1 id="hero-heading" class="text-2xl font-bold text-text-primary mb-2 tracking-[-0.025em]" tabindex="-1">
                 Free Text Analysis Tool</h1>
-            <p
-                class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto">
+            <p class="text-base lg:text-lg text-text-secondary leading-relaxed max-w-[600px] my-0 mx-auto">
                 Count words, characters, sentences, and paragraphs instantly.</p>
         </section>
 
@@ -309,321 +308,336 @@
             </div>
         </section>
 
-        <!-- Detailed Statistics Section -->
-        <section aria-labelledby="detailed-stats-heading"
-            class="max-w-container-xl mt-0 mx-auto mb-12 py-0 px-6">
+        <!-- Navigation Cards Section -->
+        <section aria-labelledby="detailed-stats-heading" class="max-w-container-xl mt-0 mx-auto mb-12 py-0 px-6">
             <h2 id="detailed-stats-heading"
-                class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight" tabindex="-1">Detailed
-                Analysis</h2>
-            <!-- Reading Metrics Section -->
-            <section class="w-full max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <!-- Section Header -->
-                <div class="mb-8">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg">
-                            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                                </path>
-                            </svg>
-                        </div>
-                        <h2 class="text-xl font-semibold text-text-primary">Reading Metrics</h2>
-                    </div>
-                    <div class="h-px bg-gradient-to-r from-border via-primary-200 to-border"></div>
-                </div>
+                class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight" tabindex="-1">
+                Explore Text Analysis Tools
+            </h2>
 
-                <!-- Cards Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Reading Time Calculator Card -->
-                    <article
-                        class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 text-left"
-                        role="region" aria-labelledby="reading-time-heading" itemscope
-                        itemtype="https://schema.org/WebApplication" data-testid="reading-time-calculator">
+            <!-- Tools Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                        <header class="mb-4">
-                            <h3 id="reading-time-heading"
-                                class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
+                <!-- Character Counter Card -->
+                <article
+                    class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 flex flex-col h-full"
+                    role="region" aria-labelledby="character-counter-heading" itemscope
+                    itemtype="https://schema.org/WebApplication">
+
+                    <header class="mb-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors duration-200">
+                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                </svg>
+                            </div>
+                            <h3 id="character-counter-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
                                 itemprop="name">
-                                ⏱️ Reading Time
+                                Character Counter
                             </h3>
-                            <meta itemprop="applicationCategory" content="UtilityApplication">
-                            <meta itemprop="operatingSystem" content="Web Browser">
-                            <meta itemprop="description"
-                                content="Calculate reading time based on text length and adjustable reading speed in words per minute">
-                        </header>
-
-                        <div class="mb-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                            <meta itemprop="price" content="0">
-                            <meta itemprop="priceCurrency" content="USD">
-
-                            <div id="reading-time" class="text-3xl font-bold text-primary-600 mb-3" aria-live="polite"
-                                aria-atomic="true" role="status" aria-describedby="reading-time-description">
-                                <span data-testid="reading-time-display">0m 0s</span>
-                            </div>
-
-                            <p id="reading-time-description" class="text-sm text-text-secondary leading-relaxed">
-                                Estimate how long it takes to read your text. Adjust the words-per-minute setting below
-                                for a personalized calculation.
-                            </p>
-
-                            <div class="flex items-center mt-5 lg:mt-8">
-                                <label for="wpm-input" class="sr-only">
-                                    Reading speed in words per minute (WPM). Default is 250 WPM, which is average adult
-                                    reading speed.
-                                </label>
-                                <div class="relative flex items-center bg-background border border-border rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:border-primary-300 focus-within:shadow-custom-blue focus-within:border-primary overflow-hidden motion-reduce:transition-none contrast-more:border-2 contrast-more:border-text-primary"
-                                    role="group" aria-labelledby="wpm-input-label">
-
-                                    <input type="number" id="wpm-input" name="reading-speed"
-                                        class="px-3 py-2 w-20 text-center text-sm font-medium bg-transparent border-0 outline-none"
-                                        value="250" min="50" max="1000" step="25"
-                                        aria-label="Words per minute reading speed" aria-describedby="wpm-help-text"
-                                        data-testid="wpm-input" inputmode="numeric" autocomplete="off">
-
-                                    <span id="wpm-input-label"
-                                        class="px-2 py-2 text-xs font-medium text-primary-600 bg-primary-50 border-l border-border">
-                                        WPM
-                                    </span>
-                                </div>
-
-                                <div id="wpm-help-text" class="sr-only">
-                                    Enter your reading speed between 50 and 1000 words per minute. Average adult reading
-                                    speed is 200-300 WPM.
-                                </div>
-                            </div>
                         </div>
-                    </article>
+                        <meta itemprop="applicationCategory" content="TextAnalysisApplication">
+                        <meta itemprop="operatingSystem" content="Web Browser">
+                    </header>
 
-                    <!-- Flesch Reading Ease Analysis Card -->
-                    <article
-                        class="group bg-surface border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200"
-                        role="region" aria-labelledby="flesch-heading" aria-describedby="flesch-description" itemscope
-                        itemtype="https://schema.org/SoftwareApplication" data-feature="flesch-reading-ease-calculator">
+                    <div class="flex-grow mb-6" itemprop="description">
+                        <p class="text-sm text-text-secondary leading-relaxed mb-4">
+                            Analyze character statistics including total count, character density, and social media
+                            platform limits for Twitter, Instagram, and Facebook posts.
+                        </p>
 
-                        <header class="mb-4 relative">
-                            <h3 id="flesch-heading"
-                                class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200 flex items-center gap-2">
-                                <span>✨ Readability</span>
-                                <button type="button"
-                                    class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-text-muted/20 text-text-muted hover:bg-primary-100 hover:text-primary-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1"
-                                    aria-label="About readability scoring method" data-tooltip="flesch-info">
-                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Character
+                                Count</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Social
+                                Limits</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Density
+                                Analysis</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <a href="character-counter/"
+                            class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+                            aria-describedby="character-counter-heading" itemprop="url">
+                            Analyze Characters
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Subtle visual enhancement -->
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        aria-hidden="true"></div>
+                </article>
+
+                <!-- Reading Time Calculator Card -->
+                <article
+                    class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 flex flex-col h-full"
+                    role="region" aria-labelledby="reading-time-heading" itemscope
+                    itemtype="https://schema.org/WebApplication">
+
+                    <header class="mb-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors duration-200">
+                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 id="reading-time-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
+                                itemprop="name">
+                                Reading Time Calculator
                             </h3>
-
-                            <!-- Tooltip content -->
-                            <div id="flesch-info"
-                                class="absolute left-0 top-full mt-3 px-4 py-3 bg-gray-900 text-white text-sm rounded-xl shadow-xl opacity-0 invisible transition-all duration-200 z-10 max-w-sm border border-gray-700"
-                                role="tooltip" aria-hidden="true">
-                                <div class="font-medium mb-1">Flesch Reading Ease Formula</div>
-                                <div class="text-gray-200">Calculated using sentence length and syllable count to
-                                    measure text readability</div>
-                                <div
-                                    class="absolute -top-2 left-8 w-4 h-4 bg-gray-900 border-l border-t border-gray-700 rotate-45">
-                                </div>
-                            </div>
-                        </header>
-
-                        <div class="space-y-2 sm:space-y-3">
-                            <div class="flex items-baseline gap-2 sm:gap-3 justify-center">
-                                <div id="readability-score" class="text-3xl font-bold text-text-secondary mb-3"
-                                    role="status" aria-live="polite" aria-label="Flesch Reading Ease score"
-                                    itemprop="applicationSubCategory" content="Flesch Reading Ease Calculator">
-                                    0
-                                </div>
-                                <span class="text-xs font-bold sm:text-sm text-text-muted" aria-label="out of 100">
-                                    / 100
-                                </span>
-                            </div>
-
-                            <div class="min-h-[2.5rem] sm:min-h-[3rem]" id="flesch-description">
-                                <h4 class="text-base mb-1 text-text-secondary font-bold hidden" id="readability-heading"
-                                    aria-label="Reading ease level">
-                                    <!-- Populated by JS -->
-                                </h4>
-                                <p id="readability-explanation"
-                                    class="text-sm text-text-secondary leading-relaxed break-words" role="status"
-                                    aria-live="polite" aria-label="Reading ease explanation" itemprop="description">
-                                    Enter text above to get instant feedback on readability using the Flesch Reading
-                                    Ease formula.
-                                </p>
-                            </div>
                         </div>
+                        <meta itemprop="applicationCategory" content="TextAnalysisApplication">
+                        <meta itemprop="operatingSystem" content="Web Browser">
+                    </header>
 
-                        <!-- Subtle visual enhancement for better card hierarchy -->
-                        <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                            aria-hidden="true">
+                    <div class="flex-grow mb-6" itemprop="description">
+                        <p class="text-sm text-text-secondary leading-relaxed mb-4">
+                            Calculate precise reading time estimates for any text with customizable reading pace
+                            settings. Perfect for content creators, educators, and publishers.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Reading
+                                Time</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Custom
+                                WPM</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Time
+                                Estimates</span>
                         </div>
-                    </article>
+                    </div>
 
-                    <style>
-                        /* Tooltip interaction styles */
-                        .tooltip-visible {
-                            opacity: 1 !important;
-                            visibility: visible !important;
-                        }
+                    <div class="mt-auto">
+                        <a href="reading-time-calculator/"
+                            class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+                            aria-describedby="reading-time-heading" itemprop="url">
+                            Calculate Reading Time
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
 
-                        /* Hide browser default tooltip */
-                        [data-tooltip] {
-                            position: relative;
-                        }
-                    </style>
+                    <!-- Subtle visual enhancement -->
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        aria-hidden="true"></div>
+                </article>
 
-                    <script>
-                        // Simple tooltip functionality
-                        document.addEventListener('DOMContentLoaded', function () {
-                            const tooltipButton = document.querySelector('[data-tooltip="flesch-info"]');
-                            const tooltipContent = document.getElementById('flesch-info');
+                <!-- Readability Calculator Card -->
+                <article
+                    class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 flex flex-col h-full"
+                    role="region" aria-labelledby="readability-heading" itemscope
+                    itemtype="https://schema.org/WebApplication">
 
-                            if (tooltipButton && tooltipContent) {
-                                // Show tooltip on hover/focus
-                                tooltipButton.addEventListener('mouseenter', () => {
-                                    tooltipContent.classList.add('tooltip-visible');
-                                });
-
-                                tooltipButton.addEventListener('focus', () => {
-                                    tooltipContent.classList.add('tooltip-visible');
-                                });
-
-                                // Hide tooltip on mouse leave/blur
-                                tooltipButton.addEventListener('mouseleave', () => {
-                                    tooltipContent.classList.remove('tooltip-visible');
-                                });
-
-                                tooltipButton.addEventListener('blur', () => {
-                                    tooltipContent.classList.remove('tooltip-visible');
-                                });
-
-                                // Keep tooltip visible when hovering over it
-                                tooltipContent.addEventListener('mouseenter', () => {
-                                    tooltipContent.classList.add('tooltip-visible');
-                                });
-
-                                tooltipContent.addEventListener('mouseleave', () => {
-                                    tooltipContent.classList.remove('tooltip-visible');
-                                });
-                            }
-                        });
-                    </script>
-
-                    <!-- Flesch-Kinkaid Grade Level Analysis Card -->
-                    <article
-                        class="group bg-surface border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200"
-                        role="region" aria-labelledby="grade-level-heading" aria-describedby="grade-level-description">
-
-                        <header class="mb-4">
-                            <h3 id="grade-level-heading"
-                                class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200">
-                                🎓 Grade Level
+                    <header class="mb-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors duration-200">
+                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 id="readability-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
+                                itemprop="name">
+                                Readability Calculator
                             </h3>
-                        </header>
-
-                        <div class="space-y-2 sm:space-y-3">
-                            <div class="flex items-baseline gap-2 sm:gap-3">
-                                <div id="grade-level" class="text-xl font-bold text-primary mb-3" role="status"
-                                    aria-live="polite" aria-label="Grade level">
-                                    N/A
-                                </div>
-                            </div>
-
-                            <div class="min-h-[2.5rem] sm:min-h-[3rem]">
-                                <p id="grade-level-description"
-                                    class="text-sm text-text-secondary leading-relaxed break-words" role="status"
-                                    aria-live="polite" aria-label="Grade level description">
-                                    Shows the U.S. grade level needed to understand your text. Lower grades mean easier
-                                    comprehension for most readers.
-                                </p>
-                            </div>
                         </div>
+                        <meta itemprop="applicationCategory" content="TextAnalysisApplication">
+                        <meta itemprop="operatingSystem" content="Web Browser">
+                    </header>
 
-                        <!-- Subtle visual enhancement for better card hierarchy -->
-                        <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                            aria-hidden="true">
+                    <div class="flex-grow mb-6" itemprop="description">
+                        <p class="text-sm text-text-secondary leading-relaxed mb-4">
+                            Measure text readability with Flesch Reading Ease scores, Flesch-Kincaid grade levels, and
+                            passive voice analysis to optimize content accessibility.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Flesch
+                                Score</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Grade
+                                Level</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Passive
+                                Voice</span>
                         </div>
-                    </article>
+                    </div>
 
-                    <!-- Sentence Average Card -->
-                    <article
-                        class="group bg-surface border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200"
-                        role="region" aria-labelledby="avg-words-sentence"
-                        aria-describedby="avg-words-sentence-description">
+                    <div class="mt-auto">
+                        <a href="readability-calculator/"
+                            class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+                            aria-describedby="readability-heading" itemprop="url">
+                            Check Readability
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
 
-                        <header class="mb-4">
-                            <h3 id="avg-words-sentence-heading"
-                                class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200">
-                                📏 Sentence Avg
+                    <!-- Subtle visual enhancement -->
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        aria-hidden="true"></div>
+                </article>
+
+                <!-- Word Counter Card -->
+                <article
+                    class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 flex flex-col h-full"
+                    role="region" aria-labelledby="word-counter-heading" itemscope
+                    itemtype="https://schema.org/WebApplication">
+
+                    <header class="mb-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors duration-200">
+                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <!-- Simple document -->
+                                    <rect x="5" y="4" width="14" height="16" rx="1" stroke-width="2" />
+                                    <!-- Text lines -->
+                                    <line x1="8" y1="8" x2="16" y2="8" stroke-width="2" />
+                                    <line x1="8" y1="11" x2="14" y2="11" stroke-width="2" />
+                                    <line x1="8" y1="14" x2="18" y2="14" stroke-width="2" />
+                                    <line x1="8" y1="17" x2="12" y2="17" stroke-width="2" />
+                                </svg>
+                            </div>
+                            <h3 id="word-counter-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
+                                itemprop="name">
+                                Word Counter
                             </h3>
-                        </header>
-
-                        <div class="space-y-2 sm:space-y-3">
-                            <div class="flex items-baseline gap-2 sm:gap-3 ">
-                                <div id="avg-words-sentence-section" class="text-xl font-bold text-primary mb-3"
-                                    role="status" aria-live="polite" aria-label="Average words per sentence">
-                                    <span id="avg-words-sentence">0</span>
-                                    Words
-                                </div>
-                            </div>
-
-                            <div class="min-h-[2.5rem] sm:min-h-[3rem]">
-                                <p id="avg-words-sentence-description"
-                                    class="text-sm text-text-secondary leading-relaxed break-words" role="status"
-                                    aria-live="polite" aria-label="Average words per sentence description">
-                                    Shows the average number of words per sentence in your text. Shorter sentences are
-                                    generally easier to read.
-                                </p>
-                            </div>
                         </div>
+                        <meta itemprop="applicationCategory" content="TextAnalysisApplication">
+                        <meta itemprop="operatingSystem" content="Web Browser">
+                    </header>
 
-                        <!-- Subtle visual enhancement for better card hierarchy -->
-                        <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                            aria-hidden="true">
+                    <div class="flex-grow mb-6" itemprop="description">
+                        <p class="text-sm text-text-secondary leading-relaxed mb-4">
+                            Comprehensive word analysis including word count, most frequently used words, average
+                            sentence length, and vocabulary diversity metrics.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Word
+                                Count</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Common
+                                Words</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Sentence
+                                Length</span>
                         </div>
-                    </article>
+                    </div>
 
-                    <!-- Word Average Card -->
-                    <article
-                        class="group bg-surface border border-border rounded-xl p-4 sm:p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200"
-                        role="region" aria-labelledby="avg-chars-word-heading"
-                        aria-describedby="avg-chars-word-description">
+                    <div class="mt-auto">
+                        <a href="word-counter/"
+                            class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+                            aria-describedby="word-counter-heading" itemprop="url">
+                            Count Words
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
 
-                        <header class="mb-4">
-                            <h3 id="avg-chars-word-heading"
-                                class="text-base font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200">
-                                🔤 Word Avg
+                    <!-- Subtle visual enhancement -->
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        aria-hidden="true"></div>
+                </article>
+
+                <!-- Detailed Analysis Card -->
+                <article
+                    class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 flex flex-col h-full sm:col-span-2 lg:col-span-1"
+                    role="region" aria-labelledby="detailed-analysis-heading" itemscope
+                    itemtype="https://schema.org/WebApplication">
+
+                    <header class="mb-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors duration-200">
+                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </div>
+                            <h3 id="detailed-analysis-heading"
+                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
+                                itemprop="name">
+                                Detailed Analysis
                             </h3>
-                        </header>
-
-                        <div class="space-y-2 sm:space-y-3">
-                            <div class="flex items-baseline gap-2 sm:gap-3 ">
-                                <div id="avg-chars-word-section" class="text-xl font-bold text-primary mb-3"
-                                    role="status" aria-live="polite" aria-label="Average characters per word">
-                                    <span id="avg-chars-word">0</span>
-                                    Letters
-                                </div>
-                            </div>
-
-                            <div class="min-h-[2.5rem] sm:min-h-[3rem]">
-                                <p id="avg-chars-word-description"
-                                    class="text-sm text-text-secondary leading-relaxed break-words" role="status"
-                                    aria-live="polite" aria-label="Average characters per word description">
-                                    Shows the average number of letters per word in your text. Shorter words (3-5
-                                    letters) are easier to read.
-                                </p>
-                            </div>
                         </div>
+                        <meta itemprop="applicationCategory" content="TextAnalysisApplication">
+                        <meta itemprop="operatingSystem" content="Web Browser">
+                    </header>
 
-                        <!-- Subtle visual enhancement for better card hierarchy -->
-                        <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                            aria-hidden="true">
+                    <div class="flex-grow mb-6" itemprop="description">
+                        <p class="text-sm text-text-secondary leading-relaxed mb-4">
+                            Complete text analysis dashboard combining all metrics in one place. Perfect for writers,
+                            editors, and content professionals who need comprehensive insights.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">All
+                                Metrics</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Power
+                                User</span>
+                            <span
+                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Complete
+                                Report</span>
                         </div>
-                    </article>
-                </div>
-            </section>
+                    </div>
+
+                    <div class="mt-auto">
+                        <a href="detailed-analysis/"
+                            class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+                            aria-describedby="detailed-analysis-heading" itemprop="url">
+                            Full Analysis
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Subtle visual enhancement -->
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        aria-hidden="true"></div>
+                </article>
+            </div>
         </section>
     </main>
 
@@ -633,8 +647,8 @@
         <span
             class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">Detailed
             Analysis</span>
-        <svg class="shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none"
-            width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none" width="20"
+            height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
         </svg>
