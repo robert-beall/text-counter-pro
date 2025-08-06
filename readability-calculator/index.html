@@ -14,28 +14,91 @@
     <meta name="title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
     <meta name="description"
         content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics. Perfect for writers, students, and content creators.">
-    <meta name="keywords"
-        content="word counter, character counter, text analysis, word count tool, reading time calculator, text statistics, writing tool">
-    <meta name="author" content="Text Counter Pro">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
+    
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yoursite.github.io/">
-    <meta property="og:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta property="og:description"
-        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
-    <meta property="og:image" content="https://yoursite.github.io/og-image.jpg">
-    <meta property="og:site_name" content="Text Counter Pro">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Readability Calculator - Text Counter Pro",
+        "description": "Free readability calculator that analyzes Flesch Reading Ease score, Flesch-Kincaid grade level, and passive voice percentage. Improve your content accessibility and SEO.",
+        "url": "https://text-counter-pro.com/readability-calculator",
+        "applicationCategory": "TextAnalysisApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Flesch Reading Ease analysis",
+            "Flesch-Kincaid grade level calculation",
+            "Passive voice percentage detection",
+            "Real-time readability scoring",
+            "Content accessibility analysis"
+        ],
+        "browserRequirements": "Requires JavaScript",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Text Counter Pro",
+            "url": "https://text-counter-pro.com/"
+        }
+    }
+    </script>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://yoursite.github.io/">
-    <meta name="twitter:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="twitter:description"
-        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
-    <meta name="twitter:image" content="https://yoursite.github.io/twitter-image.jpg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Text Counter Pro",
+                "item": "https://text-counter-pro.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Readability Calculator",
+                "item": "https://text-counter-pro.com/readability-calculator"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Flesch Reading Ease and how is it scored?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Flesch Reading Ease scores text from 0-100 based on sentence length and syllable count. Higher scores mean easier reading: 90-100 (very easy), 80-89 (easy), 70-79 (fairly easy), 60-69 (standard), 50-59 (fairly difficult), 30-49 (difficult), 0-29 (very difficult). Most web content should aim for 60+ for broad accessibility."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's a good readability score for websites and blogs?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For web content, aim for Flesch Reading Ease scores of 60-70, Flesch-Kincaid Grade Level of 6-8, and passive voice under 10%. These ranges ensure your content is accessible to most readers while maintaining professional quality."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do readability scores affect SEO performance?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Search engines favor content that's easy to read and understand. Clear, readable text with appropriate grade levels increases dwell time, reduces bounce rates, and improves user signals. Google's algorithms consider readability as a ranking factor."
+                }
+            }
+        ]
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
@@ -44,32 +107,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <link rel="manifest" href="../site.webmanifest">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Text Counter Pro",
-        "description": "Free online word counter and text analysis tool",
-        "url": "https://yoursite.github.io/",
-        "applicationCategory": "Utility",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "featureList": [
-            "Word counting",
-            "Character counting", 
-            "Reading time calculation",
-            "Text statistics",
-            "Sentence analysis",
-            "Paragraph counting",
-            "Word frequency analysis"
-        ]
-    }
-    </script>
 
     <!-- Performance & Security -->
     <meta name="referrer" content="origin-when-cross-origin">
@@ -445,11 +482,11 @@
             </div>
         </section>
 
-        <!-- Readability FAQ Section -->
+        <!-- FAQ Section -->
         <section aria-labelledby="readability-faq-heading" class="max-w-container-lg mx-auto mb-12 px-6">
             <h2 id="readability-faq-heading"
                 class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight">
-                Readability Analysis Questions
+                Frequently Asked Questions
             </h2>
 
             <div class="grid gap-6 md:grid-cols-2">

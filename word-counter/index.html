@@ -5,32 +5,8 @@
     <title>Word Counter - Count Words & Text Statistics | Text Counter Pro</title>
     <meta name="title" content="Word Counter - Count Words & Text Statistics | Text Counter Pro">
     <meta name="description" content="Comprehensive word counter tool with word frequency analysis, average word length, sentence count, and most common words. Essential for writers and students.">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords"
-        content="word counter, character counter, text analysis, word count tool, reading time calculator, text statistics, writing tool">
-    <meta name="author" content="Text Counter Pro">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yoursite.github.io/">
-    <meta property="og:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta property="og:description"
-        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
-    <meta property="og:image" content="https://yoursite.github.io/og-image.jpg">
-    <meta property="og:site_name" content="Text Counter Pro">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://yoursite.github.io/">
-    <meta name="twitter:title" content="Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="twitter:description"
-        content="Free online word counter and text analysis tool. Get instant word count, character count, reading time, and detailed text statistics.">
-    <meta name="twitter:image" content="https://yoursite.github.io/twitter-image.jpg">
-
+    
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
@@ -38,16 +14,15 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <link rel="manifest" href="../site.webmanifest">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Text Counter Pro",
-        "description": "Free online word counter and text analysis tool",
-        "url": "https://yoursite.github.io/",
-        "applicationCategory": "Utility",
-        "operatingSystem": "Any",
+        "name": "Word Counter - Text Counter Pro",
+        "description": "Free online word counter tool with instant word count, character count, sentence analysis, and detailed text statistics. Perfect for writers and students.",
+        "url": "https://text-counter-pro.com/word-counter",
+        "applicationCategory": "TextAnalysisApplication",
+        "operatingSystem": "Web Browser",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -55,12 +30,67 @@
         },
         "featureList": [
             "Word counting",
-            "Character counting", 
-            "Reading time calculation",
-            "Text statistics",
-            "Sentence analysis",
-            "Paragraph counting",
-            "Word frequency analysis"
+            "Character counting",
+            "Sentence counting",
+            "Average word length calculation",
+            "Most common word identification",
+            "Unique word counting",
+            "Paragraph analysis"
+        ],
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Text Counter Pro",
+                "item": "https://text-counter-pro.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Word Counter",
+                "item": "https://text-counter-pro.com/word-counter"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How does the word counter determine word count?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Words are counted by splitting text on whitespace and punctuation. Contractions like \"don't\" count as one word, while hyphenated words like \"mother-in-law\" are typically counted as separate words."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is average word length and why does it matter?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Average word length divides total letters by word count, excluding spaces and punctuation. It's a key readability indicator - shorter averages (3-4 letters) suggest simpler text, while longer averages (6+ letters) indicate more complex vocabulary."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How are sentences counted and identified?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sentences are identified by terminal punctuation marks: periods, question marks, and exclamation points. Abbreviations like \"Dr.\" or \"U.S.A.\" are handled intelligently to avoid false sentence breaks."
+                }
+            }
         ]
     }
     </script>

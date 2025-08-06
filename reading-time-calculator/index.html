@@ -4,7 +4,8 @@
 <head>
     <title>Reading Time Calculator - Estimate Text Reading Time | Text Counter Pro</title>
     <meta name="title" content="Reading Time Calculator - Estimate Text Reading Time | Text Counter Pro">
-    <meta name="description" content="Calculate reading time for any text with customizable reading speed. Get instant estimates for articles, essays, and documents. Adjust WPM for accurate reading time predictions.">
+    <meta name="description"
+        content="Calculate reading time for any text with customizable reading speed. Get instant estimates for articles, essays, and documents. Adjust WPM for accurate reading time predictions.">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,98 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Reading Time Calculator - Text Counter Pro",
+        "description": "Calculate reading time for any text with customizable reading speed. Get instant estimates for articles, essays, and documents. Adjust WPM for accurate reading time predictions.",
+        "url": "https://text-counter-pro.com/reading-time-calculator",
+        "applicationCategory": "TextAnalysisApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Reading time calculation",
+            "Customizable reading speed (WPM)",
+            "Real-time text analysis",
+            "Word counting",
+            "Instant estimates"
+        ],
+        "browserRequirements": "Requires JavaScript",
+        "isPartOf": {
+            "@type": "WebApplication",
+            "name": "Text Counter Pro",
+            "url": "https://text-counter-pro.com/"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Text Counter Pro",
+                "item": "https://text-counter-pro.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Reading Time Calculator",
+                "item": "https://text-counter-pro.com/reading-time-calculator"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the average reading speed?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The average adult reads at 200-300 words per minute. Our calculator defaults to 250 WPM, which represents typical silent reading speed for most people."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How accurate is this calculator?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Reading time estimates are based on word count and your selected WPM. Actual reading time may vary based on text complexity, familiarity with the topic, and individual reading habits."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I adjust the reading speed?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Update the words per minute (WPM) to match your reading speed. Beginners typically read at 150-200 WPM, while speed readers can exceed 400 WPM."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What types of content work best?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This calculator works for any text content including articles, blog posts, books, documents, and essays. Complex technical content may require slower reading speeds."
+                }
+            }
+        ]
+    }
+    </script>
 
     <!-- Performance & Security -->
     <meta name="referrer" content="origin-when-cross-origin">
@@ -241,9 +334,10 @@
                         <div class="relative hidden md:block">
                             <input type="number" id="speed-input"
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-text-secondary bg-transparent rounded-lg border border-border appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
-                                value="250"/>
+                                value="250" />
                             <label for="speed-input"
-                                class="absolute text-sm text-text-secondary duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-surface px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Words per Minute</label>
+                                class="absolute text-sm text-text-secondary duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-surface px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Words
+                                per Minute</label>
                         </div>
                         <button type="button"
                             class="flex items-center gap-2 px-3 py-2 bg-primary text-white border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-primary-dark hover:-translate-y-px active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none md:flex-1 md:justify-center md:px-4 md:py-3"
@@ -297,8 +391,8 @@
                 class="bg-surface rounded-xl p-4 shadow-sm border border-border transition-all duration-200 ease-in-out focus-within:shadow-md focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500 contrast-more:border-2 contrast-more:border-gray-900">
                 <label for="text-input" class="sr-only">Enter your text for analysis</label>
                 <textarea id="text-input" name="text-input" aria-describedby="text-input-help"
-                    placeholder="Start typing or paste your text here to calculate reading time..."
-                    spellcheck="false" autocorrect="off" autocapitalize="off" autofocus
+                    placeholder="Start typing or paste your text here to calculate reading time..." spellcheck="false"
+                    autocorrect="off" autocapitalize="off" autofocus
                     class="w-full min-h-[150px] md:min-h-[200px] p-4 border-2 border-border rounded-lg font-primary text-base leading-relaxed text-text-primary bg-surface resize-y transition-all duration-200 ease-in-out focus:outline-none focus:border-primary focus:ring-4 focus:ring-blue-100 placeholder:text-text-muted placeholder:font-normal">
                 </textarea>
                 <div id="text-input-help" class="text-sm text-text-muted mt-3 text-center">
@@ -330,7 +424,8 @@
 
                 <div class="bg-surface border border-border rounded-xl p-6">
                     <h3 class="text-lg font-semibold text-text-primary mb-3">Can I adjust the reading speed?</h3>
-                    <p class="text-text-secondary leading-relaxed">Yes! Update the <strong>words per minute (WPM)</strong> to match your
+                    <p class="text-text-secondary leading-relaxed">Yes! Update the <strong>words per minute
+                            (WPM)</strong> to match your
                         reading speed. Beginners typically read at 150-200 WPM, while speed readers can exceed 400 WPM.
                     </p>
                 </div>
