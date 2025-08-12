@@ -1,0 +1,10 @@
+# TODO
+- [ ] Improve Header
+- [ ] Improve footer
+- [ ] Improve call-to-action sections
+- [ ] Address Copyright Concerns
+- [ ] Structured Data on Extraneous Pages
+- [ ] Keywords and other metadata for each page
+- [ ] Set up google analytics
+- [ ] Update ad placement (hide initially)
+- [ ] Final Sweep Through

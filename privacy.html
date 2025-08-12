@@ -11,17 +11,6 @@
     <meta name="title" content="Privacy Policy - Text Counter Pro Word Counter">
     <meta name="description"
         content="Text Counter Pro Privacy Policy: Your text never leaves your device, and we don't collect personal information. Private and secure text analysis.">
-    <meta name="keywords"
-        content="privacy policy, text counter pro privacy, secure word counter, private text analysis">
-    <meta name="author" content="Text Counter Pro">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yoursite.github.io/privacy.html">
-    <meta property="og:title" content="Privacy Policy - Text Counter Pro Word Counter">
-    <meta property="og:description"
-        content="Text Counter Pro Privacy Policy: Your text never leaves your device, and we don't collect personal information. Private and secure.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -30,10 +19,15 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/globals.css">
-    <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/components.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/footer.css">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind.config.js"></script>
+    <script>
+        // Apply the configuration
+        tailwind.config = window.tailwindConfig;
+    </script>
 
     <!-- Scripts -->
     <script src="scripts/header.js" defer></script>
@@ -42,211 +36,410 @@
 <body>
     <a href="#main" class="sr-only focus:not-sr-only">Skip to main content</a>
 
-    <!-- Updated Header Section with Proper Logo Integration -->
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <!-- Logo and Branding -->
-            <a href="index.html" class="logo-container" aria-label="Text Counter Pro - Home">
-                <div class="logo-icon">
-                    <!-- Use the circular blue logo version -->
-                    <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager" width="48"
-                        height="48">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-title">Text Counter<span class="logo-subtitle-mobile"> Pro</span></span>
-                    <span class="logo-subtitle">Pro</span>
-                </div>
-            </a>
+    <!-- Tailwind CSS Navbar Replacement -->
+    <header role="banner"
+        class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+        <nav role="navigation" aria-label="Main navigation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
 
-            <!-- Desktop Navigation -->
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html" aria-current="page">Privacy</a></li>
-            </ul>
+                <!-- Logo and Branding -->
+                <a href=""
+                    class="flex items-center gap-3 text-gray-900 no-underline transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
+                    aria-label="Text Counter Pro - Home">
+                    <!-- Logo Icon -->
+                    <div
+                        class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 rounded-full flex items-center justify-center bg-white shadow-md shadow-blue-500/15 overflow-hidden">
+                        <img src="../assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager"
+                            width="48" height="48" class="w-full h-full rounded-full object-cover object-center">
+                    </div>
 
-            <!-- Optional: Header Actions -->
-            <div class="header-actions" style="display: none;">
-                <button class="header-btn secondary">
-                    <span>📊</span>
-                    <span>Export</span>
-                </button>
-                <button class="header-btn">
-                    <span>⚡</span>
-                    <span>Analyze</span>
+                    <!-- Logo Text -->
+                    <div class="flex flex-col leading-tight">
+                        <span class="text-base sm:text-lg lg:text-lg font-bold text-gray-900 tracking-tight">
+                            Text Counter
+                            <span class="sm:hidden"> Pro</span>
+                        </span>
+                        <span class="hidden sm:block text-xs lg:text-sm text-gray-600 font-medium">Pro</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li>
+                        <a href="" aria-current="page"
+                            class="relative text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-2 rounded-md transition-all duration-200 hover:bg-blue-100 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-0.5 after:bg-blue-600 after:rounded-sm">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="privacy.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            Privacy
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Menu Toggle -->
+                <button
+                    class="mobile-menu-toggle md:hidden text-gray-600 group inline-flex w-12 h-12 bg-white text-center items-center justify-center rounded-md hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                    aria-pressed="false"
+                    onclick="this.setAttribute('aria-pressed', !(this.getAttribute('aria-pressed') === 'true'))">
+                    <span class="sr-only">Menu</span>
+                    <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect
+                            class="origin-center -translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-x-0 group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[315deg]"
+                            y="7" width="16" height="2" rx="1"></rect>
+                        <rect
+                            class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-[[aria-pressed=true]]:rotate-45"
+                            y="7" width="16" height="2" rx="1"></rect>
+                        <rect
+                            class="origin-center translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[135deg]"
+                            y="7" width="16" height="2" rx="1"></rect>
+                    </svg>
                 </button>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
+            <!-- Mobile Navigation Menu -->
+            <ul
+                class="nav-menu md:hidden hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg flex-col space-y-0 px-4 py-4 space-x-0">
+                <li class="w-full">
+                    <a href="" aria-current="page"
+                        class="block px-4 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-md w-full">
+                        Home
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="about.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        About
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="contact.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        Contact
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="privacy.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        Privacy
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    <main id="main" role="main">
-        <article>
-            <header>
-                <h1>Privacy Policy</h1>
-                <p>Last updated: <time datetime="2025-01-01">January 1, 2025</time></p>
-            </header>
+    <nav aria-label="Breadcrumb"
+        class="max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 border-b border-border">
+        <ol class="flex items-center text-xs sm:text-sm overflow-x-auto scrollbar-hide">
+            <li class="flex-shrink-0">
+                <a href="/"
+                    class="text-primary hover:text-primary-dark transition-colors duration-200 font-medium flex items-center gap-1 min-w-0">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
+                    <span class="truncate max-w-[120px] sm:max-w-none">Text Counter Pro</span>
+                </a>
+            </li>
+            <li class="flex items-center flex-shrink-0 mx-1 sm:mx-2">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4 text-text-muted" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </li>
+            <li class="flex-shrink-0">
+                <span class="text-text-secondary font-medium truncate max-w-[150px] sm:max-w-none" aria-current="page">
+                    Privacy Policy
+                </span>
+            </li>
+        </ol>
+    </nav>
 
-            <section aria-labelledby="overview">
-                <h2 id="overview">Privacy Overview</h2>
-                <p><strong>Your privacy matters to us.</strong> Text Counter Pro is designed to protect your privacy by
-                    processing all text analysis locally in your browser.</p>
-
-                <p><strong>In short:</strong> Your text never leaves your device, we don't collect personal information,
-                    and we use standard analytics to improve our service.</p>
-            </section>
-
-            <section aria-labelledby="text-privacy">
-                <h2 id="text-privacy">Your Text Stays Private</h2>
-                <p>All text analysis happens locally in your browser, which means:</p>
-                <ul>
-                    <li>Your text is never sent to our servers</li>
-                    <li>We cannot see what you're writing or analyzing</li>
-                    <li>Your content remains completely private</li>
-                    <li>Text is automatically cleared when you leave the page</li>
-                </ul>
-            </section>
-
-            <section aria-labelledby="information-collection">
-                <h2 id="information-collection">What Information We Collect</h2>
-
-                <h3>We Don't Collect:</h3>
-                <ul>
-                    <li>Your text content or documents</li>
-                    <li>Personal information (name, email, address)</li>
-                    <li>Account data (no registration required)</li>
-                </ul>
-
-                <h3>We May Collect:</h3>
-                <ul>
-                    <li><strong>Anonymous Analytics:</strong> Page views, general location, device type</li>
-                    <li><strong>Technical Data:</strong> Browser type, screen resolution for optimization</li>
-                    <li><strong>Usage Statistics:</strong> Feature usage to improve the tool</li>
-                </ul>
-                <p>This data is anonymous and cannot identify you personally.</p>
-            </section>
-
-            <section aria-labelledby="cookies-ads">
-                <h2 id="cookies-ads">Cookies and Advertising</h2>
-                <p>We may use cookies for:</p>
-                <ul>
-                    <li>Anonymous analytics (Google Analytics or similar)</li>
-                    <li>Displaying relevant advertisements to keep our service free</li>
-                    <li>Remembering your preferences locally</li>
-                </ul>
-
-                <p>Our advertising partners may display personalized ads based on your browsing. You can control cookies
-                    through your browser settings or opt out of personalized advertising.</p>
-            </section>
-
-            <section aria-labelledby="third-party">
-                <h2 id="third-party">Third-Party Services</h2>
-                <p>We may use third-party services for analytics, advertising, and content delivery. These services have
-                    their own privacy policies and follow industry standards for data protection.</p>
-            </section>
-
-            <section aria-labelledby="children">
-                <h2 id="children">Children's Privacy</h2>
-                <p>Text Counter Pro is safe for all ages. We don't knowingly collect personal information from anyone,
-                    including children under 13. Students and teachers can use our tool with confidence.</p>
-            </section>
-
-            <section aria-labelledby="data-security">
-                <h2 id="data-security">Data Security</h2>
-                <p>Since your text stays on your device, the risk of content-related data breaches is eliminated. For
-                    any anonymous data we collect, we use standard security measures and encryption.</p>
-            </section>
-
-            <section aria-labelledby="international">
-                <h2 id="international">International Compliance</h2>
-                <p>Text Counter Pro is designed to comply with privacy regulations including GDPR and CCPA. Since we
-                    don't collect personal information and your text remains on your device, privacy risks are minimal.
+    <main role="main" id="main" class="max-w-container-lg mx-auto my-0 p-6">
+        <!-- Privacy Policy Content -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+            <!-- Header Section -->
+            <div class="mb-8 sm:mb-12">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+                <p class="text-gray-600 text-base sm:text-lg">
+                    Effective Date: <strong>January 1, 2025</strong> | Last Updated: <strong>January 1, 2025</strong>
                 </p>
-            </section>
-
-            <section aria-labelledby="changes">
-                <h2 id="changes">Policy Changes</h2>
-                <p>We may update this privacy policy occasionally. Changes will be reflected in the "Last updated" date
-                    above and posted on this page. Continued use of our service constitutes acceptance of any updates.
+                <p class="text-gray-700 mt-4 text-sm sm:text-base leading-relaxed">
+                    This Privacy Policy describes how Text Counter Pro ("we," "our," or "us") collects, uses, and
+                    protects your information when you use our website and text analysis services.
                 </p>
-            </section>
+            </div>
 
-            <section aria-labelledby="contact-privacy">
-                <h2 id="contact-privacy">Contact Us</h2>
-                <p>Questions about this privacy policy? <a href="/contact.html">Contact us</a> and we'll respond
-                    promptly to privacy-related inquiries.</p>
-            </section>
-        </article>
+            <!-- Privacy Policy Sections -->
+            <div class="space-y-8 sm:space-y-12">
+
+                <!-- Information We Collect -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Information We Collect</h2>
+
+                    <h3 class="text-lg sm:text-xl font-medium text-gray-800 mb-3">Personal Information</h3>
+                    <p class="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        We do not collect, store, or process any personal information. Your text content never leaves
+                        your device and is processed entirely in your browser.
+                    </p>
+
+                    <h3 class="text-lg sm:text-xl font-medium text-gray-800 mb-3">Automatically Collected Information
+                    </h3>
+                    <p class="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        We may automatically collect certain technical information through Google Analytics and
+                        advertising services, including:
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 text-sm sm:text-base">
+                        <li>IP address and general location information</li>
+                        <li>Browser type, version, and operating system</li>
+                        <li>Pages visited, time spent on pages, and navigation patterns</li>
+                        <li>Referral sources and search terms</li>
+                        <li>Device information (screen size, device type)</li>
+                    </ul>
+                </section>
+
+                <!-- How We Use Information -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">How We Use Information</h2>
+                    <p class="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        We use the automatically collected information to:
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 text-sm sm:text-base">
+                        <li>Analyze website usage and improve our services</li>
+                        <li>Display relevant advertisements</li>
+                        <li>Monitor website performance and troubleshoot issues</li>
+                        <li>Understand user preferences and behavior patterns</li>
+                    </ul>
+                </section>
+
+                <!-- Text Processing -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Your Text Content</h2>
+                    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                        <div class="flex">
+                            <div class="ml-3">
+                                <p class="text-sm sm:text-base text-blue-700 font-medium">
+                                    <strong>Privacy First:</strong> All text analysis is performed locally in your
+                                    browser. Your text content is never transmitted to our servers or third parties.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        Text Counter Pro operates entirely client-side. When you paste or type text into our
+                        application, it remains on your device and is processed using JavaScript in your browser. We
+                        have no access to your content.
+                    </p>
+                </section>
+
+                <!-- Third-Party Services -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Third-Party Services</h2>
+
+                    <h3 class="text-lg sm:text-xl font-medium text-gray-800 mb-3">Google Analytics</h3>
+                    <p class="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        We use Google Analytics to understand how visitors interact with our website. Google Analytics
+                        may collect information such as your IP address, browser type, and pages visited. For more
+                        information, please review <a href="https://policies.google.com/privacy" target="_blank"
+                            rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">Google's
+                            Privacy Policy</a>.
+                    </p>
+
+                    <h3 class="text-lg sm:text-xl font-medium text-gray-800 mb-3">Advertising Services</h3>
+                    <p class="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        We may display advertisements through third-party advertising networks (such as Google AdSense,
+                        Ezoic, or similar services). These services may:
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4 text-sm sm:text-base">
+                        <li>Use cookies and similar technologies to show relevant ads</li>
+                        <li>Collect information about your browsing activities</li>
+                        <li>Provide personalized advertisements based on your interests</li>
+                    </ul>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        You can opt out of personalized advertising by visiting the <a
+                            href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer"
+                            class="text-blue-600 hover:text-blue-800 underline">Google Ads Settings</a> page.
+                    </p>
+                </section>
+
+                <!-- Cookies -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Cookies and Similar
+                        Technologies</h2>
+                    <p class="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        Our website and third-party services may use cookies, web beacons, and similar technologies to:
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4 text-sm sm:text-base">
+                        <li>Remember your preferences and settings</li>
+                        <li>Analyze website traffic and usage patterns</li>
+                        <li>Deliver targeted advertisements</li>
+                        <li>Improve website functionality and performance</li>
+                    </ul>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        You can control cookie settings through your browser preferences. Please note that disabling
+                        cookies may affect website functionality.
+                    </p>
+                </section>
+
+                <!-- Data Security -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Data Security</h2>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        Since we don't collect or store personal data or text content, there are minimal security risks.
+                        The limited analytics data we collect through third-party services is protected by those
+                        services' security measures. We implement reasonable security practices for our website
+                        infrastructure.
+                    </p>
+                </section>
+
+                <!-- Children's Privacy -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Children's Privacy</h2>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        Our services are not directed toward children under 13. We do not knowingly collect personal
+                        information from children under 13. If you become aware that a child has provided us with
+                        personal information, please contact us so we can take appropriate action.
+                    </p>
+                </section>
+
+                <!-- International Users -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">International Users</h2>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        Our website is hosted in the United States. If you access our services from outside the United
+                        States, your information may be transferred to, stored, and processed in the United States. By
+                        using our services, you consent to the transfer of your information to the United States.
+                    </p>
+                </section>
+
+                <!-- Changes to Privacy Policy -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Changes to This Privacy
+                        Policy</h2>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        We may update this Privacy Policy from time to time. We will notify users of any material
+                        changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+                        Your continued use of our services after any changes constitutes acceptance of the updated
+                        Privacy Policy.
+                    </p>
+                </section>
+
+                <!-- Contact Information -->
+                <section>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Contact Us</h2>
+                    <p class="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                        If you have any questions about this Privacy Policy or our privacy practices, please contact us:
+                    </p>
+                    <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
+                        <p class="text-gray-700 text-sm sm:text-base">
+                            <strong>Text Counter Pro</strong><br>
+                            Website: <a href="https://text-counter-pro.com"
+                                class="text-blue-600 hover:text-blue-800 underline">text-counter-pro.com</a><br>
+                            Email: Available through our <a href="contact.html"
+                                class="text-blue-600 hover:text-blue-800 underline">Contact Page</a>
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
     </main>
 
-    <!-- Enhanced Footer Section -->
-    <footer role="contentinfo">
-        <div class="footer-content">
+    <aside role="complementary" aria-label="Advertisement" class="max-w-container-md my-8 mx-auto py-0 px-6">
+        <!-- Ad spaces placeholder -->
+        <div aria-label="Sponsored content"
+            class="ad-placeholder bg-border border-2 border-dashed border-text-muted rounded-lg text-center text-text-muted min-h-[120px] flex items-center justify-center before:content-['Advertisement_Space'] before:text-sm before:text-text-muted before:opacity-70">
+            <!-- Advertisement content will be inserted here -->
+        </div>
+    </aside>
+
+    <!-- Footer Section -->
+    <footer role="contentinfo"
+        class="bg-gradient-to-br from-gray-800 to-gray-900 text-gray-200 mt-16 relative overflow-hidden">
+        <!-- Subtle background pattern -->
+        <div class="absolute inset-0 bg-gradient-radial-blue opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-12 relative z-10">
             <!-- Main Footer Grid -->
-            <div class="footer-grid">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8">
                 <!-- Brand Section -->
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo" aria-label="Text Counter Pro - Home">
-                        <div class="footer-logo-icon">
-                            <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
-                                width="40" height="40">
+                <div class="flex flex-col gap-4 text-center md:text-left">
+                    <a href=""
+                        class="inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center md:justify-start"
+                        aria-label="Text Counter Pro - Home">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-custom-blue">
+                            <img src="../assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
+                                width="40" height="40" class="w-full h-full rounded-full object-cover">
                         </div>
-                        <div class="footer-logo-text">
-                            <span class="footer-logo-title">Text Counter</span>
-                            <span class="footer-logo-subtitle">Pro</span>
+                        <div class="flex flex-col leading-tight">
+                            <span class="text-lg font-bold text-white tracking-tight">Text Counter</span>
+                            <span class="text-sm text-gray-400 font-medium">Pro</span>
                         </div>
                     </a>
-                    <p class="footer-description">
+                    <p class="text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0">
                         Free text analysis tool for writers, students, and content creators.
                     </p>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Navigation</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href=""
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Home</a>
+                        </li>
+                        <li><a href="about.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">About</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Contact</a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Legal Links -->
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy.html" aria-current="page">Privacy Policy</a></li>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Legal</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href="privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Privacy
+                                Policy</a></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <p>&copy; 2025 Text Counter Pro. All rights reserved.</p>
+            <div
+                class="border-t border-white border-opacity-10 pt-6 flex flex-col md:flex-row gap-4 items-center text-center md:text-left md:justify-between">
+                <p class="text-gray-500 text-sm m-0">&copy; 2025 Text Counter Pro. All rights reserved.</p>
                 <nav aria-label="Footer legal navigation">
-                    <ul>
-                        <li><a href="privacy.html">Privacy</a></li>
+                    <ul class="flex gap-6 list-none m-0 p-0">
+                        <li><a href="privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light">Privacy</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
-
-        <!-- Back to Top Button -->
-        <button class="back-to-top" aria-label="Back to top">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
     </footer>
 </body>
 

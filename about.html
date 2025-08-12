@@ -11,25 +11,6 @@
     <meta name="title" content="About Text Counter Pro - Free Word Counter & Text Analysis Tool">
     <meta name="description"
         content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators. Fast, accurate, and privacy-focused.">
-    <meta name="keywords"
-        content="about text counter pro, word counter tool, text analysis, writing tools, free word count, character counter">
-    <meta name="author" content="Text Counter Pro">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yoursite.github.io/about.html">
-    <meta property="og:title" content="About Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta property="og:description"
-        content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators.">
-    <meta property="og:image" content="https://yoursite.github.io/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://yoursite.github.io/about.html">
-    <meta name="twitter:title" content="About Text Counter Pro - Free Word Counter & Text Analysis Tool">
-    <meta name="twitter:description"
-        content="Text Counter Pro is a free online word counter and text analysis tool for writers, students, and content creators.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -37,202 +18,509 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/globals.css">
-    <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/components.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/footer.css">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "About Text Counter Pro",
-        "description": "Learn about Text Counter Pro, the free online word counter and text analysis tool",
-        "url": "https://yoursite.github.io/about.html",
-        "mainEntity": {
-            "@type": "WebApplication",
-            "name": "Text Counter Pro",
-            "applicationCategory": "Utility",
-            "operatingSystem": "Any"
-        }
-    }
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind.config.js"></script>
+    <script>
+        // Apply the configuration
+        tailwind.config = window.tailwindConfig;
     </script>
+
     <script src="scripts/header.js" defer></script>
 </head>
 
 <body>
     <a href="#main" class="sr-only focus:not-sr-only">Skip to main content</a>
 
-    <!-- Updated Header Section with Proper Logo Integration -->
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <!-- Logo and Branding -->
-            <a href="index.html" class="logo-container" aria-label="Text Counter Pro - Home">
-                <div class="logo-icon">
-                    <!-- Use the circular blue logo version -->
-                    <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager" width="48"
-                        height="48">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-title">Text Counter<span class="logo-subtitle-mobile"> Pro</span></span>
-                    <span class="logo-subtitle">Pro</span>
-                </div>
-            </a>
+    <!-- Tailwind CSS Navbar Replacement -->
+    <header role="banner"
+        class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+        <nav role="navigation" aria-label="Main navigation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
 
-            <!-- Desktop Navigation -->
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" aria-current="page">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
-            </ul>
+                <!-- Logo and Branding -->
+                <a href=""
+                    class="flex items-center gap-3 text-gray-900 no-underline transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
+                    aria-label="Text Counter Pro - Home">
+                    <!-- Logo Icon -->
+                    <div
+                        class="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 rounded-full flex items-center justify-center bg-white shadow-md shadow-blue-500/15 overflow-hidden">
+                        <img src="../assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="eager"
+                            width="48" height="48" class="w-full h-full rounded-full object-cover object-center">
+                    </div>
 
-            <!-- Optional: Header Actions -->
-            <div class="header-actions" style="display: none;">
-                <button class="header-btn secondary">
-                    <span>📊</span>
-                    <span>Export</span>
-                </button>
-                <button class="header-btn">
-                    <span>⚡</span>
-                    <span>Analyze</span>
+                    <!-- Logo Text -->
+                    <div class="flex flex-col leading-tight">
+                        <span class="text-base sm:text-lg lg:text-lg font-bold text-gray-900 tracking-tight">
+                            Text Counter
+                            <span class="sm:hidden"> Pro</span>
+                        </span>
+                        <span class="hidden sm:block text-xs lg:text-sm text-gray-600 font-medium">Pro</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li>
+                        <a href="" aria-current="page"
+                            class="relative text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-2 rounded-md transition-all duration-200 hover:bg-blue-100 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-0.5 after:bg-blue-600 after:rounded-sm">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="privacy.html"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            Privacy
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Menu Toggle -->
+                <button
+                    class="mobile-menu-toggle md:hidden text-gray-600 group inline-flex w-12 h-12 bg-white text-center items-center justify-center rounded-md hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                    aria-pressed="false"
+                    onclick="this.setAttribute('aria-pressed', !(this.getAttribute('aria-pressed') === 'true'))">
+                    <span class="sr-only">Menu</span>
+                    <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect
+                            class="origin-center -translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-x-0 group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[315deg]"
+                            y="7" width="16" height="2" rx="1"></rect>
+                        <rect
+                            class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-[[aria-pressed=true]]:rotate-45"
+                            y="7" width="16" height="2" rx="1"></rect>
+                        <rect
+                            class="origin-center translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[135deg]"
+                            y="7" width="16" height="2" rx="1"></rect>
+                    </svg>
                 </button>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
+            <!-- Mobile Navigation Menu -->
+            <ul
+                class="nav-menu md:hidden hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg flex-col space-y-0 px-4 py-4 space-x-0">
+                <li class="w-full">
+                    <a href="" aria-current="page"
+                        class="block px-4 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-md w-full">
+                        Home
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="about.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        About
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="contact.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        Contact
+                    </a>
+                </li>
+                <li class="w-full">
+                    <a href="privacy.html"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                        Privacy
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    <main id="main" role="main">
-        <article>
-            <header>
-                <h1>About Text Counter Pro</h1>
-                <p>A free, fast, and accurate word counter for writers and content creators</p>
-            </header>
+    <nav aria-label="Breadcrumb"
+        class="max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 border-b border-border">
+        <ol class="flex items-center text-xs sm:text-sm overflow-x-auto scrollbar-hide">
+            <li class="flex-shrink-0">
+                <a href="/"
+                    class="text-primary hover:text-primary-dark transition-colors duration-200 font-medium flex items-center gap-1 min-w-0">
+                    <svg class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
+                    <span class="truncate max-w-[120px] sm:max-w-none">Text Counter Pro</span>
+                </a>
+            </li>
+            <li class="flex items-center flex-shrink-0 mx-1 sm:mx-2">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4 text-text-muted" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </li>
+            <li class="flex-shrink-0">
+                <span class="text-text-secondary font-medium truncate max-w-[150px] sm:max-w-none" aria-current="page">
+                    About
+                </span>
+            </li>
+        </ol>
+    </nav>
 
-            <section aria-labelledby="what-is-text-counter-pro">
-                <h2 id="what-is-text-counter-pro">What is Text Counter Pro?</h2>
-                <p>Text Counter Pro is a free online word counter and text analysis tool designed for writers, students,
-                    content creators, and professionals. Get instant word counts, character counts, and text statistics
-                    as you type or paste your content.</p>
-
-                <p>All text analysis happens locally in your browser, ensuring your content remains private and secure
-                    while delivering fast, real-time results.</p>
-            </section>
-
-            <section aria-labelledby="features">
-                <h2 id="features">Key Features</h2>
-                <ul>
-                    <li><strong>Real-time Counting:</strong> Instant word and character counts as you type</li>
-                    <li><strong>Reading Time:</strong> Estimates how long your text takes to read</li>
-                    <li><strong>Text Statistics:</strong> Sentence count, paragraph count, and average words per
-                        sentence</li>
-                    <li><strong>Privacy-First:</strong> All analysis happens in your browser - your text never leaves
-                        your device</li>
-                    <li><strong>Mobile Friendly:</strong> Works on all devices and screen sizes</li>
-                    <li><strong>Completely Free:</strong> No registration required, no limits, no hidden costs</li>
-                </ul>
-            </section>
-
-            <section aria-labelledby="who-uses">
-                <h2 id="who-uses">Perfect For</h2>
-                <p><strong>Students:</strong> Check essay lengths and meet assignment word count requirements.</p>
-                <p><strong>Content Creators:</strong> Optimize blog posts and social media content for platform
-                    requirements.</p>
-                <p><strong>Writers:</strong> Track progress and meet client specifications for articles and copy.</p>
-                <p><strong>Professionals:</strong> Craft concise emails and documents that meet length guidelines.</p>
-            </section>
-
-            <section aria-labelledby="why-choose">
-                <h2 id="why-choose">Why Choose Text Counter Pro?</h2>
-                <p>Text Counter Pro provides accurate text analysis with advanced algorithms that handle contractions,
-                    hyphenated words, numbers, and special characters. Your privacy is protected since all processing
-                    happens locally in your browser, and you can start using it immediately without any registration.
+    <main role="main" id="main" class="max-w-container-lg mx-auto my-0 p-6">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                    About Text Counter Pro
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed mb-8">
+                    Your comprehensive, free text analysis toolkit designed for writers, students, content creators, and
+                    professionals who need precise text metrics and insights.
                 </p>
-            </section>
+                <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+                    <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full">100% Free</span>
+                    <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full">Privacy-Focused</span>
+                    <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full">No Registration Required</span>
+                    <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full">Instant Analysis</span>
+                </div>
+            </div>
+        </section>
 
-            <section aria-labelledby="get-started">
-                <h2 id="get-started">Get Started</h2>
-                <p><a href="/">Try Text Counter Pro now</a> and experience accurate, instant text analysis. Have
-                    feedback or questions? <a href="/contact.html">Contact us</a> - we'd love to hear from you.</p>
-            </section>
-        </article>
+        <!-- Mission Section -->
+        <section class="mb-16 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 md:p-12">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    At Text Counter Pro, we believe that powerful text analysis tools should be accessible to everyone.
+                    Whether you're crafting the perfect social media post, analyzing document readability, or optimizing
+                    content for your audience, our suite of tools provides the insights you need to communicate more
+                    effectively.
+                </p>
+                <p class="text-base text-gray-600">
+                    We're committed to providing fast, accurate, and privacy-respecting text analysis without the need
+                    for accounts, subscriptions, or data collection.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tools Overview Section -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Complete Text Analysis Suite</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Four powerful tools designed to give you comprehensive insights into your text, from basic counts to
+                    advanced readability metrics.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Word Counter Tool -->
+                <div
+                    class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:border-blue-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Word Counter</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Get detailed word analysis including word count, sentence count, average word length, and
+                        identify the most common words in your text.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <strong>Features:</strong> Unique word count, longest/shortest words, paragraph analysis, words
+                        per sentence metrics
+                    </div>
+                </div>
+
+                <!-- Character Counter Tool -->
+                <div
+                    class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:border-green-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Character Counter</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Perfect for social media management with character limits for Twitter, Instagram, Facebook, and
+                        LinkedIn, plus detailed character breakdowns.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <strong>Features:</strong> Social media limits, punctuation count, character type analysis,
+                        non-whitespace counting
+                    </div>
+                </div>
+
+                <!-- Reading Time Calculator Tool -->
+                <div
+                    class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:border-purple-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Reading Time Calculator</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Estimate how long it takes to read your content with customizable reading speed settings,
+                        perfect for bloggers and content creators.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <strong>Features:</strong> Adjustable words-per-minute rate, accurate time estimates, word count
+                        integration
+                    </div>
+                </div>
+
+                <!-- Readability Calculator Tool -->
+                <div
+                    class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:border-orange-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Readability Calculator</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Analyze your text's readability with Flesch Reading Ease scores, grade level assessments, and
+                        passive voice detection for better communication.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <strong>Features:</strong> Flesch-Kincaid grade level, passive voice percentage, readability
+                        scoring
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who We Serve Section -->
+        <section class="mb-16 bg-gray-50 rounded-2xl p-8 md:p-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Who We Serve</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Text Counter Pro is built for professionals and creators worldwide
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Writers & Authors</h3>
+                    <p class="text-sm text-gray-600">Track progress, analyze readability, and optimize content structure
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Students & Educators</h3>
+                    <p class="text-sm text-gray-600">Meet assignment requirements, improve writing quality, and grade
+                        level analysis</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-2 16H9a2 2 0 01-2-2V8a2 2 0 012-2h6a2 2 0 012 2v10a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Content Creators</h3>
+                    <p class="text-sm text-gray-600">Optimize posts for social platforms, estimate reading times,
+                        improve engagement</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h8zM8 14v.01M12 14v.01M16 14v.01">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Marketing Professionals</h3>
+                    <p class="text-sm text-gray-600">Create compelling copy, analyze competitor content, ensure message
+                        clarity</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Text Counter Pro?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Built with privacy, speed, and accuracy in mind
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Privacy First</h3>
+                    <p class="text-gray-600">Your text never leaves your browser. All processing happens locally,
+                        ensuring complete privacy and security of your content.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Lightning Fast</h3>
+                    <p class="text-gray-600">Get instant results as you type. Our optimized algorithms provide real-time
+                        analysis without delays or loading screens.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Always Accurate</h3>
+                    <p class="text-gray-600">Industry-standard algorithms ensure precise word counts, readability
+                        scores, and text metrics you can trust for professional use.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white">
+            <h2 class="text-3xl font-bold mb-4">Ready to Analyze Your Text?</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Join thousands of writers, students, and professionals who trust Text Counter Pro for their text
+                analysis needs.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <a href="/word-counter"
+                    class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200">
+                    Start Counting Words
+                </a>
+                <a href="/readability-calculator"
+                    class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200">
+                    Check Readability
+                </a>
+            </div>
+        </section>
     </main>
 
-    <aside role="complementary" aria-label="Advertisement">
-        <div aria-label="Sponsored content">
-            <!-- Ad placement for content marketing tools -->
+    <aside role="complementary" aria-label="Advertisement" class="max-w-container-md my-8 mx-auto py-0 px-6">
+        <!-- Ad spaces placeholder -->
+        <div aria-label="Sponsored content"
+            class="ad-placeholder bg-border border-2 border-dashed border-text-muted rounded-lg text-center text-text-muted min-h-[120px] flex items-center justify-center before:content-['Advertisement_Space'] before:text-sm before:text-text-muted before:opacity-70">
+            <!-- Advertisement content will be inserted here -->
         </div>
     </aside>
 
-    <!-- Enhanced Footer Section -->
-    <footer role="contentinfo">
-        <div class="footer-content">
+    <!-- Footer Section -->
+    <footer role="contentinfo"
+        class="bg-gradient-to-br from-gray-800 to-gray-900 text-gray-200 mt-16 relative overflow-hidden">
+        <!-- Subtle background pattern -->
+        <div class="absolute inset-0 bg-gradient-radial-blue opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-12 relative z-10">
             <!-- Main Footer Grid -->
-            <div class="footer-grid">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8">
                 <!-- Brand Section -->
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo" aria-label="Text Counter Pro - Home">
-                        <div class="footer-logo-icon">
-                            <img src="assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
-                                width="40" height="40">
+                <div class="flex flex-col gap-4 text-center md:text-left">
+                    <a href=""
+                        class="inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center md:justify-start"
+                        aria-label="Text Counter Pro - Home">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-custom-blue">
+                            <img src="../assets/text-counter-pro-icon.png" alt="Text Counter Pro Logo" loading="lazy"
+                                width="40" height="40" class="w-full h-full rounded-full object-cover">
                         </div>
-                        <div class="footer-logo-text">
-                            <span class="footer-logo-title">Text Counter</span>
-                            <span class="footer-logo-subtitle">Pro</span>
+                        <div class="flex flex-col leading-tight">
+                            <span class="text-lg font-bold text-white tracking-tight">Text Counter</span>
+                            <span class="text-sm text-gray-400 font-medium">Pro</span>
                         </div>
                     </a>
-                    <p class="footer-description">
+                    <p class="text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0">
                         Free text analysis tool for writers, students, and content creators.
                     </p>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Navigation</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href=""
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Home</a>
+                        </li>
+                        <li><a href="about.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">About</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Contact</a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Legal Links -->
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
+                <div class="text-center md:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Legal</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li><a href="privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Privacy
+                                Policy</a></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <p>&copy; 2025 Text Counter Pro. All rights reserved.</p>
+            <div
+                class="border-t border-white border-opacity-10 pt-6 flex flex-col md:flex-row gap-4 items-center text-center md:text-left md:justify-between">
+                <p class="text-gray-500 text-sm m-0">&copy; 2025 Text Counter Pro. All rights reserved.</p>
                 <nav aria-label="Footer legal navigation">
-                    <ul>
-                        <li><a href="privacy.html">Privacy</a></li>
+                    <ul class="flex gap-6 list-none m-0 p-0">
+                        <li><a href="privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light">Privacy</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
-
-        <!-- Back to Top Button -->
-        <button class="back-to-top" aria-label="Back to top">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
     </footer>
 
     <!-- Skip to main content link for accessibility -->
