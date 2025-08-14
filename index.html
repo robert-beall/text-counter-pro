@@ -141,14 +141,14 @@
 </head>
 
 <body class="font-primary bg-background text-primary leading-normal scroll-smooth">
-    <!-- Tailwind CSS Navbar Replacement -->
+    <!-- Enhanced Tailwind CSS Navbar with Dropdown -->
     <header role="banner"
         class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50 backdrop-blur-sm bg-white/95">
         <nav role="navigation" aria-label="Main navigation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 lg:h-20">
 
                 <!-- Logo and Branding -->
-                <a href=""
+                <a href="/"
                     class="flex items-center gap-3 text-gray-900 no-underline transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
                     aria-label="Text Counter Pro - Home">
                     <!-- Logo Icon -->
@@ -169,38 +169,120 @@
                 </a>
 
                 <!-- Desktop Navigation -->
-                <ul class="hidden md:flex items-center space-x-8">
+                <ul class="hidden lg:flex items-center space-x-2">
+                    <!-- Home -->
                     <li>
-                        <a href="" aria-current="page"
+                        <a href="/" aria-current="page"
                             class="relative text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-2 rounded-md transition-all duration-200 hover:bg-blue-100 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-0.5 after:bg-blue-600 after:rounded-sm">
                             Home
                         </a>
                     </li>
+
+                    <!-- Tools Dropdown -->
+                    <li class="relative group">
+                        <button
+                            class="tools-dropdown-toggle flex items-center gap-1 text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-expanded="false" aria-haspopup="true">
+                            Tools
+                            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div
+                            class="tools-dropdown-menu absolute top-full left-0 mt-1 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-200 group-hover:opacity-100 group-hover:visible transform translate-y-1 group-hover:translate-y-0">
+                            <div class="py-1" role="menu">
+                                <a href="/reading-time-calculator"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>📖</span>
+                                        <span>Reading Time Calculator</span>
+                                    </div>
+                                </a>
+                                <a href="/readability-calculator"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>📊</span>
+                                        <span>Readability Calculator</span>
+                                    </div>
+                                </a>
+                                <a href="/character-counter"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>🔤</span>
+                                        <span>Character Counter</span>
+                                    </div>
+                                </a>
+                                <a href="/word-counter"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>📝</span>
+                                        <span>Word Counter</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- About -->
                     <li>
-                        <a href="about.html"
+                        <a href="/about.html"
                             class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             About
                         </a>
                     </li>
+
+                    <!-- Contact -->
                     <li>
-                        <a href="contact.html"
+                        <a href="/contact.html"
                             class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             Contact
                         </a>
                     </li>
-                    <li>
-                        <a href="privacy.html"
-                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
-                            Privacy
-                        </a>
+
+                    <!-- More Dropdown -->
+                    <li class="relative group">
+                        <button
+                            class="more-dropdown-toggle flex items-center gap-1 text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-expanded="false" aria-haspopup="true">
+                            More
+                            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div
+                            class="more-dropdown-menu absolute top-full right-0 mt-1 w-44 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-200 group-hover:opacity-100 group-hover:visible transform translate-y-1 group-hover:translate-y-0">
+                            <div class="py-1" role="menu">
+                                <a href="/privacy.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    Privacy Policy
+                                </a>
+                                <a href="/terms-of-service.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    Terms of Service
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
 
                 <!-- Mobile Menu Toggle -->
                 <button
-                    class="mobile-menu-toggle md:hidden text-gray-600 group inline-flex w-12 h-12 bg-white text-center items-center justify-center rounded-md hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
-                    aria-pressed="false"
-                    onclick="this.setAttribute('aria-pressed', !(this.getAttribute('aria-pressed') === 'true'))">
+                    class="mobile-menu-toggle lg:hidden text-gray-600 group inline-flex w-12 h-12 bg-white text-center items-center justify-center rounded-md hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                    aria-pressed="false" aria-expanded="false" aria-label="Toggle mobile menu">
                     <span class="sr-only">Menu</span>
                     <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16"
                         xmlns="http://www.w3.org/2000/svg">
@@ -218,33 +300,59 @@
             </div>
 
             <!-- Mobile Navigation Menu -->
-            <ul
-                class="nav-menu md:hidden hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg flex-col space-y-0 px-4 py-4 space-x-0">
-                <li class="w-full">
-                    <a href="" aria-current="page"
+            <div
+                class="nav-menu lg:hidden hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
+                <div class="px-4 py-4 space-y-1">
+                    <!-- Home -->
+                    <a href="/" aria-current="page"
                         class="block px-4 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-md w-full">
                         Home
                     </a>
-                </li>
-                <li class="w-full">
-                    <a href="about.html"
-                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
-                        About
-                    </a>
-                </li>
-                <li class="w-full">
-                    <a href="contact.html"
-                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
-                        Contact
-                    </a>
-                </li>
-                <li class="w-full">
-                    <a href="privacy.html"
-                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
-                        Privacy
-                    </a>
-                </li>
-            </ul>
+
+                    <!-- Tools Section -->
+                    <div class="space-y-1">
+                        <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                            Tools
+                        </div>
+                        <a href="/reading-time-calculator"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            📖 Reading Time Calculator
+                        </a>
+                        <a href="/readability-calculator"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            📊 Readability Calculator
+                        </a>
+                        <a href="/character-counter"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            🔤 Character Counter
+                        </a>
+                        <a href="/word-counter"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            📝 Word Counter
+                        </a>
+                    </div>
+
+                    <!-- Other Pages -->
+                    <div class="border-t border-gray-100 pt-2 space-y-1">
+                        <a href="/about.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            About
+                        </a>
+                        <a href="/contact.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            Contact
+                        </a>
+                        <a href="/privacy.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            Privacy Policy
+                        </a>
+                        <a href="/terms-of-service.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            Terms of Service
+                        </a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 

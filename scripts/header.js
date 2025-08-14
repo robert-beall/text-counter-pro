@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         const isExpanded = this.getAttribute("aria-expanded") === "true";
-
+        
         // Close other dropdowns first
         closeAllDropdowns();
 
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
         menu.classList.remove("opacity-100", "visible", "translate-y-0");
       }
     });
-
+    
     [toolsDropdownToggle, moreDropdownToggle].forEach(toggle => {
       if (toggle) {
         toggle.setAttribute("aria-expanded", "false");
@@ -128,8 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Close dropdowns when clicking outside
   document.addEventListener("click", function (event) {
     const isInsideDropdown = event.target.closest(".group");
-    const isInsideMobileMenu = mobileMenuToggle?.contains(event.target) ||
-      navMenu?.contains(event.target);
+    const isInsideMobileMenu = mobileMenuToggle?.contains(event.target) || 
+                              navMenu?.contains(event.target);
 
     if (!isInsideDropdown) {
       closeAllDropdowns();
@@ -190,29 +190,64 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Set active page indicator (optional enhancement)
+  // Set active page indicator (enhanced version)
   function setActiveNavItem() {
     const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('nav a[href]');
+    const allNavLinks = document.querySelectorAll('nav a[href], .nav-menu a[href]');
+    
+    // First, reset all links to inactive state
+    allNavLinks.forEach(link => {
+      // Remove active classes
+      link.classList.remove('text-blue-600', 'bg-blue-50', 'font-semibold');
+      link.classList.add('text-gray-600');
+      link.removeAttribute('aria-current');
+      
+      // Remove desktop active indicator classes
+      link.classList.remove('after:absolute', 'after:bottom-0', 'after:left-1/2', 'after:-translate-x-1/2', 'after:w-5', 'after:h-0.5', 'after:bg-blue-600', 'after:rounded-sm');
+      
+      // Reset hover classes
+      if (link.closest('.tools-dropdown-menu') || link.closest('.more-dropdown-menu')) {
+        // Dropdown items
+        link.classList.remove('text-blue-600', 'bg-blue-50');
+        link.classList.add('text-gray-700');
+        link.className = link.className.replace(/hover:bg-blue-\d+/g, 'hover:bg-blue-50');
+        link.className = link.className.replace(/hover:text-blue-\d+/g, 'hover:text-blue-600');
+      } else if (link.closest('.nav-menu')) {
+        // Mobile menu items
+        link.classList.remove('text-blue-600', 'bg-blue-50');
+        link.classList.add('text-gray-600');
+      } else {
+        // Desktop top-level items
+        link.classList.remove('text-blue-600', 'bg-blue-50');
+        link.classList.add('text-gray-600');
+      }
+    });
+    
+    // Find and activate the current page link
+    allNavLinks.forEach(link => {
+      try {
+        const linkPath = new URL(link.href, window.location.origin).pathname;
+        // Normalize paths by removing trailing slashes and comparing
+        const normalizedLinkPath = linkPath.replace(/\/$/, '') || '/';
+        const normalizedCurrentPath = currentPath.replace(/\/$/, '') || '/';
 
-    navLinks.forEach(link => {
-      const linkPath = new URL(link.href).pathname;
-      if (linkPath === currentPath) {
-        // Remove active classes from other links
-        navLinks.forEach(l => {
-          l.classList.remove('text-blue-600', 'bg-blue-50');
-          l.classList.add('text-gray-600');
-          l.removeAttribute('aria-current');
-        });
+        if (normalizedLinkPath === normalizedCurrentPath) {
+          // Mark as active
+          link.classList.add('text-blue-600', 'bg-blue-50', 'font-semibold');
+          link.classList.remove('text-gray-600', 'text-gray-700');
+          link.setAttribute('aria-current', 'page');
 
-        // Add active classes to current link
-        link.classList.remove('text-gray-600');
-        link.classList.add('text-blue-600', 'bg-blue-50');
-        link.setAttribute('aria-current', 'page');
+          // Add desktop active indicator if top-level
+          if (!link.closest('.nav-menu') && !link.closest('.tools-dropdown-menu') && !link.closest('.more-dropdown-menu')) {
+            link.classList.add('after:absolute', 'after:bottom-0', 'after:left-1/2', 'after:-translate-x-1/2', 'after:w-5', 'after:h-0.5', 'after:bg-blue-600', 'after:rounded-sm');
+          }
+        }
+      } catch (e) {
+        // Ignore invalid URLs
       }
     });
   }
 
-  // Call on page load
-  setActiveNavItem();
+  // Call on page load with a small delay to ensure DOM is ready
+  setTimeout(setActiveNavItem, 100);
 });
