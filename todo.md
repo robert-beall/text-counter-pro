@@ -1,5 +1,5 @@
 # TODO
-- [ ] Improve Header
+- [X] Improve Header
 - [ ] Improve footer
 - [ ] Improve call-to-action sections
 - [ ] Address Copyright Concerns
@@ -7,4 +7,5 @@
 - [ ] Keywords and other metadata for each page
 - [ ] Set up google analytics
 - [ ] Update ad placement (hide initially)
+- [ ] Add social media metadata
 - [ ] Final Sweep Through

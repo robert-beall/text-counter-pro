@@ -4,9 +4,13 @@
 <head>
     <title>Word Counter - Count Words & Text Statistics | Text Counter Pro</title>
     <meta name="title" content="Word Counter - Count Words & Text Statistics | Text Counter Pro">
-    <meta name="description" content="Comprehensive word counter tool with word frequency analysis, average word length, sentence count, and most common words. Essential for writers and students.">
+    <meta name="description"
+        content="Comprehensive word counter tool with word frequency analysis, average word length, sentence count, and most common words. Essential for writers and students.">
     
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
@@ -146,7 +150,7 @@
             <div class="flex items-center justify-between h-16 lg:h-20">
 
                 <!-- Logo and Branding -->
-                <a href=""
+                <a href="/"
                     class="flex items-center gap-3 text-gray-900 no-underline transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
                     aria-label="Text Counter Pro - Home">
                     <!-- Logo Icon -->
@@ -167,38 +171,120 @@
                 </a>
 
                 <!-- Desktop Navigation -->
-                <ul class="hidden md:flex items-center space-x-8">
+                <ul class="hidden lg:flex items-center space-x-2">
+                    <!-- Home -->
                     <li>
-                        <a href="" aria-current="page"
-                            class="relative text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-2 rounded-md transition-all duration-200 hover:bg-blue-100 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-0.5 after:bg-blue-600 after:rounded-sm">
+                        <a href="/"
+                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             Home
                         </a>
                     </li>
+
+                    <!-- Tools Dropdown -->
+                    <li class="relative group">
+                        <button
+                            class="tools-dropdown-toggle flex items-center gap-1 text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-expanded="false" aria-haspopup="true">
+                            Tools
+                            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div
+                            class="tools-dropdown-menu absolute top-full left-0 mt-1 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-200 group-hover:opacity-100 group-hover:visible transform translate-y-1 group-hover:translate-y-0">
+                            <div class="py-1" role="menu">
+                                <a href="/reading-time-calculator"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>📖</span>
+                                        <span>Reading Time Calculator</span>
+                                    </div>
+                                </a>
+                                <a href="/readability-calculator"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>📊</span>
+                                        <span>Readability Calculator</span>
+                                    </div>
+                                </a>
+                                <a href="/character-counter"
+                                    class="block px-4 py-2 text-sm text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>🔤</span>
+                                        <span>Character Counter</span>
+                                    </div>
+                                </a>
+                                <a href="/word-counter" aria-current="page"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    <div class="flex items-center gap-2">
+                                        <span>📝</span>
+                                        <span>Word Counter</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- About -->
                     <li>
-                        <a href="about.html"
+                        <a href="/about.html"
                             class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             About
                         </a>
                     </li>
+
+                    <!-- Contact -->
                     <li>
-                        <a href="contact.html"
+                        <a href="/contact.html"
                             class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
                             Contact
                         </a>
                     </li>
-                    <li>
-                        <a href="privacy.html"
-                            class="text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50">
-                            Privacy
-                        </a>
+
+                    <!-- More Dropdown -->
+                    <li class="relative group">
+                        <button
+                            class="more-dropdown-toggle flex items-center gap-1 text-sm font-medium text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-expanded="false" aria-haspopup="true">
+                            More
+                            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div
+                            class="more-dropdown-menu absolute top-full right-0 mt-1 w-44 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible transition-all duration-200 group-hover:opacity-100 group-hover:visible transform translate-y-1 group-hover:translate-y-0">
+                            <div class="py-1" role="menu">
+                                <a href="/privacy.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    Privacy Policy
+                                </a>
+                                <a href="/terms-of-service.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                    role="menuitem">
+                                    Terms of Service
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
 
                 <!-- Mobile Menu Toggle -->
                 <button
-                    class="mobile-menu-toggle md:hidden text-gray-600 group inline-flex w-12 h-12 bg-white text-center items-center justify-center rounded-md hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
-                    aria-pressed="false"
-                    onclick="this.setAttribute('aria-pressed', !(this.getAttribute('aria-pressed') === 'true'))">
+                    class="mobile-menu-toggle lg:hidden text-gray-600 group inline-flex w-12 h-12 bg-white text-center items-center justify-center rounded-md hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                    aria-pressed="false" aria-expanded="false" aria-label="Toggle mobile menu">
                     <span class="sr-only">Menu</span>
                     <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16"
                         xmlns="http://www.w3.org/2000/svg">
@@ -216,33 +302,60 @@
             </div>
 
             <!-- Mobile Navigation Menu -->
-            <ul
-                class="nav-menu md:hidden hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg flex-col space-y-0 px-4 py-4 space-x-0">
-                <li class="w-full">
-                    <a href="" aria-current="page"
-                        class="block px-4 py-3 text-base font-medium text-blue-600 bg-blue-50 rounded-md w-full">
+            <div
+                class="nav-menu lg:hidden hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
+                <div class="px-4 py-4 space-y-1">
+                    <!-- Home -->
+                    <a href="/"
+                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
                         Home
                     </a>
-                </li>
-                <li class="w-full">
-                    <a href="about.html"
-                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
-                        About
-                    </a>
-                </li>
-                <li class="w-full">
-                    <a href="contact.html"
-                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
-                        Contact
-                    </a>
-                </li>
-                <li class="w-full">
-                    <a href="privacy.html"
-                        class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
-                        Privacy
-                    </a>
-                </li>
-            </ul>
+
+                    <!-- Tools Section -->
+                    <div class="space-y-1">
+                        <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide"
+                            aria-current="page">
+                            Tools
+                        </div>
+                        <a href="/reading-time-calculator"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            📖 Reading Time Calculator
+                        </a>
+                        <a href="/readability-calculator"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            📊 Readability Calculator
+                        </a>
+                        <a href="/character-counter"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-100">
+                            🔤 Character Counter
+                        </a>
+                        <a href="/word-counter" aria-current="page"
+                            class="block pl-6 pr-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50">
+                            📝 Word Counter
+                        </a>
+                    </div>
+
+                    <!-- Other Pages -->
+                    <div class="border-t border-gray-100 pt-2 space-y-1">
+                        <a href="/about.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            About
+                        </a>
+                        <a href="/contact.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            Contact
+                        </a>
+                        <a href="/privacy.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            Privacy Policy
+                        </a>
+                        <a href="/terms-of-service.html"
+                            class="block px-4 py-3 text-base font-medium text-gray-600 rounded-md transition-colors duration-200 hover:text-blue-600 hover:bg-blue-50 w-full">
+                            Terms of Service
+                        </a>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -292,321 +405,308 @@
         <section aria-labelledby="text-input-heading" class="max-w-container-md mt-0 mx-auto mb-8 text-center">
             <h2 id="text-input-heading" class="sr-only">Text Input and Analysis</h2>
 
-            <!-- Text Analysis Section -->
-            <section aria-labelledby="text-input-heading" class="max-w-container-md mt-0 mx-auto mb-8 text-center">
-                <h2 id="text-input-heading" class="sr-only">Text Input and Analysis</h2>
+            <!-- Statistics Toolbar -->
+            <div class="flex items-stretch lg:items-center justify-between flex-col lg:flex-row gap-4 bg-surface border border-border contrast-more:border-2 contrast-more:border-gray-900 rounded-xl p-4 mb-4 shadow-sm"
+                role="region" aria-label="Text statistics toolbar" aria-live="polite">
+                <div
+                    class="grid grid-cols-2 lg:flex lg:justify-around gap-4 lg:gap-2 xl:gap-4 items-center flex-1 min-w-0">
+                    <div class="flex flex-col items-center gap-1 min-w-0 p-2">
+                        <span
+                            class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Word<br>Count</span>
+                        <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="word-count"
+                            aria-label="Word count">0</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 min-w-0 p-2">
+                        <span
+                            class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Avg
+                            Word<br>Length</span>
+                        <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="avg-word-length"
+                            aria-label="Character count without whitespace">0</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 min-w-0 p-2">
+                        <span
+                            class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Sentence<br />Count</span>
+                        <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="sentence-count"
+                            aria-label="Sentence count">0</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 min-w-0 p-2">
+                        <span
+                            class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Most
+                            Common<br>Word*</span>
+                        <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="most-common-word"
+                            aria-label="Most common meaningful word">N/A</span>
+                    </div>
+                </div>
 
-                <!-- Text Analysis Section -->
-                <section aria-labelledby="text-input-heading" class="max-w-container-md mt-0 mx-auto mb-8 text-center">
-                    <h2 id="text-input-heading" class="sr-only">Text Input and Analysis</h2>
+                <div class="grid grid-cols-2 gap-2 w-full lg:justify-center lg:flex lg:items-center lg:w-auto">
+                    <button type="button"
+                        class="flex items-center gap-2 px-3 py-2 bg-primary text-white border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-primary-dark hover:-translate-y-px active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none lg:flex-1 lg:justify-center lg:px-4 lg:py-3"
+                        id="paste-btn" aria-label="Paste text from clipboard">
+                        <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Paste</span>
+                    </button>
+                    <button type="button"
+                        class="flex items-center gap-2 px-3 py-2 bg-border text-text-secondary border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-text-muted hover:text-text-primary active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none lg:flex-1 lg:justify-center lg:px-4 lg:py-3"
+                        id="clear-btn" aria-label="Clear all text" disabled>
+                        <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Clear</span>
+                    </button>
+                </div>
 
-                    <!-- Statistics Toolbar -->
-                    <div class="flex items-stretch lg:items-center justify-between flex-col lg:flex-row gap-4 bg-surface border border-border contrast-more:border-2 contrast-more:border-gray-900 rounded-xl p-4 mb-4 shadow-sm"
-                        role="region" aria-label="Text statistics toolbar" aria-live="polite">
-                        <div
-                            class="grid grid-cols-2 lg:flex lg:justify-around gap-4 lg:gap-2 xl:gap-4 items-center flex-1 min-w-0">
-                            <div class="flex flex-col items-center gap-1 min-w-0 p-2">
-                                <span
-                                    class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Word<br>Count</span>
-                                <span class="!leading-none text-xl lg:text-lg font-bold text-primary" id="word-count"
-                                    aria-label="Word count">0</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 min-w-0 p-2">
-                                <span
-                                    class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Avg
-                                    Word<br>Length</span>
-                                <span class="!leading-none text-xl lg:text-lg font-bold text-primary"
-                                    id="avg-word-length" aria-label="Character count without whitespace">0</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 min-w-0 p-2">
-                                <span
-                                    class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Sentence<br />Count</span>
-                                <span class="!leading-none text-xl lg:text-lg font-bold text-primary"
-                                    id="sentence-count" aria-label="Sentence count">0</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 min-w-0 p-2">
-                                <span
-                                    class="text-xs font-medium text-text-secondary uppercase tracking-wider text-center leading-tight">Most
-                                    Common<br>Word*</span>
-                                <span class="!leading-none text-xl lg:text-lg font-bold text-primary"
-                                    id="most-common-word" aria-label="Most common meaningful word">N/A</span>
+
+            </div>
+
+            <!-- Caveat Text -->
+            <p class="text-xs text-text-secondary leading-relaxed text-center mt-2">
+                <span class="font-medium">*Note:</span> Most Common Word excludes common words like "the",
+                "and", "is", etc. and focuses on meaningful content words only.
+            </p>
+
+            <!-- Text Input Area -->
+            <div role="application" aria-label="Text analysis tool"
+                class="bg-surface rounded-xl p-4 shadow-sm border border-border transition-all duration-200 ease-in-out focus-within:shadow-md focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500 contrast-more:border-2 contrast-more:border-gray-900 mt-2">
+                <label for="text-input" class="sr-only">Enter your text for analysis</label>
+                <textarea id="text-input" name="text-input" aria-describedby="text-input-help"
+                    placeholder="Start typing or paste your text here to analyze word count, character count, and more..."
+                    spellcheck="false" autocorrect="off" autocapitalize="off" autofocus
+                    class="w-full min-h-[150px] md:min-h-[200px] p-4 border-2 border-border rounded-lg font-primary text-base leading-relaxed text-text-primary bg-surface resize-y transition-all duration-200 ease-in-out focus:outline-none focus:border-primary focus:ring-4 focus:ring-blue-100 placeholder:text-text-muted placeholder:font-normal"></textarea>
+                <div id="text-input-help" class="text-sm text-text-muted mt-3 text-center">
+                    Real-time analysis updates as you type. Supports documents up to 1 million characters.
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Statistics Section -->
+        <section aria-labelledby="detailed-stats-heading" class="max-w-container-xl mt-0 mx-auto mb-12 py-0 px-6">
+            <h2 id="detailed-stats-heading"
+                class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight" tabindex="-1">
+                Detailed
+                Analysis</h2>
+
+            <!-- Word Analysis Section -->
+            <section class="w-full max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Unique Words Card -->
+                    <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
+                        role="region" aria-labelledby="unique-words-heading" data-testid="unique-words-breakdown">
+                        <div class="mb-3">
+                            <h3 id="unique-words-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                🔤 Unique Words
+                            </h3>
+                            <div class="text-2xl font-bold text-primary-600" aria-live="polite">
+                                <span id="unique-words-count">0</span>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-2 w-full lg:justify-center lg:flex lg:items-center lg:w-auto">
-                            <button type="button"
-                                class="flex items-center gap-2 px-3 py-2 bg-primary text-white border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-primary-dark hover:-translate-y-px active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none lg:flex-1 lg:justify-center lg:px-4 lg:py-3"
-                                id="paste-btn" aria-label="Paste text from clipboard">
-                                <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <span>Paste</span>
-                            </button>
-                            <button type="button"
-                                class="flex items-center gap-2 px-3 py-2 bg-border text-text-secondary border-none rounded-md text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap hover:bg-text-muted hover:text-text-primary active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none lg:flex-1 lg:justify-center lg:px-4 lg:py-3"
-                                id="clear-btn" aria-label="Clear all text" disabled>
-                                <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <span>Clear</span>
-                            </button>
-                        </div>
-
-
+                        <p class="text-xs text-text-secondary">
+                            Total distinct words used
+                        </p>
                     </div>
 
-                    <!-- Caveat Text -->
-                    <p class="text-xs text-text-secondary leading-relaxed text-center mt-2">
-                        <span class="font-medium">*Note:</span> Most Common Word excludes common words like "the",
-                        "and", "is", etc. and focuses on meaningful content words only.
-                    </p>
-                </section>
+                    <!-- Longest Word Card -->
+                    <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
+                        role="region" aria-labelledby="longest-word-heading" data-testid="longest-word-breakdown">
+                        <div class="mb-3">
+                            <h3 id="longest-word-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                📏 Longest Word
+                            </h3>
+                            <div class="text-lg font-bold text-primary-600 mb-1 break-all" aria-live="polite">
+                                <span id="longest-word">-</span>
+                            </div>
+                            <div class="text-xs text-text-secondary">
+                                <span id="longest-word-length">0</span> characters
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Text Input Area -->
-                <div role="application" aria-label="Text analysis tool"
-                    class="bg-surface rounded-xl p-4 shadow-sm border border-border transition-all duration-200 ease-in-out focus-within:shadow-md focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500 contrast-more:border-2 contrast-more:border-gray-900">
-                    <label for="text-input" class="sr-only">Enter your text for analysis</label>
-                    <textarea id="text-input" name="text-input" aria-describedby="text-input-help"
-                        placeholder="Start typing or paste your text here to analyze word count, character count, and more..."
-                        spellcheck="false" autocorrect="off" autocapitalize="off" autofocus
-                        class="w-full min-h-[150px] md:min-h-[200px] p-4 border-2 border-border rounded-lg font-primary text-base leading-relaxed text-text-primary bg-surface resize-y transition-all duration-200 ease-in-out focus:outline-none focus:border-primary focus:ring-4 focus:ring-blue-100 placeholder:text-text-muted placeholder:font-normal">
-                </textarea>
-                    <div id="text-input-help" class="text-sm text-text-muted mt-3 text-center">
-                        Real-time analysis updates as you type. Supports documents up to 1 million characters.
+                    <!-- Shortest Word Card -->
+                    <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
+                        role="region" aria-labelledby="shortest-word-heading" data-testid="shortest-word-breakdown">
+                        <div class="mb-3">
+                            <h3 id="shortest-word-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                📐 Shortest Word
+                            </h3>
+                            <div class="text-lg font-bold text-primary-600 mb-1" aria-live="polite">
+                                <span id="shortest-word">-</span>
+                            </div>
+                            <div class="text-xs text-text-secondary">
+                                <span id="shortest-word-length">0</span> characters
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Average Words per Sentence Card -->
+                    <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
+                        role="region" aria-labelledby="avg-words-sentence-heading"
+                        data-testid="avg-words-sentence-breakdown">
+                        <div class="mb-3">
+                            <h3 id="avg-words-sentence-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                📊 Avg Words/Sentence
+                            </h3>
+                            <div class="text-2xl font-bold text-primary-600" aria-live="polite">
+                                <span id="avg-words-per-sentence">0</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-text-secondary">
+                            Average sentence length
+                        </p>
+                    </div>
+
+                    <!-- Paragraph Count Card -->
+                    <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
+                        role="region" aria-labelledby="paragraph-count-heading" data-testid="paragraph-count-breakdown">
+                        <div class="mb-3">
+                            <h3 id="paragraph-count-heading" class="text-sm font-semibold text-text-primary mb-2">
+                                📝 Paragraphs
+                            </h3>
+                            <div class="text-2xl font-bold text-primary-600" aria-live="polite">
+                                <span id="paragraph-count">0</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-text-secondary">
+                            Total paragraph count
+                        </p>
+                    </div>
+
+                    <!-- Average Sentences per Paragraph Card -->
+                    <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
+                        role="region" aria-labelledby="avg-sentences-paragraph-heading"
+                        data-testid="avg-sentences-paragraph-breakdown">
+                        <div class="mb-3">
+                            <h3 id="avg-sentences-paragraph-heading"
+                                class="text-sm font-semibold text-text-primary mb-2">
+                                📈 Avg Sentences/Paragraph
+                            </h3>
+                            <div class="text-2xl font-bold text-primary-600" aria-live="polite">
+                                <span id="avg-sentences-per-paragraph">0</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-text-secondary">
+                            Average paragraph length
+                        </p>
                     </div>
                 </div>
             </section>
+        </section>
 
-            <!-- Detailed Statistics Section -->
-            <section aria-labelledby="detailed-stats-heading" class="max-w-container-xl mt-0 mx-auto mb-12 py-0 px-6">
-                <h2 id="detailed-stats-heading"
-                    class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight" tabindex="-1">
-                    Detailed
-                    Analysis</h2>
+        <!-- FAQ Section -->
+        <section aria-labelledby="faq-heading" class="max-w-container-lg mx-auto mb-12 px-6">
+            <h2 id="faq-heading" class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight">
+                Frequently Asked Questions
+            </h2>
 
-                <!-- Word Analysis Section -->
-                <section class="w-full max-w-container-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <!-- Stats Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- Unique Words Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="unique-words-heading" data-testid="unique-words-breakdown">
-                            <div class="mb-3">
-                                <h3 id="unique-words-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    🔤 Unique Words
-                                </h3>
-                                <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="unique-words-count">0</span>
-                                </div>
-                            </div>
-                            <p class="text-xs text-text-secondary">
-                                Total distinct words used
-                            </p>
-                        </div>
-
-                        <!-- Longest Word Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="longest-word-heading" data-testid="longest-word-breakdown">
-                            <div class="mb-3">
-                                <h3 id="longest-word-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    📏 Longest Word
-                                </h3>
-                                <div class="text-lg font-bold text-primary-600 mb-1 break-all" aria-live="polite">
-                                    <span id="longest-word">-</span>
-                                </div>
-                                <div class="text-xs text-text-secondary">
-                                    <span id="longest-word-length">0</span> characters
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Shortest Word Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="shortest-word-heading" data-testid="shortest-word-breakdown">
-                            <div class="mb-3">
-                                <h3 id="shortest-word-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    📐 Shortest Word
-                                </h3>
-                                <div class="text-lg font-bold text-primary-600 mb-1" aria-live="polite">
-                                    <span id="shortest-word">-</span>
-                                </div>
-                                <div class="text-xs text-text-secondary">
-                                    <span id="shortest-word-length">0</span> characters
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Average Words per Sentence Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="avg-words-sentence-heading"
-                            data-testid="avg-words-sentence-breakdown">
-                            <div class="mb-3">
-                                <h3 id="avg-words-sentence-heading"
-                                    class="text-sm font-semibold text-text-primary mb-2">
-                                    📊 Avg Words/Sentence
-                                </h3>
-                                <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="avg-words-per-sentence">0</span>
-                                </div>
-                            </div>
-                            <p class="text-xs text-text-secondary">
-                                Average sentence length
-                            </p>
-                        </div>
-
-                        <!-- Paragraph Count Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="paragraph-count-heading"
-                            data-testid="paragraph-count-breakdown">
-                            <div class="mb-3">
-                                <h3 id="paragraph-count-heading" class="text-sm font-semibold text-text-primary mb-2">
-                                    📝 Paragraphs
-                                </h3>
-                                <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="paragraph-count">0</span>
-                                </div>
-                            </div>
-                            <p class="text-xs text-text-secondary">
-                                Total paragraph count
-                            </p>
-                        </div>
-
-                        <!-- Average Sentences per Paragraph Card -->
-                        <div class="bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200"
-                            role="region" aria-labelledby="avg-sentences-paragraph-heading"
-                            data-testid="avg-sentences-paragraph-breakdown">
-                            <div class="mb-3">
-                                <h3 id="avg-sentences-paragraph-heading"
-                                    class="text-sm font-semibold text-text-primary mb-2">
-                                    📈 Avg Sentences/Paragraph
-                                </h3>
-                                <div class="text-2xl font-bold text-primary-600" aria-live="polite">
-                                    <span id="avg-sentences-per-paragraph">0</span>
-                                </div>
-                            </div>
-                            <p class="text-xs text-text-secondary">
-                                Average paragraph length
-                            </p>
-                        </div>
-                    </div>
-                </section>
-            </section>
-
-            <!-- FAQ Section -->
-            <section aria-labelledby="faq-heading" class="max-w-container-lg mx-auto mb-12 px-6">
-                <h2 id="faq-heading" class="text-2xl font-semibold text-text-primary text-center mb-8 tracking-tight">
-                    Frequently Asked Questions
-                </h2>
-
-                <div class="grid gap-6 md:grid-cols-2">
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How does the word counter determine
-                            word count?</h3>
-                        <p class="text-text-secondary leading-relaxed">Words are counted by splitting text on whitespace
-                            and punctuation. Contractions like "don't" count as one word, while hyphenated words like
-                            "mother-in-law" are typically counted as separate words. Numbers and symbols are included in
-                            the count.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">What is average word length and why
-                            does it matter?</h3>
-                        <p class="text-text-secondary leading-relaxed">Average word length divides total letters by word
-                            count, excluding spaces and punctuation. It's a key readability indicator - shorter averages
-                            (3-4 letters) suggest simpler text, while longer averages (6+ letters) indicate more complex
-                            vocabulary.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How are sentences counted and
-                            identified?</h3>
-                        <p class="text-text-secondary leading-relaxed">Sentences are identified by terminal punctuation
-                            marks: periods, question marks, and exclamation points. Abbreviations like "Dr." or "U.S.A."
-                            are handled intelligently to avoid false sentence breaks. Empty lines don't count as
-                            sentences.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How is the most common word determined?
-                        </h3>
-                        <p class="text-text-secondary leading-relaxed">The tool counts frequency of each unique word,
-                            ignoring case differences ("The" and "the" are the same). Common stop words like "the,"
-                            "and," "of" typically appear most frequently. Ties are broken alphabetically or by first
-                            appearance.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between total and
-                            unique word count?</h3>
-                        <p class="text-text-secondary leading-relaxed">Total word count includes every word instance,
-                            while unique word count shows distinct words only. If "cat" appears 5 times, it adds 5 to
-                            total count but only 1 to unique count. Higher unique counts indicate richer vocabulary
-                            diversity.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How are longest and shortest words
-                            identified?</h3>
-                        <p class="text-text-secondary leading-relaxed">Word length is measured by character count,
-                            excluding spaces and punctuation. If multiple words tie for longest/shortest, the tool
-                            typically shows the first occurrence. Contractions count their full length including
-                            apostrophes.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">What does average sentence length
-                            measure?</h3>
-                        <p class="text-text-secondary leading-relaxed">Average sentence length divides total word count
-                            by sentence count. It's a crucial readability metric - shorter sentences (10-15 words) are
-                            easier to read, while longer sentences (20+ words) can be more challenging and may indicate
-                            complex writing.</p>
-                    </div>
-
-                    <div class="bg-surface border border-border rounded-xl p-6">
-                        <h3 class="text-lg font-semibold text-text-primary mb-3">How are paragraphs counted and
-                            analyzed?</h3>
-                        <p class="text-text-secondary leading-relaxed">Paragraphs are identified by double line breaks
-                            or significant whitespace gaps. The tool counts total paragraphs and calculates average
-                            sentences per paragraph, helping assess text structure and organization for better
-                            readability and flow.</p>
-                    </div>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How does the word counter determine
+                        word count?</h3>
+                    <p class="text-text-secondary leading-relaxed">Words are counted by splitting text on whitespace
+                        and punctuation. Contractions like "don't" count as one word, while hyphenated words like
+                        "mother-in-law" are typically counted as separate words. Numbers and symbols are included in
+                        the count.</p>
                 </div>
-            </section>
-            <!-- CTA Section -->
-            <section class="bg-primary-50 rounded-xl p-8 text-center max-w-container-md mx-auto mb-8">
-                <h2 class="text-xl font-semibold text-text-primary mb-4">Need More Text Analysis Tools?</h2>
-                <p class="text-text-secondary mb-6 leading-relaxed">
-                    Get comprehensive text analysis 
-                    with
-                    our suite of text analysis tools.
-                </p>
-                <a href="../character-counter"
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Try Character Counter
-                </a>
-                <a href="../reading-time-calculator"
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Calculate Reading Time
-                </a>
-            </section>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What is average word length and why
+                        does it matter?</h3>
+                    <p class="text-text-secondary leading-relaxed">Average word length divides total letters by word
+                        count, excluding spaces and punctuation. It's a key readability indicator - shorter averages
+                        (3-4 letters) suggest simpler text, while longer averages (6+ letters) indicate more complex
+                        vocabulary.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How are sentences counted and
+                        identified?</h3>
+                    <p class="text-text-secondary leading-relaxed">Sentences are identified by terminal punctuation
+                        marks: periods, question marks, and exclamation points. Abbreviations like "Dr." or "U.S.A."
+                        are handled intelligently to avoid false sentence breaks. Empty lines don't count as
+                        sentences.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How is the most common word determined?
+                    </h3>
+                    <p class="text-text-secondary leading-relaxed">The tool counts frequency of each unique word,
+                        ignoring case differences ("The" and "the" are the same). Common stop words like "the,"
+                        "and," "of" typically appear most frequently. Ties are broken alphabetically or by first
+                        appearance.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What's the difference between total and
+                        unique word count?</h3>
+                    <p class="text-text-secondary leading-relaxed">Total word count includes every word instance,
+                        while unique word count shows distinct words only. If "cat" appears 5 times, it adds 5 to
+                        total count but only 1 to unique count. Higher unique counts indicate richer vocabulary
+                        diversity.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How are longest and shortest words
+                        identified?</h3>
+                    <p class="text-text-secondary leading-relaxed">Word length is measured by character count,
+                        excluding spaces and punctuation. If multiple words tie for longest/shortest, the tool
+                        typically shows the first occurrence. Contractions count their full length including
+                        apostrophes.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">What does average sentence length
+                        measure?</h3>
+                    <p class="text-text-secondary leading-relaxed">Average sentence length divides total word count
+                        by sentence count. It's a crucial readability metric - shorter sentences (10-15 words) are
+                        easier to read, while longer sentences (20+ words) can be more challenging and may indicate
+                        complex writing.</p>
+                </div>
+
+                <div class="bg-surface border border-border rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-text-primary mb-3">How are paragraphs counted and
+                        analyzed?</h3>
+                    <p class="text-text-secondary leading-relaxed">Paragraphs are identified by double line breaks
+                        or significant whitespace gaps. The tool counts total paragraphs and calculates average
+                        sentences per paragraph, helping assess text structure and organization for better
+                        readability and flow.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-primary-50 rounded-xl p-8 text-center max-w-container-md mx-auto mb-8">
+            <h2 class="text-xl font-semibold text-text-primary mb-4">Need More Text Analysis Tools?</h2>
+            <p class="text-text-secondary mb-6 leading-relaxed">
+                Get comprehensive text analysis
+                with
+                our suite of text analysis tools.
+            </p>
+            <a href="../character-counter"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Try Character Counter
+            </a>
+            <a href="../reading-time-calculator"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Calculate Reading Time
+            </a>
+        </section>
     </main>
 
     <button id="scroll-nav-btn"
