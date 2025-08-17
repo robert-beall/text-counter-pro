@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set active page indicator (enhanced version)
   function setActiveNavItem() {
     const currentPath = window.location.pathname;
-    const allNavLinks = document.querySelectorAll('nav a[href], .nav-menu a[href]');
+    const allNavLinks = document.querySelectorAll('header nav a[href], .nav-menu a[href]');
     
     // First, reset all links to inactive state
     allNavLinks.forEach(link => {

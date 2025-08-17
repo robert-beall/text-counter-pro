@@ -738,11 +738,11 @@
 
         <div class="max-w-7xl mx-auto px-6 py-12 relative z-10">
             <!-- Main Footer Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
                 <!-- Brand Section -->
-                <div class="flex flex-col gap-4 text-center md:text-left">
-                    <a href=""
-                        class="inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center md:justify-start"
+                <div class="flex flex-col gap-4 text-center sm:text-left">
+                    <a href="../"
+                        class="inline-flex items-center gap-3 text-inherit no-underline mb-2 transition-opacity duration-200 hover:opacity-80 justify-center sm:justify-start"
                         aria-label="Text Counter Pro - Home">
                         <div
                             class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-custom-blue">
@@ -754,46 +754,87 @@
                             <span class="text-sm text-gray-400 font-medium">Pro</span>
                         </div>
                     </a>
-                    <p class="text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0">
-                        Free text analysis tool for writers, students, and content creators.
+                    <p class="text-gray-400 leading-relaxed max-w-xs mx-auto sm:mx-0 text-sm">
+                        Free text analysis tools for writers, students, and content creators. Count words, characters,
+                        calculate reading time, and analyze readability.
                     </p>
                 </div>
 
+                <!-- Tools Section -->
+                <div class="text-center sm:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Text Analysis Tools</h3>
+                    <ul class="flex flex-col gap-3 list-none" role="list">
+                        <li><a href="../word-counter"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Word Counter Tool">Word Counter</a>
+                        </li>
+                        <li><a href="../character-counter"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Character Counter Tool">Character Counter</a>
+                        </li>
+                        <li><a href="../reading-time-calculator"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Reading Time Calculator Tool">Reading Time Calculator</a>
+                        </li>
+                        <li><a href="../readability-calculator"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Readability Calculator Tool">Readability Calculator</a>
+                        </li>
+                    </ul>
+                </div>
+
                 <!-- Navigation Links -->
-                <div class="text-center md:text-left">
-                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Navigation</h3>
-                    <ul class="flex flex-col gap-3 list-none">
-                        <li><a href=""
-                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Home</a>
+                <div class="text-center sm:text-left">
+                    <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Site</h3>
+                    <ul class="flex flex-col gap-3 list-none" role="list">
+                        <li><a href="../"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Go to homepage">Home</a>
                         </li>
-                        <li><a href="about.html"
-                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">About</a>
+                        <li><a href="../about.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Learn about Text Counter Pro">About</a>
                         </li>
-                        <li><a href="contact.html"
-                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Contact</a>
+                        <li><a href="../contact.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Contact Text Counter Pro">Contact</a>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Legal Links -->
-                <div class="text-center md:text-left">
+                <div class="text-center sm:text-left">
                     <h3 class="text-base font-semibold text-white mb-4 tracking-tight">Legal</h3>
-                    <ul class="flex flex-col gap-3 list-none">
-                        <li><a href="privacy.html"
-                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center md:justify-start">Privacy
-                                Policy</a></li>
+                    <ul class="flex flex-col gap-3 list-none" role="list">
+                        <li><a href="../privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Read our Privacy Policy">Privacy Policy</a>
+                        </li>
+                        <li><a href="../terms-of-service.html"
+                                class="text-gray-400 no-underline text-sm transition-all duration-200 flex items-center gap-2 hover:text-primary-light hover:translate-x-1 justify-center sm:justify-start"
+                                aria-label="Read our Terms of Service">Terms of Service</a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
             <!-- Footer Bottom -->
             <div
-                class="border-t border-white border-opacity-10 pt-6 flex flex-col md:flex-row gap-4 items-center text-center md:text-left md:justify-between">
-                <p class="text-gray-500 text-sm m-0">&copy; 2025 Text Counter Pro. All rights reserved.</p>
-                <nav aria-label="Footer legal navigation">
-                    <ul class="flex gap-6 list-none m-0 p-0">
-                        <li><a href="privacy.html"
-                                class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light">Privacy</a>
+                class="border-t border-white border-opacity-10 pt-6 flex flex-col sm:flex-row gap-4 items-center text-center sm:text-left sm:justify-between">
+                <p class="text-gray-500 text-sm m-0">
+                    <span>&copy; 2025 Text Counter Pro. All rights reserved.</span>
+                    <span class="hidden sm:inline"> | </span>
+                    <span class="block sm:inline mt-1 sm:mt-0">Free text analysis and word counting tools.</span>
+                </p>
+                <nav aria-label="Footer legal navigation" class="flex-shrink-0">
+                    <ul class="flex gap-4 sm:gap-6 list-none m-0 p-0" role="list">
+                        <li><a href="../privacy.html"
+                                class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light"
+                                aria-label="Privacy Policy">Privacy</a>
+                        </li>
+                        <li><a href="../terms-of-service.html"
+                                class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-primary-light"
+                                aria-label="Terms of Service">Terms</a>
                         </li>
                     </ul>
                 </nav>
