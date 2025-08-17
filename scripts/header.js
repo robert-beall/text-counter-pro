@@ -197,6 +197,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // First, reset all links to inactive state
     allNavLinks.forEach(link => {
+      console.log(link.classList);
+      if (link.classList.contains('logo')) {
+        // Skip links that should not have active indicator
+        return;
+      }
+
       // Remove active classes
       link.classList.remove('text-blue-600', 'bg-blue-50', 'font-semibold');
       link.classList.add('text-gray-600');
@@ -226,6 +232,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Find and activate the current page link
     allNavLinks.forEach(link => {
       try {
+        if (link.classList.contains('logo')) {
+          // Skip links that should not have active indicator
+          return;
+        }
+
         const linkPath = new URL(link.href, window.location.origin).pathname;
         // Normalize paths by removing trailing slashes and comparing
         const normalizedLinkPath = linkPath.replace(/\/$/, '') || '/';

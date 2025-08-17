@@ -1,8 +1,8 @@
 # TODO
 - [X] Improve Header
-- [ ] Improve footer
+- [X] Improve footer
 - [ ] Improve call-to-action sections
-- [ ] Address Copyright Concerns
+- [X] Address Copyright Concerns
 - [ ] Structured Data on Extraneous Pages
 - [ ] Keywords and other metadata for each page
 - [ ] Set up google analytics
