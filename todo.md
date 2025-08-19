@@ -3,7 +3,7 @@
 - [X] Improve footer
 - [X] Improve call-to-action sections
 - [X] Address Copyright Concerns
-- [ ] Structured Data on Extraneous Pages
+- [X] Structured Data on Extraneous Pages
 - [ ] Keywords and other metadata for each page
 - [ ] Set up google analytics
 - [ ] Update ad placement (hide initially)
