@@ -1,7 +1,7 @@
 # TODO
 - [X] Improve Header
 - [X] Improve footer
-- [ ] Improve call-to-action sections
+- [X] Improve call-to-action sections
 - [X] Address Copyright Concerns
 - [ ] Structured Data on Extraneous Pages
 - [ ] Keywords and other metadata for each page
