@@ -197,7 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // First, reset all links to inactive state
     allNavLinks.forEach(link => {
-      console.log(link.classList);
       if (link.classList.contains('logo')) {
         // Skip links that should not have active indicator
         return;

@@ -446,6 +446,29 @@
                     Real-time analysis updates as you type. Supports documents up to 1 million characters.
                 </div>
             </div>
+
+            <!-- Ad Banner - After Text Input, Before Navigation Cards -->
+            <section aria-label="Advertisement" class="max-w-container-md mx-auto my-8 px-6">
+                <div class="flex justify-center">
+                    <div class="ad-container bg-gray-50 border border-gray-200 rounded-lg p-4 text-center"
+                        style="min-height: 90px; width: 100%; max-width: 728px;">
+                        <!-- Desktop: 728x90 Leaderboard -->
+                        <div class="hidden md:block">
+                            <div
+                                class="bg-gray-100 border-2 border-dashed border-gray-300 rounded h-[90px] flex items-center justify-center text-gray-500 text-sm">
+                                Advertisement (728x90)
+                            </div>
+                        </div>
+                        <!-- Mobile: 320x50 Banner -->
+                        <div class="md:hidden">
+                            <div
+                                class="bg-gray-100 border-2 border-dashed border-gray-300 rounded h-[50px] flex items-center justify-center text-gray-500 text-sm">
+                                Advertisement (320x50)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
 
         <!-- Navigation Cards Section -->
@@ -709,69 +732,6 @@
                     <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                         aria-hidden="true"></div>
                 </article>
-
-                <!-- Detailed Analysis Card -->
-                <article
-                    class="group bg-surface border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-custom-blue hover:border-primary-200 focus-within:shadow-custom-blue focus-within:border-primary-200 flex flex-col h-full sm:col-span-2 lg:col-span-1"
-                    role="region" aria-labelledby="detailed-analysis-heading" itemscope
-                    itemtype="https://schema.org/WebApplication">
-
-                    <header class="mb-4">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div
-                                class="flex items-center justify-center w-10 h-10 bg-primary-100 rounded-lg group-hover:bg-primary-200 transition-colors duration-200">
-                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                            </div>
-                            <h3 id="detailed-analysis-heading"
-                                class="text-lg font-semibold text-text-primary group-hover:text-primary-600 transition-colors duration-200"
-                                itemprop="name">
-                                Detailed Analysis
-                            </h3>
-                        </div>
-                        <meta itemprop="applicationCategory" content="TextAnalysisApplication">
-                        <meta itemprop="operatingSystem" content="Web Browser">
-                    </header>
-
-                    <div class="flex-grow mb-6" itemprop="description">
-                        <p class="text-sm text-text-secondary leading-relaxed mb-4">
-                            Complete text analysis dashboard combining all metrics in one place. Perfect for writers,
-                            editors, and content professionals who need comprehensive insights.
-                        </p>
-
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">All
-                                Metrics</span>
-                            <span
-                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Power
-                                User</span>
-                            <span
-                                class="inline-flex items-center px-2 py-1 rounded-md bg-primary-50 text-xs font-medium text-primary-700">Complete
-                                Report</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-auto">
-                        <a href="detailed-analysis/"
-                            class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
-                            aria-describedby="detailed-analysis-heading" itemprop="url">
-                            Full Analysis
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
-
-                    <!-- Subtle visual enhancement -->
-                    <div class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                        aria-hidden="true"></div>
-                </article>
             </div>
         </section>
     </main>
@@ -779,8 +739,8 @@
     <button id="scroll-nav-btn"
         class="flex align-center gap-2 bg-primary text-white border-none font-semibold cursor-pointer shadow-custom-blue transition-all duration-300 ease-out translate-y-0 fixed bottom-3 right-3 w-[36px] h-[36px] p-2 rounded-full md:rounded-3xl justify-center md:bottom-4 md:right-4 md:py-2 md:px-3 md:text-xs md:w-auto md:h-auto lg:bottom-6 lg:right-6 z-[100] lg:py-3 lg:pb-4 lg:text-sm animate-subtle-pulse hover:bg-primary-dark hover:shadow-custom-dark-blue hover:-translate-y-0.5 active:-translate-y-[1px] motion-reduce:animate-none motion-reduce:transition-none contrast-more:border-2 contrast-more:border-white"
         aria-label="Scroll to detailed analysis">
-        <span
-            class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">More Tools</span>
+        <span class="scroll-nav-text hidden lg:block whitespace-nowrap transition-opacity duration-200 ease-in-out">More
+            Tools</span>
         <svg class="shrink-0 transition-transform duration-300 ease-in-out motion-reduce:transition-none" width="20"
             height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"

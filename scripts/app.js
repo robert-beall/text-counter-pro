@@ -56,17 +56,12 @@ class App {
     console.log("App initialized successfully");
 
     const textInput = this.getElement("text-input");
-    const wpmInput = this.getElement("wpm-input");
     const pasteBtn = this.getElement("paste-btn");
     const clearBtn = this.getElement("clear-btn");
 
     if (textInput) {
       textInput.value = "";
       textInput.addEventListener("input", this.handleInput.bind(this));
-    }
-
-    if (wpmInput) {
-      wpmInput.addEventListener("input", this.handleWpmInput.bind(this));
     }
 
     if (clearBtn) {
@@ -114,7 +109,6 @@ class App {
     try {
       const text = event.target.value;
       const clearBtn = this.getElement("clear-btn");
-      const wpmInput = this.getElement("wpm-input");
 
       if (clearBtn) {
         if (text) {

@@ -4,8 +4,7 @@
 - [X] Improve call-to-action sections
 - [X] Address Copyright Concerns
 - [X] Structured Data on Extraneous Pages
-- [ ] Keywords and other metadata for each page
+- [X] Keywords and other metadata for each page
 - [ ] Set up google analytics
 - [ ] Update ad placement (hide initially)
-- [ ] Add social media metadata
 - [ ] Final Sweep Through
