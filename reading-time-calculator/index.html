@@ -120,18 +120,11 @@
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../tailwind.config.js"></script>
-    <script>
-        // Apply the configuration
-        tailwind.config = window.tailwindConfig;
-    </script>
-
-
     <!-- Stylesheets -->
+    <link href="../styles/output.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/components.css">
+
 
     <!-- Scripts -->
     <script src="../scripts/header.js" defer></script>
@@ -514,7 +507,7 @@
         </section>
 
         <!-- Ad Banner - After Text Input, Before Navigation Cards -->
-        <section aria-label="Advertisement" class="max-w-container-md mx-auto my-8 px-6">
+        <section aria-label="Advertisement" class="max-w-container-md mx-auto my-8 px-6 hidden">
             <div class="flex justify-center">
                 <div class="ad-container bg-gray-50 border border-gray-200 rounded-lg p-4 text-center"
                     style="min-height: 90px; width: 100%; max-width: 728px;">
@@ -601,7 +594,7 @@
         </section>
     </main>
 
-    <aside role="complementary" aria-label="Advertisement" class="max-w-container-md my-8 mx-auto py-0 px-6">
+    <aside role="complementary" aria-label="Advertisement" class="max-w-container-md my-8 mx-auto py-0 px-6 hidden">
         <!-- Ad spaces placeholder -->
         <div aria-label="Sponsored content"
             class="ad-placeholder bg-border border-2 border-dashed border-text-muted rounded-lg text-center text-text-muted min-h-[120px] flex items-center justify-center before:content-['Advertisement_Space'] before:text-sm before:text-text-muted before:opacity-70">

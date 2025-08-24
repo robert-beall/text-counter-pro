@@ -96,18 +96,11 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="assets/text-counter-pro-icon.png" as="image" type="image/png">
 
-    <!-- Tailwind CSS via CDN -->
-    <!-- Place AFTER your existing CSS files to maintain specificity -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="tailwind.config.js"></script>
-    <script>
-        // Apply the configuration
-        tailwind.config = window.tailwindConfig;
-    </script>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/components.css">
+    <link href="./styles/output.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="scripts/header.js" defer></script>
@@ -448,7 +441,7 @@
             </div>
 
             <!-- Ad Banner - After Text Input, Before Navigation Cards -->
-            <section aria-label="Advertisement" class="max-w-container-md mx-auto my-8 px-6">
+            <section aria-label="Advertisement" class="max-w-container-md mx-auto my-8 px-6 hidden">
                 <div class="flex justify-center">
                     <div class="ad-container bg-gray-50 border border-gray-200 rounded-lg p-4 text-center"
                         style="min-height: 90px; width: 100%; max-width: 728px;">
