@@ -3,8 +3,19 @@
 export const content = [
   "./**/*.html",           // This will catch ALL HTML files in any subdirectory
   "./src/**/*.{html,js,ts,jsx,tsx}",
-  "./*.html"
+  "./*.html",
+  "./scripts/*.js",            // Add this to scan all JS files
+  "./scroll-nav.js"       // Or specifically include your JS file
 ];
+
+// Safelist ensures these classes are always included even if not found in scanned files
+export const safelist = [
+  'rotate-180',
+  'translate-y-2.5',
+  'opacity-0', 
+  'pointer-events-none'
+];
+
 export const theme = {
   extend: {
     colors: {
@@ -55,6 +66,7 @@ export const theme = {
     spacing: {
       '1': '0.25rem',
       '2': '0.5rem',
+      '2.5': '0.625rem',  // Add this if it's missing
       '3': '0.75rem',
       '4': '1rem',
       '5': '1.25rem',
