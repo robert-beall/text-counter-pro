@@ -1,0 +1,56 @@
+/* 
+Minimal CSS Reset - Only what Tailwind doesn't provide
+*/
+
+/* Prevent font size inflation and improve font rendering */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Balance text wrapping on headings */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+/* Remove default details marker */
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Make sure textareas without rows are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Scroll margin for anchored elements */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Custom focus styles */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
