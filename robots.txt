@@ -10,3 +10,7 @@ Disallow: /README.md
 Disallow: /.gitignore
 Disallow: /node_modules/
 Disallow: /*.json$
+
+User-agent: *
+Allow: /assets/favicon.ico
+Allow: /assets/
